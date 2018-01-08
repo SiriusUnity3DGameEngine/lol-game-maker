@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-class SuperSeaAI:
+class OpenSeaAI:
 	def init():
 		pass
 

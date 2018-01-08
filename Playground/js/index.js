@@ -1,4 +1,4 @@
-$(function() {
+var initUI = function() {
     $('#leftPanel').tabs();
     $('#accordion').accordion({
         heightStyle: "fill"
@@ -10,15 +10,24 @@ $(function() {
             $("#accordion").accordion("refresh");
         }
     });
-});
+};
 
+var canvas = null;
+var scene = null;
+var camera = null;
+var renderer = null;
 var initThreeJs = function() {
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
-
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+    canvas = document.getElementById('mycanvas');
+    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(0)').height() + 'px';
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 10000);
+    renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        antialias: true
+    });
+    renderer.setSize(canvas.width, canvas.height);
 
     var light = new THREE.DirectionalLight(0xffffff, 1.0);
     light.position.set(200, 200, 200);
@@ -52,3 +61,8 @@ var initThreeJs = function() {
     }
     render();
 };
+
+$(function() {
+    initUI();
+    initThreeJs();
+});

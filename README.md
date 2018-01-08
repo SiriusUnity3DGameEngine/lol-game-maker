@@ -11,3 +11,13 @@ We will create a greate artificial intelligence (AI) with the theory of life evo
 3. Install Flask.
 
 4. Install PyMongo.
+
+## Thanks
+
+* Bootstrap: https://github.com/twbs/bootstrap
+* Jquery-ui: https://github.com/jquery/jquery-ui
+* Three.js: https://github.com/mrdoob/three.js
+* Tensorflow: https://github.com/tensorflow/tensorflow
+* Flask: https://github.com/pallets/flask
+* PyMongo: http://api.mongodb.com/python/current/
+* Physijs: https://github.com/chandlerprall/Physijs

@@ -1,6 +1,16 @@
-$(function () {
-    
-}); 
+$(function() {
+    $('#leftPanel').tabs();
+    $('#accordion').accordion({
+        heightStyle: "fill"
+    });
+    $("#rightPanel").resizable({
+        minHeight: 140,
+        minWidth: 200,
+        resize: function() {
+            $("#accordion").accordion("refresh");
+        }
+    });
+});
 
 var initThreeJs = function() {
     var scene = new THREE.Scene();

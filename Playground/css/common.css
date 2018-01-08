@@ -13,3 +13,9 @@ body {
 .container-fluid>.row>.w-200 {
     height: 100%;
 }
+
+#leftPanel,
+#rightPanel {
+    margin: 0;
+    padding: 0;
+}

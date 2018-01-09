@@ -1,4 +1,13 @@
 var initUI = function() {
+    $( "#menu" ).menu({
+        position: { 
+            my: "left bottom", 
+            at: "left top" 
+        },
+        icons: {
+            submenu: "ui-icon-triangle-1-s",
+        }
+    });
     $('#leftPanel').tabs();
     $('#accordion').accordion({
         heightStyle: "fill"
@@ -33,6 +42,9 @@ var initThreeJs = function() {
     light.position.set(200, 200, 200);
     light.lookAt(new THREE.Vector3(0, 0, 0));
     scene.add(light);
+
+    var gridHelper = new THREE.GridHelper(2000, 20);
+    scene.add(gridHelper);
 
     var geometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
     var material = new THREE.MeshPhongMaterial({ color: 0xffffff, side: THREE.DoubleSide });

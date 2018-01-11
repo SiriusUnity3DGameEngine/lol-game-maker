@@ -1,5 +1,5 @@
 var initUI = function() {
-    $( "#menu" ).menu({
+    $('#menu').menu({
         position: { 
             my: "left bottom", 
             at: "left top" 
@@ -27,7 +27,7 @@ var camera = null;
 var renderer = null;
 var initThreeJs = function() {
     canvas = document.getElementById('mycanvas');
-    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(0)').height() + 'px';
+    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(1)').height() + 'px';
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
     scene = new THREE.Scene();
@@ -45,13 +45,6 @@ var initThreeJs = function() {
 
     var gridHelper = new THREE.GridHelper(2000, 20);
     scene.add(gridHelper);
-
-    var geometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
-    var material = new THREE.MeshPhongMaterial({ color: 0xffffff, side: THREE.DoubleSide });
-    var plane = new THREE.Mesh(geometry, material);
-    scene.add(plane);
-    plane.position.set(0, -160, 0);
-    plane.rotation.set(Math.PI / 2, 0, 0);
 
     var geometry = new THREE.BoxGeometry(100, 100, 100);
     var material = new THREE.MeshPhongMaterial({ color: 0xff0000 });

@@ -1,78 +1,87 @@
-(function () {
-'use strict';
+(function (global, factory) {
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('coordinate.js'), require('geometry.js')) :
+	typeof define === 'function' && define.amd ? define(['exports', 'coordinate.js', 'geometry.js'], factory) :
+	(factory((global.AI = {}),global.coordinate_js,global.geometry_js));
+}(this, (function (exports,coordinate_js,geometry_js) { 'use strict';
 
-var initUI = function() {
-    $( "#menu" ).menu({
-        position: { 
-            my: "left bottom", 
-            at: "left top" 
-        },
-        icons: {
-            submenu: "ui-icon-triangle-1-s",
-        }
+function Coordinate$1(options) {
+    this.x = options.x || 0;
+    this.y = options.y || 0;
+    this.z = options.z || 0;
+
+    this.set = function(x, y, z) {
+        this.x = x || 0;
+        this.y = y || 0;
+        this.z = z || 0;
+    };
+
+    this.get = function() {
+        return {
+            x: this.x,
+            y: this.y,
+            z: this.z
+        };
+    };
+}
+
+//export default { Coordinate };
+
+function Point(options) {
+    geometry_js.Geometry.call(this, options);
+
+    this.coordinates = [new coordinate_js.Coordinate({
+        x: options.x || 0,
+        y: options.y || 0,
+        z: options.x || 0
+    })];
+
+    this.setCoordinate = function(xyz) {
+        this.coordinates[0].set(xyz.x, xyz.y, xyz.z);
+    };
+
+    this.getCoordinate = function() {
+        return this.coordinates[0]
+    };
+}
+
+Point.prototype = Object.create(geometry_js.Geometry.coordinate);
+
+function Line(options) {
+    geometry_js.Geometry.call(this, options);
+
+    options.coordinates = options.coordinates || [];
+
+    options.coordinates.forEach((n, i) => {
+        this.coordinates.push(new coordinate_js.Coordinate({
+            x: n.x,
+            y: n.y,
+            z: n.z
+        }));
     });
-    $('#leftPanel').tabs();
-    $('#accordion').accordion({
-        heightStyle: "fill"
+}
+
+Line.prototype = Object.create(geometry_js.Geometry.coordinate);
+
+function Polygon(options) {
+    geometry_js.Geometry.call(this, options);
+
+    options.coordinates = options.coordinates || [];
+
+    options.coordinates.forEach((n, i) => {
+        this.coordinates.push(new coordinate_js.Coordinate({
+            x: n.x,
+            y: n.y,
+            z: n.z
+        }));
     });
-    $("#rightPanel").resizable({
-        minHeight: 140,
-        minWidth: 200,
-        resize: function() {
-            $("#accordion").accordion("refresh");
-        }
-    });
-};
+}
 
-var canvas = null;
-var scene = null;
-var camera = null;
-var renderer = null;
-var initThreeJs = function() {
-    canvas = document.getElementById('mycanvas');
-    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(1)').height() + 'px';
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 10000);
-    renderer = new THREE.WebGLRenderer({
-        canvas: canvas,
-        antialias: true
-    });
-    renderer.setSize(canvas.width, canvas.height);
+Polygon.prototype = Object.create(geometry_js.Geometry.coordinate);
 
-    var light = new THREE.DirectionalLight(0xffffff, 1.0);
-    light.position.set(200, 200, 200);
-    light.lookAt(new THREE.Vector3(0, 0, 0));
-    scene.add(light);
+// geometry
 
-    var gridHelper = new THREE.GridHelper(2000, 20);
-    scene.add(gridHelper);
+exports.Coordinate = Coordinate$1;
 
-    var geometry = new THREE.BoxGeometry(100, 100, 100);
-    var material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-    cube.position.set(0, 0, 0);
+Object.defineProperty(exports, '__esModule', { value: true });
 
-    camera.position.set(500, 500, 200);
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
-
-    var controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.maxPolarAngle = Math.PI * 0.5;
-
-    function render() {
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-        renderer.render(scene, camera);
-        requestAnimationFrame(render);
-    }
-    render();
-};
-
-$(function() {
-    initUI();
-    initThreeJs();
-});
-
-}());
+})));

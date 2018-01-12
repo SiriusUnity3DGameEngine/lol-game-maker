@@ -1,5 +1,9 @@
-import { Coordinate } from 'coordinate.js';
-import { Geometry } from 'geometry.js';
+import { Coordinate } from './Coordinate';
+import { Geometry } from './Geometry';
+
+/**
+ * @author tengge / https://github.com/tengge1
+ */
 
 function Point(options) {
     Geometry.call(this, options);
@@ -9,16 +13,22 @@ function Point(options) {
         y: options.y || 0,
         z: options.x || 0
     })];
-
-    this.setCoordinate = function(xyz) {
-        this.coordinates[0].set(xyz.x, xyz.y, xyz.z);
-    };
-
-    this.getCoordinate = function() {
-        return this.coordinates[0]
-    };
 }
 
-Point.prototype = Object.create(Geometry.coordinate);
+Point.prototype = Object.create(Geometry.prototype);
 
-export default { Point };
+Point.prototype.getCoordinate = function() {
+    return {
+        x: this.coordinates[0].x,
+        y: this.coordinates[0].y,
+        z: this.coordinates[0].z
+    };
+};
+
+Point.prototype.setCoordinate = function(x, y, z) {
+    this.coordinates[0].x = x;
+    this.coordinates[0].y = y;
+    this.coordinates[0].z = z;
+};
+
+export { Point };

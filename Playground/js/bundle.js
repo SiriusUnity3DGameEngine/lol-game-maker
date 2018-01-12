@@ -1,87 +1,129 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('coordinate.js'), require('geometry.js')) :
-	typeof define === 'function' && define.amd ? define(['exports', 'coordinate.js', 'geometry.js'], factory) :
-	(factory((global.AI = {}),global.coordinate_js,global.geometry_js));
-}(this, (function (exports,coordinate_js,geometry_js) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+	typeof define === 'function' && define.amd ? define(['exports'], factory) :
+	(factory((global.AI = {})));
+}(this, (function (exports) { 'use strict';
 
-function Coordinate$1(options) {
-    this.x = options.x || 0;
-    this.y = options.y || 0;
-    this.z = options.z || 0;
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
 
-    this.set = function(x, y, z) {
-        this.x = x || 0;
-        this.y = y || 0;
-        this.z = z || 0;
-    };
+	function Coordinate(options) {
+	    this.x = options.x || 0;
+	    this.y = options.y || 0;
+	    this.z = options.z || 0;
+	}
 
-    this.get = function() {
-        return {
-            x: this.x,
-            y: this.y,
-            z: this.z
-        };
-    };
-}
+	Coordinate.prototype.get = function() {
+	    return {
+	        x: this.x,
+	        y: this.y,
+	        z: this.z
+	    };
+	};
 
-//export default { Coordinate };
+	Coordinate.prototype.set = function(x, y, z) {
+	    this.x = x || 0;
+	    this.y = y || 0;
+	    this.z = z || 0;
+	};
 
-function Point(options) {
-    geometry_js.Geometry.call(this, options);
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
 
-    this.coordinates = [new coordinate_js.Coordinate({
-        x: options.x || 0,
-        y: options.y || 0,
-        z: options.x || 0
-    })];
+	function Geometry(options) {
 
-    this.setCoordinate = function(xyz) {
-        this.coordinates[0].set(xyz.x, xyz.y, xyz.z);
-    };
+	    this.coordinates = options.coordinates || [];
 
-    this.getCoordinate = function() {
-        return this.coordinates[0]
-    };
-}
+	}
 
-Point.prototype = Object.create(geometry_js.Geometry.coordinate);
+	Geometry.prototype.getCoordinates = function() {
+	    return this.coordinates;
+	};
 
-function Line(options) {
-    geometry_js.Geometry.call(this, options);
+	Geometry.prototype.setCoordinates = function(coordinates) {
+	    this.coordinates = coordinates;
+	};
 
-    options.coordinates = options.coordinates || [];
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
 
-    options.coordinates.forEach((n, i) => {
-        this.coordinates.push(new coordinate_js.Coordinate({
-            x: n.x,
-            y: n.y,
-            z: n.z
-        }));
-    });
-}
+	function Point(options) {
+	    Geometry.call(this, options);
 
-Line.prototype = Object.create(geometry_js.Geometry.coordinate);
+	    this.coordinates = [new Coordinate({
+	        x: options.x || 0,
+	        y: options.y || 0,
+	        z: options.x || 0
+	    })];
+	}
 
-function Polygon(options) {
-    geometry_js.Geometry.call(this, options);
+	Point.prototype = Object.create(Geometry.prototype);
 
-    options.coordinates = options.coordinates || [];
+	Point.prototype.getCoordinate = function() {
+	    return {
+	        x: this.coordinates[0].x,
+	        y: this.coordinates[0].y,
+	        z: this.coordinates[0].z
+	    };
+	};
 
-    options.coordinates.forEach((n, i) => {
-        this.coordinates.push(new coordinate_js.Coordinate({
-            x: n.x,
-            y: n.y,
-            z: n.z
-        }));
-    });
-}
+	Point.prototype.setCoordinate = function(x, y, z) {
+	    this.coordinates[0].x = x;
+	    this.coordinates[0].y = y;
+	    this.coordinates[0].z = z;
+	};
 
-Polygon.prototype = Object.create(geometry_js.Geometry.coordinate);
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
 
-// geometry
+	function Line(options) {
+	    Geometry.call(this, options);
 
-exports.Coordinate = Coordinate$1;
+	    options.coordinates = options.coordinates || [];
 
-Object.defineProperty(exports, '__esModule', { value: true });
+	    options.coordinates.forEach((n, i) => {
+	        this.coordinates.push(new Coordinate({
+	            x: n.x,
+	            y: n.y,
+	            z: n.z
+	        }));
+	    });
+	}
+
+	Line.prototype = Object.create(Geometry.prototype);
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function Polygon(options) {
+	    Geometry.call(this, options);
+
+	    options.coordinates = options.coordinates || [];
+
+	    options.coordinates.forEach((n, i) => {
+	        this.coordinates.push(new Coordinate({
+	            x: n.x,
+	            y: n.y,
+	            z: n.z
+	        }));
+	    });
+	}
+
+	Polygon.prototype = Object.create(Geometry.prototype);
+
+	// geometry
+
+	exports.Coordinate = Coordinate;
+	exports.Geometry = Geometry;
+	exports.Point = Point;
+	exports.Line = Line;
+	exports.Polygon = Polygon;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
 
 })));

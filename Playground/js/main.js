@@ -1,6 +1,6 @@
 // geometry
-export * from './geometry/coordinate.js';
-export * from './geometry/geometry.js';
-export * from './geometry/point.js';
-export * from './geometry/line.js';
-export * from './geometry/polygon.js';
+export { Coordinate } from './geometry/Coordinate.js';
+export { Geometry } from './geometry/Geometry.js';
+export { Point } from './geometry/Point.js';
+export { Line } from './geometry/Line.js';
+export { Polygon } from './geometry/Polygon.js';

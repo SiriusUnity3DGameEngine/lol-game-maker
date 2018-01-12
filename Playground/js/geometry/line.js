@@ -1,5 +1,9 @@
-import { Coordinate } from 'coordinate.js';
-import { Geometry } from 'geometry.js';
+import { Coordinate } from './Coordinate';
+import { Geometry } from './Geometry';
+
+/**
+ * @author tengge / https://github.com/tengge1
+ */
 
 function Line(options) {
     Geometry.call(this, options);
@@ -15,6 +19,6 @@ function Line(options) {
     });
 }
 
-Line.prototype = Object.create(Geometry.coordinate);
+Line.prototype = Object.create(Geometry.prototype);
 
-export default { Line };
+export { Line };

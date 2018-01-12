@@ -4,6 +4,8 @@
 
 function Geometry(options) {
 
+    options = options || {};
+
     this.coordinates = options.coordinates || [];
 
 }

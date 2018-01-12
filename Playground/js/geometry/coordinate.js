@@ -3,9 +3,12 @@
  */
 
 function Coordinate(options) {
+
+    options = options || {};
     this.x = options.x || 0;
     this.y = options.y || 0;
     this.z = options.z || 0;
+
 }
 
 Coordinate.prototype.get = function() {

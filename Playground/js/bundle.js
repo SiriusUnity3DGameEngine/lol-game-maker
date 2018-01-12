@@ -9,9 +9,12 @@
 	 */
 
 	function Coordinate(options) {
+
+	    options = options || {};
 	    this.x = options.x || 0;
 	    this.y = options.y || 0;
 	    this.z = options.z || 0;
+
 	}
 
 	Coordinate.prototype.get = function() {
@@ -34,6 +37,8 @@
 
 	function Geometry(options) {
 
+	    options = options || {};
+
 	    this.coordinates = options.coordinates || [];
 
 	}
@@ -53,6 +58,7 @@
 	function Point(options) {
 	    Geometry.call(this, options);
 
+	    options = options || {};
 	    this.coordinates = [new Coordinate({
 	        x: options.x || 0,
 	        y: options.y || 0,
@@ -61,6 +67,7 @@
 	}
 
 	Point.prototype = Object.create(Geometry.prototype);
+	Point.prototype.constructor = Point;
 
 	Point.prototype.getCoordinate = function() {
 	    return {
@@ -83,6 +90,7 @@
 	function Line(options) {
 	    Geometry.call(this, options);
 
+	    options = options || {};
 	    options.coordinates = options.coordinates || [];
 
 	    options.coordinates.forEach((n, i) => {
@@ -95,6 +103,7 @@
 	}
 
 	Line.prototype = Object.create(Geometry.prototype);
+	Line.prototype.constructor = Line;
 
 	/**
 	 * @author tengge / https://github.com/tengge1
@@ -103,6 +112,7 @@
 	function Polygon(options) {
 	    Geometry.call(this, options);
 
+	    options = options || {};
 	    options.coordinates = options.coordinates || [];
 
 	    options.coordinates.forEach((n, i) => {
@@ -115,6 +125,7 @@
 	}
 
 	Polygon.prototype = Object.create(Geometry.prototype);
+	Polygon.prototype.constructor = Polygon;
 
 	// geometry
 

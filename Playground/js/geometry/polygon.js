@@ -8,6 +8,7 @@ import { Geometry } from './Geometry';
 function Polygon(options) {
     Geometry.call(this, options);
 
+    options = options || {};
     options.coordinates = options.coordinates || [];
 
     options.coordinates.forEach((n, i) => {
@@ -20,5 +21,6 @@ function Polygon(options) {
 }
 
 Polygon.prototype = Object.create(Geometry.prototype);
+Polygon.prototype.constructor = Polygon;
 
 export { Polygon };

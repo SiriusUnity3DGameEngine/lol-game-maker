@@ -8,6 +8,7 @@ import { Geometry } from './Geometry';
 function Line(options) {
     Geometry.call(this, options);
 
+    options = options || {};
     options.coordinates = options.coordinates || [];
 
     options.coordinates.forEach((n, i) => {
@@ -20,5 +21,6 @@ function Line(options) {
 }
 
 Line.prototype = Object.create(Geometry.prototype);
+Line.prototype.constructor = Line;
 
 export { Line };

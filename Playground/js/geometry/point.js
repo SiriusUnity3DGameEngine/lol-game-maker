@@ -8,6 +8,7 @@ import { Geometry } from './Geometry';
 function Point(options) {
     Geometry.call(this, options);
 
+    options = options || {};
     this.coordinates = [new Coordinate({
         x: options.x || 0,
         y: options.y || 0,
@@ -16,6 +17,7 @@ function Point(options) {
 }
 
 Point.prototype = Object.create(Geometry.prototype);
+Point.prototype.constructor = Point;
 
 Point.prototype.getCoordinate = function() {
     return {

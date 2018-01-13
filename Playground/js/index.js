@@ -27,7 +27,7 @@ var camera = null;
 var renderer = null;
 var initThreeJs = function() {
     canvas = document.getElementById('mycanvas');
-    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(1)').height() + 'px';
+    canvas.style.height = $('#leftPanel').height() - $('#leftPanel ul:eq(0)').height() + 'px';
     canvas.width = canvas.clientWidth;
     canvas.height = canvas.clientHeight;
     scene = new THREE.Scene();
@@ -69,5 +69,5 @@ var initThreeJs = function() {
 
 $(function() {
     initUI();
-    initThreeJs();
+    //initThreeJs();
 });

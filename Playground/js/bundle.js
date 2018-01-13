@@ -127,6 +127,49 @@
 	Polygon.prototype = Object.create(Geometry.prototype);
 	Polygon.prototype.constructor = Polygon;
 
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function Scene(options) {
+
+	    options = options || {};
+	    this.name = options.name || 'Scene';
+
+	}
+
+	Scene.prototype.getName = function() {
+	    return this.name;
+	};
+
+	Scene.prototype.setName = function(name) {
+	    this.name = name;
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function Scene2D(options) {
+	    Scene.call(this, options);
+	    options = options || {};
+	}
+
+	Scene2D.prototype = Object.create(Scene.prototype);
+	Scene2D.prototype.constructor = Scene2D;
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function Scene3D(options) {
+	    Scene.call(this, options);
+	    options = options || {};
+	}
+
+	Scene3D.prototype = Object.create(Scene.prototype);
+	Scene3D.prototype.constructor = Scene3D;
+
 	// geometry
 
 	exports.Coordinate = Coordinate;
@@ -134,6 +177,9 @@
 	exports.Point = Point;
 	exports.Line = Line;
 	exports.Polygon = Polygon;
+	exports.Scene = Scene;
+	exports.Scene2D = Scene2D;
+	exports.Scene3D = Scene3D;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

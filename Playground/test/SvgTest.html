@@ -58,14 +58,21 @@
             x1: 400,
             y1: 10,
             x2: 500,
-            y2: 200
+            y2: 200,
+            strokeWidth: 10,
+            strokeLinecap: 'round'
         });
         svg.add(line);
 
         var polyline = new AI.SvgPolyline({
-            points: '500,30,500,50,550,50,580,200'
+            points: '500,30,500,50,550,50,550,100,550,150,600,150'
         });
         svg.add(polyline);
+
+        var polygon = new AI.SvgPolygon({
+            points: [650, 0, 750, 0, 750,100, 650, 100]
+        });
+        svg.add(polygon);
 
         svg.render();
     }

@@ -24,3 +24,4 @@ export { SvgRect } from './svg/element/SvgRect';
 export { SvgEllipse } from './svg/element/SvgEllipse';
 export { SvgLine } from './svg/element/SvgLine';
 export { SvgPolyline } from './svg/element/SvgPolyline';
+export { SvgPolygon } from './svg/element/SvgPolygon';

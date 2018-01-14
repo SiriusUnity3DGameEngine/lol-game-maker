@@ -362,8 +362,10 @@
 	    this.stroke = options.stroke || null;
 	    this.strokeWidth = options.strokeWidth || null;
 	    this.strokeOpacity = options.strokeOpacity || null;
+	    this.strokeLinecap = options.strokeLinecap || null; // butt, square, round
 	    this.fill = options.fill || null;
 	    this.fillOpacity = options.fillOpacity || null;
+	    this.fillRule = options.fillRule || null; // nonzero, evenodd
 	    this.opacity = options.opacity || null;
 	    this.style = options.style || null;
 	}
@@ -377,8 +379,10 @@
 	        .attr('stroke', scope.stroke)
 	        .attr('stroke-width', scope.strokeWidth)
 	        .attr('stroke-opacity', scope.strokeOpacity)
+	        .attr('stroke-linecap', scope.strokeLinecap)
 	        .attr('fill', scope.fill)
 	        .attr('fill-opacity', scope.fillOpacity)
+	        .attr('fill-rule', scope.fillRule)
 	        .attr('opacity', scope.opacity)
 	        .attr('style', scope.style);
 	};
@@ -509,6 +513,28 @@
 	        .call(this.renderStyle, this);
 	};
 
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgPolygon(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.points = options.points || '0,0,100,0,100,100,0,100';
+	    this.stroke = options.stroke || 'red';
+	    this.strokeWidth = options.strokeWidth || 2;
+	    this.fill = options.fill || 'yellow';
+	}
+
+	SvgPolygon.prototype = Object.create(SvgElement.prototype);
+	SvgPolygon.prototype.constructor = SvgPolygon;
+
+	SvgPolygon.prototype.render = function() {
+	    this.parent.append('polygon')
+	        .attr('points', this.points)
+	        .call(this.renderStyle, this);
+	};
+
 	// geometry
 
 	exports.Coordinate = Coordinate;
@@ -530,6 +556,7 @@
 	exports.SvgEllipse = SvgEllipse;
 	exports.SvgLine = SvgLine;
 	exports.SvgPolyline = SvgPolyline;
+	exports.SvgPolygon = SvgPolygon;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -7,31 +7,20 @@ body {
     overflow: hidden;
 }
 
-.container-fluid {
-    height: 100%;
+body {
+    padding-top: 28px;
+    box-sizing: border-box;
 }
 
-#box {
-    position: absolute;
-    left: 0;
+.nav {
+    position: fixed;
     top: 0;
     width: 100%;
-    height: 100%;
-    padding-top: 30px;
-    pointer-events: none;
-}
-
-#leftPanel, #rightPanel {
-    height: 100%;
-    z-index: 10%;
-    pointer-events: all;
-}
-
-.menu-container {
-    padding: 0;
+    z-index: 100;
 }
 
 #menu {
+    width: 100%;
     font-size: 1.0em;
 }
 
@@ -39,8 +28,7 @@ body {
     display: inline-block;
     float: left;
     margin: 0;
-    padding: 0;
-    width: auto;
+    padding: 0 2px 0 2px;
 }
 
 .ui-menu:after {
@@ -51,20 +39,31 @@ body {
     height: 0;
 }
 
-#leftPanel,
-#rightPanel {
-    margin: 0;
-    padding: 0;
-}
-
-#tabs-1 {
-    padding: 0;
-}
-
-#mycanvas {
+.box {
+    position: relative;
     width: 100%;
     height: 100%;
-    margin: 0;
+}
+
+.left-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-right: 250px;
+    box-sizing: border-box;
+}
+
+.ui-tabs {
     padding: 0;
-    overflow: hidden;
+}
+
+.right-panel {
+    position: absolute;
+    right: 0;
+    width: 250px;
+    height: 100%;
+}
+
+.ui-widget-content {
+    border: none;
 }

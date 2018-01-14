@@ -12,13 +12,6 @@ var initUI = function() {
     $('#accordion').accordion({
         heightStyle: "fill"
     });
-    $("#rightPanel").resizable({
-        minHeight: 140,
-        minWidth: 200,
-        resize: function() {
-            $("#accordion").accordion("refresh");
-        }
-    });
 };
 
 var canvas = null;

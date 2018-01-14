@@ -4,12 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <title>SuperSeaAI Playground</title>
-    <link href="css/bootstrap.css" rel="stylesheet" />
     <link href="css/jquery-ui.css" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <script src="js/thirdparty/jquery.js"></script>
-    <script src="js/thirdparty/popper.js"></script>
-    <script src="js/thirdparty/bootstrap.js"></script>
     <script src="js/thirdparty/jquery-ui.js"></script>
     <script src="js/thirdparty/three.js"></script>
     <script src="js/thirdparty/OrbitControls.js"></script>
@@ -18,58 +15,46 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 menu-container">
-                <ul id="menu">
+    <div class="nav">
+        <ul id="menu">
+            <li>
+                <div>Add</div>
+                <ul class="ui-icon-carat-1-s">
                     <li>
-                        <div>Add</div>
-                        <ul class="ui-icon-carat-1-s">
-                            <li>
-                                <div>Box</div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div>Play</div>
+                        <div>Box</div>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <div>Play</div>
+            </li>
+        </ul>
+    </div>
+    <div class="box">
+        <div class="left-panel" id="leftPanel">
+            <ul>
+                <li><a href="#tabs-1">Scene 2D</a></li>
+                <li><a href="#tabs-2">Scene 3D</a></li>
+                <li><a href="#tabs-3">Log</a></li>
+            </ul>
+            <div id="tabs-1"></div>
+            <div id="tabs-2">
+                <canvas id="mycanvas"></canvas>
+            </div>
+            <div id="tabs-3">
             </div>
         </div>
-        <div class="row" id="box">
-            <div class="col-9" id="leftPanel">
-                <ul>
-                    <li><a href="#tabs-1">Scene 2D</a></li>
-                    <li><a href="#tabs-2">Scene 3D</a></li>
-                    <li><a href="#tabs-3">Log</a></li>
-                </ul>
-                <div id="tabs-1"></div>
-                <div id="tabs-2">
-                    <canvas id="mycanvas"></canvas>
+        <div class="right-panel ui-widget-content" id="rightPanel">
+            <div id="accordion">
+                <h3>Property</h3>
+                <div>
+                    <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
                 </div>
-                <div id="tabs-3">
-                    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+                <h3>Action</h3>
+                <div>
                 </div>
-            </div>
-            <div class="col-3 ui-widget-content" id="rightPanel">
-                <div id="accordion">
-                    <h3>Property</h3>
-                    <div>
-                        <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
-                    </div>
-                    <h3>Action</h3>
-                    <div>
-                        <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
-                    </div>
-                    <h3>Script</h3>
-                    <div>
-                        <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
-                        <ul>
-                            <li>List item one</li>
-                            <li>List item two</li>
-                            <li>List item three</li>
-                        </ul>
-                    </div>
+                <h3>Script</h3>
+                <div>
                 </div>
             </div>
         </div>

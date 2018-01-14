@@ -70,9 +70,15 @@
         svg.add(polyline);
 
         var polygon = new AI.SvgPolygon({
-            points: [650, 0, 750, 0, 750,100, 650, 100]
+            points: [650, 0, 750, 0, 750, 100, 650, 100]
         });
         svg.add(polygon);
+
+        var path = new AI.SvgPath({
+            d: 'M0 150 L100 150 L100 250 Z',
+            fill: 'green'
+        });
+        svg.add(path);
 
         svg.render();
     }

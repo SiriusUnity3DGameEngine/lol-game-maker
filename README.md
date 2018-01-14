@@ -2,12 +2,13 @@
 
 We will create a greate artificial intelligence (AI) with the theory of life evolution and the neural network evolution. Genetic information carried by DNA molecules is a neural network model. The AI who win the game will have a greater influence on its children.
 
-## Development progress
+## Development Progress
 
-On January 14, 2018， we add 10 `SvgElement`. Here is a demo.
+On January 14, 2018， we add 10 `SvgElement`s. Here is a demo.
 
+![image](https://github.com/tengge1/OpenSeaAI/blob/master/Image/SvgDemo.png)
 
-## Thanks
+## Thanks To
 
 * Bootstrap: https://github.com/twbs/bootstrap
 * Jquery-ui: https://github.com/jquery/jquery-ui

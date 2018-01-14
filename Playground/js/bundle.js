@@ -460,6 +460,55 @@
 	        .call(this.renderStyle, this);
 	};
 
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgLine(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.x1 = options.x1 || 0;
+	    this.y1 = options.y1 || 0;
+	    this.x2 = options.x2 || 100;
+	    this.y2 = options.y2 || 100;
+	    this.stroke = options.stroke || 'red';
+	    this.strokeWidth = options.strokeWidth || 2;
+	}
+
+	SvgLine.prototype = Object.create(SvgElement.prototype);
+	SvgLine.prototype.constructor = SvgLine;
+
+	SvgLine.prototype.render = function() {
+	    this.parent.append('line')
+	        .attr('x1', this.x1)
+	        .attr('y1', this.y1)
+	        .attr('x2', this.x2)
+	        .attr('y2', this.y2)
+	        .call(this.renderStyle, this);
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgPolyline(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.points = options.points || '0,0,100,100,150,100,150,150';
+	    this.stroke = options.stroke || 'red';
+	    this.strokeWidth = options.strokeWidth || 2;
+	    this.fill = options.fill || 'none';
+	}
+
+	SvgPolyline.prototype = Object.create(SvgElement.prototype);
+	SvgPolyline.prototype.constructor = SvgPolyline;
+
+	SvgPolyline.prototype.render = function() {
+	    this.parent.append('polyline')
+	        .attr('points', this.points)
+	        .call(this.renderStyle, this);
+	};
+
 	// geometry
 
 	exports.Coordinate = Coordinate;
@@ -479,6 +528,8 @@
 	exports.SvgCircle = SvgCircle;
 	exports.SvgRect = SvgRect;
 	exports.SvgEllipse = SvgEllipse;
+	exports.SvgLine = SvgLine;
+	exports.SvgPolyline = SvgPolyline;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

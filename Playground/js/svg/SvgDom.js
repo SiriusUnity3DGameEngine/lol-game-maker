@@ -1,19 +1,14 @@
-import { SvgElement } from './SvgElement';
-
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function SvgDom(options) {
-    SvgElement.call(this, options);
     options = options || {};
     this.width = options.width || 960;
     this.height = options.height || 500;
+    this.parent = d3.select(options.parent || document.body);
     this.children = [];
 }
-
-SvgDom.prototype = Object.create(SvgElement.prototype);
-SvgDom.prototype.constructor = SvgDom;
 
 SvgDom.prototype.add = function(element) {
     this.children.push(element);

@@ -307,29 +307,13 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
-	function SvgElement(options) {
-	    options = options || [];
-	    this.parent = d3.select(options.parent || document.body);
-	}
-
-	SvgElement.prototype.render = function() {
-
-	};
-
-	/**
-	 * @author tengge / https://github.com/tengge1
-	 */
-
 	function SvgDom(options) {
-	    SvgElement.call(this, options);
 	    options = options || {};
 	    this.width = options.width || 960;
 	    this.height = options.height || 500;
+	    this.parent = d3.select(options.parent || document.body);
 	    this.children = [];
 	}
-
-	SvgDom.prototype = Object.create(SvgElement.prototype);
-	SvgDom.prototype.constructor = SvgDom;
 
 	SvgDom.prototype.add = function(element) {
 	    this.children.push(element);
@@ -372,15 +356,41 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
+	function SvgElement(options) {
+	    options = options || [];
+	    this.parent = d3.select(options.parent || document.body);
+	    this.stroke = options.stroke || null;
+	    this.strokeWidth = options.strokeWidth || null;
+	    this.strokeOpacity = options.strokeOpacity || null;
+	    this.fill = options.fill || null;
+	    this.fillOpacity = options.fillOpacity || null;
+	    this.style = options.style || null;
+	}
+
+	SvgElement.prototype.render = function() {
+
+	};
+
+	SvgElement.prototype.renderStyle = function(selection, scope) {
+	    return selection
+	        .attr('stroke', scope.stroke)
+	        .attr('stroke-width', scope.strokeWidth)
+	        .attr('stroke-opacity', scope.strokeOpacity)
+	        .attr('fill', scope.fill)
+	        .attr('fill-opacity', scope.fillOpacity)
+	        .attr('style', scope.style);
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
 	function SvgCircle(options) {
 	    SvgElement.call(this, options);
 	    options = options || {};
 	    this.cx = options.cx || 0;
 	    this.cy = options.cy || 0;
 	    this.r = options.r || 50;
-	    this.stroke = options.stroke || 'black';
-	    this.strokeWidth = options.strokeWidth || 2;
-	    this.fill = options.fill || 'red';
 	}
 
 	SvgCircle.prototype = Object.create(SvgElement.prototype);
@@ -391,9 +401,32 @@
 	        .attr('cx', this.cx)
 	        .attr('cy', this.cy)
 	        .attr('r', this.r)
-	        .attr('stroke', this.stroke)
-	        .attr('stroke-width', this.strokeWidth)
-	        .attr('fill', this.fill);
+	        .call(this.renderStyle, this);
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgRect(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.x = options.x || 0;
+	    this.y = options.y || 0;
+	    this.width = options.width || 100;
+	    this.height = options.height || 60;
+	}
+
+	SvgRect.prototype = Object.create(SvgElement.prototype);
+	SvgRect.prototype.constructor = SvgRect;
+
+	SvgRect.prototype.render = function() {
+	    this.parent.append('rect')
+	        .attr('x', this.x)
+	        .attr('y', this.y)
+	        .attr('width', this.width)
+	        .attr('height', this.height)
+	        .call(this.renderStyle, this);
 	};
 
 	// geometry
@@ -410,9 +443,10 @@
 	exports.Control = Control;
 	exports.Container = Container;
 	exports.Layout = Layout;
-	exports.SvgElement = SvgElement;
 	exports.SvgDom = SvgDom;
+	exports.SvgElement = SvgElement;
 	exports.SvgCircle = SvgCircle;
+	exports.SvgRect = SvgRect;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Svg Test</title>
+    <script src="../js/thirdparty/jquery.js"></script>
+    <script src="../js/thirdparty/jquery-ui.js"></script>
+    <script src="../js/thirdparty/d3.js"></script>
+    <script src="../js/thirdparty/three.js"></script>
+    <script src="../js/bundle.js"></script>
+    <script>
+    var start = function() {
+        var svg = new AI.SvgDom({
+            parent: document.body,
+            width: 500,
+            height: 400,
+        });
+        var circle = new AI.SvgCircle({
+            cx: 54,
+            cy: 54,
+            r: 50,
+            stroke: 'red',
+            strokeWidth: 4,
+            fill: 'yellow'
+        });
+        svg.add(circle);
+        svg.render();
+    }
+
+    window.onload = start;
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

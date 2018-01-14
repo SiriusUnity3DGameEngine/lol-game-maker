@@ -1,4 +1,4 @@
-import { Scene } from '../Scene';
+import { Scene } from './Scene';
 
 /**
  * @author tengge / https://github.com/tengge1

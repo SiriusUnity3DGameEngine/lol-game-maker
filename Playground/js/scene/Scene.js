@@ -5,6 +5,7 @@
 function Scene(options) {
 
     options = options || {};
+    this.container = options.container;
     this.name = options.name || 'Scene';
 
 }

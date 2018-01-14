@@ -14,6 +14,14 @@ var initUI = function() {
     });
 };
 
+var initSvgScene = function() {
+    var container = document.getElementById('tabs-1');
+    var scene = new AI.SvgScene({
+        container: container
+    });
+    scene.render();
+};
+
 var canvas = null;
 var scene = null;
 var camera = null;
@@ -62,5 +70,6 @@ var initThreeJs = function() {
 
 $(function() {
     initUI();
+    initSvgScene();
     //initThreeJs();
 });

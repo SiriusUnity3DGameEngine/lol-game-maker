@@ -5,8 +5,10 @@ import { Container } from './Container';
  */
 
 function Layout(options) {
-
+    Container.call(this, options);
 }
 
 Layout.prototype = Object.create(Container.prototype);
 Layout.prototype.constructor = Layout;
+
+export { Layout };

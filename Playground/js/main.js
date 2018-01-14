@@ -21,3 +21,4 @@ export { SvgDom } from './svg/SvgDom';
 export { SvgElement } from './svg/element/SvgElement';
 export { SvgCircle } from './svg/element/SvgCircle';
 export { SvgRect } from './svg/element/SvgRect';
+export { SvgEllipse } from './svg/element/SvgEllipse';

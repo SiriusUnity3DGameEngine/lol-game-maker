@@ -7,10 +7,12 @@ import { SvgElement } from './SvgElement';
 function SvgRect(options) {
     SvgElement.call(this, options);
     options = options || {};
-    this.x = options.x || 0;
-    this.y = options.y || 0;
+    this.x = options.x || null;
+    this.y = options.y || null;
     this.width = options.width || 100;
     this.height = options.height || 60;
+    this.rx = options.rx || null;
+    this.ry = options.ry || null;
 }
 
 SvgRect.prototype = Object.create(SvgElement.prototype);
@@ -22,6 +24,8 @@ SvgRect.prototype.render = function() {
         .attr('y', this.y)
         .attr('width', this.width)
         .attr('height', this.height)
+        .attr('rx', this.rx)
+        .attr('ry', this.ry)
         .call(this.renderStyle, this);
 };
 

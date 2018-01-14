@@ -7,8 +7,8 @@ import { SvgElement } from './SvgElement';
 function SvgCircle(options) {
     SvgElement.call(this, options);
     options = options || {};
-    this.cx = options.cx || 0;
-    this.cy = options.cy || 0;
+    this.cx = options.cx || null;
+    this.cy = options.cy || null;
     this.r = options.r || 50;
 }
 

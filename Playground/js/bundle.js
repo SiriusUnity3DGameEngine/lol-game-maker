@@ -364,6 +364,7 @@
 	    this.strokeOpacity = options.strokeOpacity || null;
 	    this.fill = options.fill || null;
 	    this.fillOpacity = options.fillOpacity || null;
+	    this.opacity = options.opacity || null;
 	    this.style = options.style || null;
 	}
 
@@ -378,6 +379,7 @@
 	        .attr('stroke-opacity', scope.strokeOpacity)
 	        .attr('fill', scope.fill)
 	        .attr('fill-opacity', scope.fillOpacity)
+	        .attr('opacity', scope.opacity)
 	        .attr('style', scope.style);
 	};
 
@@ -388,8 +390,8 @@
 	function SvgCircle(options) {
 	    SvgElement.call(this, options);
 	    options = options || {};
-	    this.cx = options.cx || 0;
-	    this.cy = options.cy || 0;
+	    this.cx = options.cx || null;
+	    this.cy = options.cy || null;
 	    this.r = options.r || 50;
 	}
 
@@ -411,10 +413,12 @@
 	function SvgRect(options) {
 	    SvgElement.call(this, options);
 	    options = options || {};
-	    this.x = options.x || 0;
-	    this.y = options.y || 0;
+	    this.x = options.x || null;
+	    this.y = options.y || null;
 	    this.width = options.width || 100;
 	    this.height = options.height || 60;
+	    this.rx = options.rx || null;
+	    this.ry = options.ry || null;
 	}
 
 	SvgRect.prototype = Object.create(SvgElement.prototype);
@@ -426,6 +430,33 @@
 	        .attr('y', this.y)
 	        .attr('width', this.width)
 	        .attr('height', this.height)
+	        .attr('rx', this.rx)
+	        .attr('ry', this.ry)
+	        .call(this.renderStyle, this);
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgEllipse(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.cx = options.cx || null;
+	    this.cy = options.cy || null;
+	    this.rx = options.rx || 100;
+	    this.ry = options.ry || 60;
+	}
+
+	SvgEllipse.prototype = Object.create(SvgElement.prototype);
+	SvgEllipse.prototype.constructor = SvgEllipse;
+
+	SvgEllipse.prototype.render = function() {
+	    this.parent.append('ellipse')
+	        .attr('cx', this.cx)
+	        .attr('cy', this.cy)
+	        .attr('rx', this.rx)
+	        .attr('ry', this.ry)
 	        .call(this.renderStyle, this);
 	};
 
@@ -447,6 +478,7 @@
 	exports.SvgElement = SvgElement;
 	exports.SvgCircle = SvgCircle;
 	exports.SvgRect = SvgRect;
+	exports.SvgEllipse = SvgEllipse;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

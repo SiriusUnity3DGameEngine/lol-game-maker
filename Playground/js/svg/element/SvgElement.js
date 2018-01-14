@@ -10,6 +10,7 @@ function SvgElement(options) {
     this.strokeOpacity = options.strokeOpacity || null;
     this.fill = options.fill || null;
     this.fillOpacity = options.fillOpacity || null;
+    this.opacity = options.opacity || null;
     this.style = options.style || null;
 }
 
@@ -24,6 +25,7 @@ SvgElement.prototype.renderStyle = function(selection, scope) {
         .attr('stroke-opacity', scope.strokeOpacity)
         .attr('fill', scope.fill)
         .attr('fill-opacity', scope.fillOpacity)
+        .attr('opacity', scope.opacity)
         .attr('style', scope.style);
 };
 

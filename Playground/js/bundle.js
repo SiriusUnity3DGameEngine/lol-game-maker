@@ -475,7 +475,7 @@
 	    this.y1 = options.y1 || 0;
 	    this.x2 = options.x2 || 100;
 	    this.y2 = options.y2 || 100;
-	    this.stroke = options.stroke || 'red';
+	    this.stroke = options.stroke === undefined ? 'red' : options.stroke;
 	    this.strokeWidth = options.strokeWidth || 2;
 	}
 
@@ -499,7 +499,7 @@
 	    SvgElement.call(this, options);
 	    options = options || {};
 	    this.points = options.points || '0,0,100,100,150,100,150,150';
-	    this.stroke = options.stroke || 'red';
+	    this.stroke = options.stroke === undefined ? 'red' : options.stroke;
 	    this.strokeWidth = options.strokeWidth || 2;
 	    this.fill = options.fill || 'none';
 	}
@@ -557,6 +557,56 @@
 	        .call(this.renderStyle, this);
 	};
 
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function SvgGroup(options) {
+	    SvgElement.call(this, options);
+	    options = options || {};
+	    this.fill = options.fill || null;
+	    this.children = [];
+	}
+
+	SvgGroup.prototype = Object.create(SvgElement.prototype);
+	SvgGroup.prototype.constructor = SvgGroup;
+
+	SvgGroup.prototype.add = function(element) {
+	    this.children.push(element);
+	};
+
+	SvgGroup.prototype.insert = function(index, element) {
+	    this.children.splice(index, 0, element);
+	};
+
+	SvgGroup.prototype.remove = function(element) {
+	    var index = this.children.indexOf(element);
+	    if (index > -1) {
+	        this.removeAt(index);
+	    }
+	};
+
+	SvgGroup.prototype.removeAt = function(index) {
+	    this.children.splice(index, 1);
+	};
+
+	SvgGroup.prototype.removeAll = function() {
+	    this.children = [];
+	};
+
+	SvgGroup.prototype.clear = function() {
+	    this.removeAll();
+	};
+
+	SvgGroup.prototype.render = function() {
+	    this.el = this.parent.append('g')
+	        .call(this.renderStyle, this);
+	    this.children.forEach((n) => {
+	        n.parent = this.el;
+	        n.render.call(n);
+	    });
+	};
+
 	// geometry
 
 	exports.Coordinate = Coordinate;
@@ -580,6 +630,7 @@
 	exports.SvgPolyline = SvgPolyline;
 	exports.SvgPolygon = SvgPolygon;
 	exports.SvgPath = SvgPath;
+	exports.SvgGroup = SvgGroup;
 
 	Object.defineProperty(exports, '__esModule', { value: true });
 

@@ -8,7 +8,7 @@ function SvgPolyline(options) {
     SvgElement.call(this, options);
     options = options || {};
     this.points = options.points || '0,0,100,100,150,100,150,150';
-    this.stroke = options.stroke || 'red';
+    this.stroke = options.stroke === undefined ? 'red' : options.stroke;
     this.strokeWidth = options.strokeWidth || 2;
     this.fill = options.fill || 'none';
 }

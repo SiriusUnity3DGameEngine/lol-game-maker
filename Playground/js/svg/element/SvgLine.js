@@ -11,7 +11,7 @@ function SvgLine(options) {
     this.y1 = options.y1 || 0;
     this.x2 = options.x2 || 100;
     this.y2 = options.y2 || 100;
-    this.stroke = options.stroke || 'red';
+    this.stroke = options.stroke === undefined ? 'red' : options.stroke;
     this.strokeWidth = options.strokeWidth || 2;
 }
 

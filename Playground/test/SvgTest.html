@@ -80,6 +80,26 @@
         });
         svg.add(path);
 
+        var group = new AI.SvgGroup({
+            stroke: 'yellow',
+            strokeWidth: 5,
+            fill: 'blue'
+        });
+        group.add(new AI.SvgLine({
+            x1: 200,
+            y1: 150,
+            x2: 300,
+            y2: 150,
+            stroke: null
+        }));
+        group.add(new AI.SvgRect({
+            x: 200,
+            y: 200,
+            width: 100,
+            height: 50
+        }));
+        svg.add(group);
+
         svg.render();
     }
 

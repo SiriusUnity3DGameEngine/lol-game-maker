@@ -26,3 +26,4 @@ export { SvgLine } from './svg/element/SvgLine';
 export { SvgPolyline } from './svg/element/SvgPolyline';
 export { SvgPolygon } from './svg/element/SvgPolygon';
 export { SvgPath } from './svg/element/SvgPath';
+export { SvgGroup } from './svg/SvgGroup';

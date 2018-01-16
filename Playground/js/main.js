@@ -13,9 +13,10 @@ export { SvgScene } from './scene/SvgScene';
 
 // control
 export { UiControl } from './ui/UiControl';
-export { UiContainer } from './ui/UiContainer';
-export { UiLayout } from './ui/UiLayout';
 export { UiRect } from './ui/control/UiRect';
+export { UiContainer } from './ui/UiContainer';
+export { UiFixedContainer } from './ui/container/UiFixedContainer';
+export { UiLayout } from './ui/UiLayout';
 export { UiInteraction } from './ui/UiInteraction';
 export { UiDraggable } from './ui/interaction/UiDraggable';
 export { UiDroppable } from './ui/interaction/UiDroppable';

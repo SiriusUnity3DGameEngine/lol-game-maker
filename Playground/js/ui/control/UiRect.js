@@ -23,7 +23,7 @@ UiRect.prototype.render = function() {
     this.el.style.height = this.height;
     this.el.style.backgroundColor = this.backgroundColor;
     this.el.style.padding = this.padding;
-    document.body.append(this.el);
+    this.parent.append(this.el);
     this.el.innerHTML = this.text;
 };
 

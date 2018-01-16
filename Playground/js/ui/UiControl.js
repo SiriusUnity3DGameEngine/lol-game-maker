@@ -4,7 +4,7 @@
 
 function UiControl(options) {
     options = options || {};
-    this.parent = options.parent || null;
+    this.parent = options.parent || document.body;
 }
 
 UiControl.prototype.render = function() {

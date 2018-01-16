@@ -14,7 +14,10 @@
         var control = new AI.UiRect({
             text: 'Draggable'
         });
-        control.render();
+        var container = new AI.UiFixedContainer({
+            children: [control]
+        });
+        container.render();
 
         var draggable = new AI.UiDraggable();
         draggable.apply(control);

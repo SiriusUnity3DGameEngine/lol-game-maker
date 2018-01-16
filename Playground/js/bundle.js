@@ -241,11 +241,38 @@
 
 	function UiControl(options) {
 	    options = options || {};
-	    this.parent = options.parent || null;
+	    this.parent = options.parent || document.body;
 	}
 
 	UiControl.prototype.render = function() {
 
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiRect(options) {
+	    UiControl.call(this, options);
+	    options = options || {};
+	    this.width = options.width || '100px';
+	    this.height = options.height || '80px';
+	    this.backgroundColor = options.backgroundColor || 'red';
+	    this.padding = options.padding || '5px';
+	    this.text = options.text || 'UiRect';
+	}
+
+	UiRect.prototype = Object.create(UiControl.prototype);
+	UiRect.prototype.constructor = UiRect;
+
+	UiRect.prototype.render = function() {
+	    this.el = document.createElement('div');
+	    this.el.style.width = this.width;
+	    this.el.style.height = this.height;
+	    this.el.style.backgroundColor = this.backgroundColor;
+	    this.el.style.padding = this.padding;
+	    this.parent.append(this.el);
+	    this.el.innerHTML = this.text;
 	};
 
 	/**
@@ -289,6 +316,39 @@
 	    });
 	};
 
+	function UiFixedContainer(options) {
+	    UiContainer.call(this, options);
+	    this.children = options.children || [];
+	    this.width = options.width || '220px';
+	    this.height = options.height || '120px';
+	    this.margin = options.margin || '10px';
+	    this.padding = options.padding || '2px';
+	    this.display = options.display || 'inline-block';
+	    this.borderWidth = options.borderWidth || '2px';
+	    this.borderColor = options.borderColor || 'black';
+	    this.borderStyle = options.borderStyle || 'solid';
+	}
+
+	UiFixedContainer.prototype = Object.create(UiContainer.prototype);
+	UiFixedContainer.prototype.constructor = UiFixedContainer;
+
+	UiFixedContainer.prototype.render = function() {
+	    this.el = document.createElement('div');
+	    this.el.style.width = this.width;
+	    this.el.style.height = this.height;
+	    this.el.style.borderWidth = this.borderWidth;
+	    this.el.style.borderColor = this.borderColor;
+	    this.el.style.borderStyle = this.borderStyle;
+	    this.el.style.margin = this.margin;
+	    this.el.style.padding = this.padding;
+	    this.el.style.display = this.display;
+	    this.parent.append(this.el);
+	    this.children.forEach((n, i) => {
+	        n.parent = this.el;
+	        n.render.call(n);
+	    });
+	};
+
 	/**
 	 * @author tengge / https://github.com/tengge1
 	 */
@@ -300,33 +360,6 @@
 
 	UiLayout.prototype = Object.create(UiContainer.prototype);
 	UiLayout.prototype.constructor = UiLayout;
-
-	/**
-	 * @author tengge / https://github.com/tengge1
-	 */
-
-	function UiRect(options) {
-	    UiControl.call(this, options);
-	    options = options || {};
-	    this.width = options.width || '100px';
-	    this.height = options.height || '80px';
-	    this.backgroundColor = options.backgroundColor || 'red';
-	    this.padding = options.padding || '5px';
-	    this.text = options.text || 'UiRect';
-	}
-
-	UiRect.prototype = Object.create(UiControl.prototype);
-	UiRect.prototype.constructor = UiRect;
-
-	UiRect.prototype.render = function() {
-	    this.el = document.createElement('div');
-	    this.el.style.width = this.width;
-	    this.el.style.height = this.height;
-	    this.el.style.backgroundColor = this.backgroundColor;
-	    this.el.style.padding = this.padding;
-	    document.body.append(this.el);
-	    this.el.innerHTML = this.text;
-	};
 
 	/**
 	 * @author tengge / https://github.com/tengge1
@@ -723,9 +756,10 @@
 	exports.Scene3D = Scene3D;
 	exports.SvgScene = SvgScene;
 	exports.UiControl = UiControl;
-	exports.UiContainer = UiContainer;
-	exports.UiLayout = UiLayout;
 	exports.UiRect = UiRect;
+	exports.UiContainer = UiContainer;
+	exports.UiFixedContainer = UiFixedContainer;
+	exports.UiLayout = UiLayout;
 	exports.UiInteraction = UiInteraction;
 	exports.UiDraggable = UiDraggable;
 	exports.UiDroppable = UiDroppable;

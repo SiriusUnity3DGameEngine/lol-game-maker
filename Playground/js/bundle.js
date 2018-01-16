@@ -239,11 +239,12 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
-	function Control(options) {
-
+	function UiControl(options) {
+	    options = options || {};
+	    this.parent = options.parent || null;
 	}
 
-	Control.prototype.render = function() {
+	UiControl.prototype.render = function() {
 
 	};
 
@@ -251,43 +252,39 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
-	function Container(options) {
-	    Control.call(this, options);
+	function UiContainer(options) {
+	    UiControl.call(this, options);
 
 	    options = options || {};
-	    this.parent = options.parent || null;
 	    this.children = options.children || [];
 	}
 
-	Container.prototype = Object.create(Control.prototype);
-	Container.prototype.constructor = Container;
+	UiContainer.prototype = Object.create(UiControl.prototype);
+	UiContainer.prototype.constructor = UiContainer;
 
-	Container.prototype.getParent = function() {
-	    return this.parent;
-	};
-
-	Container.prototype.setParent = function(parent) {
-	    this.parent = parent;
-	};
-
-	Container.prototype.add = function(control) {
+	UiContainer.prototype.add = function(control) {
 	    this.children.push(control);
 	};
 
-	Container.prototype.remove = function(control) {
+	UiContainer.prototype.insert = function(index, control) {
+	    this.children.splice(index, 0, control);
+	};
+
+	UiContainer.prototype.remove = function(control) {
 	    var index = this.children.indexOf(control);
 	    if (index > -1) {
-	        this.children.splice(index, 1);
+	        this.removeAt(index);
 	    }
 	};
 
-	Container.prototype.removeAt = function(index) {
+	UiContainer.prototype.removeAt = function(index) {
 	    this.children.splice(index, 1);
 	};
 
-	Container.prototype.render = function() {
+	UiContainer.prototype.render = function() {
+	    this.el = document.createElement('div');
 	    this.children.forEach((n, i) => {
-	        n.parent = this;
+	        n.parent = this.el;
 	        n.render.call(n);
 	    });
 	};
@@ -296,12 +293,13 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
-	function Layout(options) {
-	    Container.call(this, options);
+	function UiLayout(options) {
+	    UiContainer.call(this, options);
+	    options = options || null;
 	}
 
-	Layout.prototype = Object.create(Container.prototype);
-	Layout.prototype.constructor = Layout;
+	UiLayout.prototype = Object.create(UiContainer.prototype);
+	UiLayout.prototype.constructor = UiLayout;
 
 	/**
 	 * @author tengge / https://github.com/tengge1
@@ -618,9 +616,9 @@
 	exports.Scene2D = Scene2D;
 	exports.Scene3D = Scene3D;
 	exports.SvgScene = SvgScene;
-	exports.Control = Control;
-	exports.Container = Container;
-	exports.Layout = Layout;
+	exports.UiControl = UiControl;
+	exports.UiContainer = UiContainer;
+	exports.UiLayout = UiLayout;
 	exports.SvgDom = SvgDom;
 	exports.SvgElement = SvgElement;
 	exports.SvgCircle = SvgCircle;

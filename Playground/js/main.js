@@ -12,9 +12,9 @@ export { Scene3D } from './scene/Scene3D';
 export { SvgScene } from './scene/SvgScene';
 
 // control
-export { Control } from './ui/Control';
-export { Container } from './ui/Container';
-export { Layout } from './ui/Layout';
+export { UiControl } from './ui/UiControl';
+export { UiContainer } from './ui/UiContainer';
+export { UiLayout } from './ui/UiLayout';
 
 // svg
 export { SvgDom } from './svg/SvgDom';

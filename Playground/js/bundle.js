@@ -305,6 +305,112 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
+	function UiRect(options) {
+	    UiControl.call(this, options);
+	    options = options || {};
+	    this.width = options.width || '100px';
+	    this.height = options.height || '80px';
+	    this.backgroundColor = options.backgroundColor || 'red';
+	    this.padding = options.padding || '5px';
+	    this.text = options.text || 'UiRect';
+	}
+
+	UiRect.prototype = Object.create(UiControl.prototype);
+	UiRect.prototype.constructor = UiRect;
+
+	UiRect.prototype.render = function() {
+	    this.el = document.createElement('div');
+	    this.el.style.width = this.width;
+	    this.el.style.height = this.height;
+	    this.el.style.backgroundColor = this.backgroundColor;
+	    this.el.style.padding = this.padding;
+	    document.body.append(this.el);
+	    this.el.innerHTML = this.text;
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiInteraction(options) {
+	    options = options || {};
+	}
+
+	UiInteraction.prototype.apply = function() {
+
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiDraggable(options) {
+	    UiInteraction.call(this, options);
+	}
+
+	UiDraggable.prototype = Object.create(UiInteraction.prototype);
+	UiDraggable.prototype.constructor = UiDraggable;
+
+	UiDraggable.prototype.apply = function(control) {
+	    if (control.el) {
+	        $(control.el).draggable();
+	    } else {
+	        $(control).draggable();
+	    }
+	};
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiDroppable(options) {
+	    UiInteraction.call(this, options);
+	    options = options || {};
+	}
+
+	UiDroppable.prototype = Object.create(UiInteraction.prototype);
+	UiDroppable.prototype.constructor = UiDroppable;
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiResizable(options) {
+	    UiInteraction.call(this, options);
+	    options = options || {};
+	}
+
+	UiResizable.prototype = Object.create(UiInteraction.prototype);
+	UiResizable.prototype.constructor = UiResizable;
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiSelectable(options) {
+	    UiInteraction.call(this, options);
+	    options = options || {};
+	}
+
+	UiSelectable.prototype = Object.create(UiInteraction.prototype);
+	UiSelectable.prototype.constructor = UiSelectable;
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
+	function UiSortable(options) {
+	    UiInteraction.call(this, options);
+	    options = options || {};
+	}
+
+	UiSortable.prototype = Object.create(UiInteraction.prototype);
+	UiSortable.prototype.constructor = UiSortable;
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
 	function SvgDom(options) {
 	    options = options || {};
 	    this.width = options.width || 960;
@@ -619,6 +725,13 @@
 	exports.UiControl = UiControl;
 	exports.UiContainer = UiContainer;
 	exports.UiLayout = UiLayout;
+	exports.UiRect = UiRect;
+	exports.UiInteraction = UiInteraction;
+	exports.UiDraggable = UiDraggable;
+	exports.UiDroppable = UiDroppable;
+	exports.UiResizable = UiResizable;
+	exports.UiSelectable = UiSelectable;
+	exports.UiSortable = UiSortable;
 	exports.SvgDom = SvgDom;
 	exports.SvgElement = SvgElement;
 	exports.SvgCircle = SvgCircle;

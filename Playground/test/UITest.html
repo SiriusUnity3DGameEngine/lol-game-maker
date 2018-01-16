@@ -11,7 +11,13 @@
     <script src="../js/bundle.js"></script>
     <script>
     var start = function() {
+        var control = new AI.UiRect({
+            text: 'Draggable'
+        });
+        control.render();
 
+        var draggable = new AI.UiDraggable();
+        draggable.apply(control);
     }
 
     window.onload = start;

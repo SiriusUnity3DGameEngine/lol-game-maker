@@ -15,6 +15,13 @@ export { SvgScene } from './scene/SvgScene';
 export { UiControl } from './ui/UiControl';
 export { UiContainer } from './ui/UiContainer';
 export { UiLayout } from './ui/UiLayout';
+export { UiRect } from './ui/control/UiRect';
+export { UiInteraction } from './ui/UiInteraction';
+export { UiDraggable } from './ui/interaction/UiDraggable';
+export { UiDroppable } from './ui/interaction/UiDroppable';
+export { UiResizable } from './ui/interaction/UiResizable';
+export { UiSelectable } from './ui/interaction/UiSelectable';
+export { UiSortable } from './ui/interaction/UiSortable';
 
 // svg
 export { SvgDom } from './svg/SvgDom';

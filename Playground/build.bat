@@ -1,2 +1,1 @@
 rollup -c
-pause

@@ -11,6 +11,14 @@
     <script src="../dist/OpenSeaAI.js"></script>
     <script>
     var start = function() {
+        // interaction
+        var draggable = new AI.UiDraggable();
+        var droppable = new AI.UiDroppable();
+        droppable.on('drop', function(event, ui) {
+            this.style.backgroundColor = 'yellow';
+        });
+
+        // draggable
         var control = new AI.UiRect({
             text: 'Draggable'
         });
@@ -18,9 +26,15 @@
             children: [control]
         });
         container.render();
-
-        var draggable = new AI.UiDraggable();
         draggable.apply(control);
+
+        // droppable
+        container = new AI.UiFixedContainer({
+            children: []
+        });
+        container.render();
+        droppable.apply(container);
+
     }
 
     window.onload = start;

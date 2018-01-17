@@ -6,7 +6,7 @@ We will create a greate artificial intelligence (AI) with the theory of life evo
 
 On January 14, 2018， we add 10 `SvgElement`s. [Here](https://github.com/tengge1/OpenSeaAI/blob/master/Playground/test/SvgTest.html) is a demo.
 
-![image](https://github.com/tengge1/OpenSeaAI/blob/master/Image/SvgDemo.png)
+![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/SvgDemo.png)
 
 ## Thanks To
 

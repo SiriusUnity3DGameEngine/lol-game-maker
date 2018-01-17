@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Svg Test</title>
+    <script src="../thirdparty/jquery.js"></script>
+    <script src="../thirdparty/jquery-ui.js"></script>
+    <script src="../thirdparty/d3.js"></script>
+    <script src="../thirdparty/three.js"></script>
+    <script src="../dist/OpenSeaAI.js"></script>
+    <script>
+    var start = function() {
+        var svg = new AI.SvgDom({
+            parent: document.body,
+            width: 900,
+            height: 500,
+        });
+
+        var circle = new AI.SvgCircle({
+            cx: 54,
+            cy: 54,
+            r: 50,
+            stroke: 'red',
+            strokeWidth: 4,
+            fill: 'yellow',
+            opacity: 0.5
+        });
+        svg.add(circle);
+
+        var rect = new AI.SvgRect({
+            x: 120,
+            y: 20,
+            width: 100,
+            height: 60,
+            stroke: 'rgb(0, 0, 255)',
+            strokeWidth: 5,
+            strokeOpacity: 0.8,
+            fill: 'red',
+            fillOpacity: 0.5,
+            rx: 6,
+            ry: 6,
+        });
+        svg.add(rect);
+
+        var ellipse = new AI.SvgEllipse({
+            cx: 320,
+            cy: 62,
+            rx: 50,
+            ry: 30,
+            stroke: 'red',
+            strokeWidth: 5,
+            fill: 'yellow'
+        });
+        svg.add(ellipse);
+
+        var line = new AI.SvgLine({
+            x1: 400,
+            y1: 10,
+            x2: 500,
+            y2: 200,
+            strokeWidth: 10,
+            strokeLinecap: 'round'
+        });
+        svg.add(line);
+
+        var polyline = new AI.SvgPolyline({
+            points: '500,30,500,50,550,50,550,100,550,150,600,150'
+        });
+        svg.add(polyline);
+
+        var polygon = new AI.SvgPolygon({
+            points: [650, 0, 750, 0, 750, 100, 650, 100]
+        });
+        svg.add(polygon);
+
+        var path = new AI.SvgPath({
+            d: 'M0 150 L100 150 L100 250 Z',
+            fill: 'green'
+        });
+        svg.add(path);
+
+        var group = new AI.SvgGroup({
+            stroke: 'yellow',
+            strokeWidth: 5,
+            fill: 'blue'
+        });
+        group.add(new AI.SvgLine({
+            x1: 200,
+            y1: 150,
+            x2: 300,
+            y2: 150,
+            stroke: null
+        }));
+        group.add(new AI.SvgRect({
+            x: 200,
+            y: 200,
+            width: 100,
+            height: 50
+        }));
+        svg.add(group);
+
+        svg.render();
+    }
+
+    window.onload = start;
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

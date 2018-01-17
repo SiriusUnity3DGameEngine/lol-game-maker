@@ -6,7 +6,7 @@ import { UiContainer } from './UiContainer';
 
 function UiLayout(options) {
     UiContainer.call(this, options);
-    options = options || null;
+    options = options || {};
 }
 
 UiLayout.prototype = Object.create(UiContainer.prototype);

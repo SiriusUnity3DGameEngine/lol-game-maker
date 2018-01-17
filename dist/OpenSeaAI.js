@@ -279,6 +279,14 @@
 	 * @author tengge / https://github.com/tengge1
 	 */
 
+	function UiStyle(options) {
+	    options = options || {};
+	}
+
+	/**
+	 * @author tengge / https://github.com/tengge1
+	 */
+
 	function UiContainer(options) {
 	    UiControl.call(this, options);
 
@@ -355,7 +363,7 @@
 
 	function UiLayout(options) {
 	    UiContainer.call(this, options);
-	    options = options || null;
+	    options = options || {};
 	}
 
 	UiLayout.prototype = Object.create(UiContainer.prototype);
@@ -773,6 +781,7 @@
 	exports.SvgScene = SvgScene;
 	exports.UiControl = UiControl;
 	exports.UiRect = UiRect;
+	exports.UiStyle = UiStyle;
 	exports.UiContainer = UiContainer;
 	exports.UiFixedContainer = UiFixedContainer;
 	exports.UiLayout = UiLayout;

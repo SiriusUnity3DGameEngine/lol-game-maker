@@ -14,6 +14,7 @@ export { SvgScene } from './scene/SvgScene';
 // control
 export { UiControl } from './ui/UiControl';
 export { UiRect } from './ui/control/UiRect';
+export { UiStyle } from './ui/UiStyle';
 export { UiContainer } from './ui/UiContainer';
 export { UiFixedContainer } from './ui/container/UiFixedContainer';
 export { UiLayout } from './ui/UiLayout';

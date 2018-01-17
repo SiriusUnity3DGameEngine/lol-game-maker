@@ -385,7 +385,7 @@
 	UiDraggable.prototype.constructor = UiDraggable;
 
 	UiDraggable.prototype.apply = function(control) {
-	    if (control.el) {
+	    if (control instanceof UiControl) {
 	        $(control.el).draggable();
 	    } else {
 	        $(control).draggable();
@@ -403,6 +403,14 @@
 
 	UiDroppable.prototype = Object.create(UiInteraction.prototype);
 	UiDroppable.prototype.constructor = UiDroppable;
+
+	UiDroppable.prototype.apply = function(control) {
+	    if (control instanceof UiControl) {
+	        $(control.el).droppable();
+	    } else {
+	        $(control).droppable();
+	    }
+	};
 
 	/**
 	 * @author tengge / https://github.com/tengge1

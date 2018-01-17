@@ -1,1 +1,0 @@
-SuperSeaAI Training and Playing

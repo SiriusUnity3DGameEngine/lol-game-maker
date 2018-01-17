@@ -25,12 +25,12 @@ function glsl() {
 }
 
 export default {
-    input: 'js/main.js',
+    input: 'src/main.js',
     output: {
         indent: '\t',
         format: 'umd',
         name: 'AI',
-        file: 'js/bundle.js'
+        file: 'dist/OpenSeaAI.js'
     },
     plugins: [
         glsl()

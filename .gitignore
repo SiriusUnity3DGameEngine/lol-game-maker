@@ -11,7 +11,7 @@ __pycache__/
 env/
 build/
 develop-eggs/
-#dist/
+dist/
 downloads/
 eggs/
 .eggs/
@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# npm
+package-lock.json
+
+# node modules
+node_modules/

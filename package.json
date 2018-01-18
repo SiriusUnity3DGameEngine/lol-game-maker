@@ -1,0 +1,38 @@
+{
+  "name": "openseaai",
+  "version": "0.0.1",
+  "description": "We will create a greate artificial intelligence (AI) with the theory of life evolution and the neural network evolution. Genetic information carried by DNA molecules is a neural network model. The AI who win the game will have a greater influence on its children.",
+  "main": "rollup.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build-js": "rollup -c",
+    "es6to2015": "babel .\\dist\\OpenSeaAI.js -o .\\dist\\OpenSeaAI.js",
+    "compress-js": " uglifyjs .\\dist\\OpenSeaAI.js -m -o .\\dist\\OpenSeaAI.min.js",
+    "build": "npm run build-js && npm run es6to2015 && npm run compress-js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tengge1/OpenSeaAI.git"
+  },
+  "keywords": [
+    "openseaai",
+    "ai",
+    "tensorflow"
+  ],
+  "author": "tengge",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tengge1/OpenSeaAI/issues"
+  },
+  "homepage": "https://github.com/tengge1/OpenSeaAI#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "rollup": "^0.54.1",
+    "uglify-js": "^3.3.7"
+  }
+}

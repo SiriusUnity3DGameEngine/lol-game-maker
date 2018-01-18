@@ -1,1 +1,1 @@
-rollup -c
+npm run build

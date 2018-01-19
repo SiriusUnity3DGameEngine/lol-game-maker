@@ -35,8 +35,9 @@ UiContainer.prototype.removeAt = function(index) {
 
 UiContainer.prototype.render = function() {
     this.el = document.createElement('div');
-    this.children.forEach((n, i) => {
-        n.parent = this.el;
+    var _this = this;
+    this.children.forEach(function(n, i) {
+        n.parent = _this.el;
         n.render.call(n);
     });
 };

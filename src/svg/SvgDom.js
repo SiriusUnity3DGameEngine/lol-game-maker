@@ -41,8 +41,9 @@ SvgDom.prototype.render = function() {
     this.el = this.parent.append('svg')
         .attr('width', this.width)
         .attr('height', this.height);
-    this.children.forEach((n) => {
-        n.parent = this.el;
+    var _this = this;
+    this.children.forEach(function(n) {
+        n.parent = _this.el;
         n.render.call(n);
     });
 };

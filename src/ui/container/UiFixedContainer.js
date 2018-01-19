@@ -27,8 +27,9 @@ UiFixedContainer.prototype.render = function() {
     this.el.style.padding = this.padding;
     this.el.style.display = this.display;
     this.parent.append(this.el);
-    this.children.forEach((n, i) => {
-        n.parent = this.el;
+    var _this = this;
+    this.children.forEach(function(n, i) {
+        n.parent = _this.el;
         n.render.call(n);
     });
 };

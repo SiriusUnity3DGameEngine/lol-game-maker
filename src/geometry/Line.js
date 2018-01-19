@@ -11,8 +11,9 @@ function Line(options) {
     options = options || {};
     options.coordinates = options.coordinates || [];
 
-    options.coordinates.forEach((n, i) => {
-        this.coordinates.push(new Coordinate({
+    var _this = this;
+    options.coordinates.forEach(function(n, i) {
+        _this.coordinates.push(new Coordinate({
             x: n.x,
             y: n.y,
             z: n.z

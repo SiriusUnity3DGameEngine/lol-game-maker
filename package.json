@@ -10,7 +10,7 @@
     "build-js": "rollup -c",
     "es6to2015": "babel .\\dist\\OpenSeaAI.js -o .\\dist\\OpenSeaAI.js",
     "compress-js": " uglifyjs .\\dist\\OpenSeaAI.js -m -o .\\dist\\OpenSeaAI.min.js",
-    "build": "npm run build-js && npm run es6to2015 && npm run compress-js",
+    "build": "npm run build-js && npm run compress-js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

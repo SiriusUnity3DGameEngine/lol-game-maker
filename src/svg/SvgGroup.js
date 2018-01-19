@@ -44,8 +44,9 @@ SvgGroup.prototype.clear = function() {
 SvgGroup.prototype.render = function() {
     this.el = this.parent.append('g')
         .call(this.renderStyle, this);
-    this.children.forEach((n) => {
-        n.parent = this.el;
+    var _this = this;
+    this.children.forEach(function(n) {
+        n.parent = _this.el;
         n.render.call(n);
     });
 };

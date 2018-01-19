@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>UI Test</title>
+    <link href="../css/jquery-ui.css" rel="stylesheet" />
     <script src="../thirdparty/jquery.js"></script>
     <script src="../thirdparty/jquery-ui.js"></script>
     <script src="../thirdparty/d3.js"></script>
@@ -17,6 +18,7 @@
         droppable.on('drop', function(event, ui) {
             this.target.style.backgroundColor = 'yellow';
         });
+        var resizable = new AI.UiResizable();
 
         // draggable
         var control = new AI.UiRect({
@@ -32,11 +34,21 @@
         // droppable
         container = new AI.UiFixedContainer({
             children: [],
-            float: 'left',
-            html: 'Drop something here.'
+            html: 'Drop something here.',
+            float: 'left'
         });
         container.render();
         droppable.apply(container);
+
+        // resizable
+        container = new AI.UiFixedContainer({
+            children: [],
+            html: 'This is resizable.',
+            float: 'left'
+        });
+        container.render();
+        resizable.apply(container);
+
 
     }
 

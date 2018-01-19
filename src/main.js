@@ -24,6 +24,7 @@ export { UiDroppable } from './ui/interaction/UiDroppable';
 export { UiResizable } from './ui/interaction/UiResizable';
 export { UiSelectable } from './ui/interaction/UiSelectable';
 export { UiSortable } from './ui/interaction/UiSortable';
+export { UiHelper } from './ui/UiHelper.js';
 
 // svg
 export { SvgDom } from './svg/SvgDom';

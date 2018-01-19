@@ -13,6 +13,7 @@ function UiFixedContainer(options) {
     this.borderStyle = options.borderStyle || 'solid';
     this.float = options.float || null;
     this.html = options.html || null;
+    this.cls = options.cls || null;
 }
 
 UiFixedContainer.prototype = Object.create(UiContainer.prototype);
@@ -29,10 +30,9 @@ UiFixedContainer.prototype.render = function() {
     this.el.style.padding = this.padding;
     this.el.style.display = this.display;
     this.el.style.float = this.float;
+    this.el.className = this.cls;
+    this.el.innerHTML = this.html;
     this.parent.append(this.el);
-    if (this.html) {
-        this.el.innerHTML = this.html;
-    }
     var _this = this;
     this.children.forEach(function(n, i) {
         n.parent = _this.el;

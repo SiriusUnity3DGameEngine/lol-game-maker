@@ -20,6 +20,7 @@
         });
         var resizable = new AI.UiResizable();
         var selectable = new AI.UiSelectable();
+        var sortable = new AI.UiSortable();
 
         // draggable
         var control = new AI.UiRect({
@@ -67,6 +68,10 @@
         });
         container.render();
         selectable.apply(list);
+
+        // sortable
+        container.render();
+        sortable.apply(list);
     }
 
     window.onload = start;

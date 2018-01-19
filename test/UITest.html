@@ -19,6 +19,7 @@
             this.target.style.backgroundColor = 'yellow';
         });
         var resizable = new AI.UiResizable();
+        var selectable = new AI.UiSelectable();
 
         // draggable
         var control = new AI.UiRect({
@@ -49,7 +50,23 @@
         container.render();
         resizable.apply(container);
 
-
+        // selectable
+        var list = new AI.UiList({
+            children: [
+                'List Item 1',
+                'List Item 2',
+                'List Item 3',
+                'List Item 4'
+            ]
+        });
+        container = new AI.UiFixedContainer({
+            children: [
+                list
+            ],
+            float: 'left'
+        });
+        container.render();
+        selectable.apply(list);
     }
 
     window.onload = start;

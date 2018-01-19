@@ -15,7 +15,7 @@
         var draggable = new AI.UiDraggable();
         var droppable = new AI.UiDroppable();
         droppable.on('drop', function(event, ui) {
-            this.style.backgroundColor = 'yellow';
+            this.target.style.backgroundColor = 'yellow';
         });
 
         // draggable
@@ -23,14 +23,17 @@
             text: 'Draggable'
         });
         var container = new AI.UiFixedContainer({
-            children: [control]
+            children: [control],
+            float: 'left'
         });
         container.render();
         draggable.apply(control);
 
         // droppable
         container = new AI.UiFixedContainer({
-            children: []
+            children: [],
+            float: 'left',
+            html: 'Drop something here.'
         });
         container.render();
         droppable.apply(container);

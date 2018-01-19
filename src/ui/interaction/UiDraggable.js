@@ -7,7 +7,7 @@ import { UiControl } from '../UiControl';
 
 function UiDraggable(options) {
     UiInteraction.call(this, options);
-    options = options || null;
+    options = options || {};
 
     this.dispatch = d3.dispatch('start', 'drag', 'stop');
 

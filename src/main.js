@@ -18,6 +18,7 @@ export { UiAccordionItem } from './ui/control/UiAccordionItem';
 export { UiAutocomplete } from './ui/control/UiAutocomplete';
 export { UiButton } from './ui/control/UiButton';
 export { UiCheckboxradio } from './ui/control/UiCheckboxradio';
+export { UiControlgroup } from './ui/control/UiControlgroup';
 export { UiRect } from './ui/control/UiRect'; // for test
 export { UiList } from './ui/control/UiList'; // for test
 export { UiStyle } from './ui/UiStyle';

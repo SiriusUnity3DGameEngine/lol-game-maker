@@ -40,6 +40,14 @@
             text: 'Checkbox'
         });
         checkbox.render();
+
+        var group = new AI.UiControlgroup({
+            children: [
+                new AI.UiButton({ text: 'Button 1' }),
+                new AI.UiButton({ text: 'Button 2' })
+            ]
+        });
+        group.render();
     }
 
     window.onload = start;

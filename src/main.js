@@ -13,8 +13,13 @@ export { SvgScene } from './scene/SvgScene';
 
 // control
 export { UiControl } from './ui/UiControl';
-export { UiRect } from './ui/control/UiRect';
-export { UiList } from './ui/control/UiList';
+export { UiAccordion } from './ui/control/UiAccordion';
+export { UiAccordionItem } from './ui/control/UiAccordionItem';
+export { UiAutocomplete } from './ui/control/UiAutocomplete';
+export { UiButton } from './ui/control/UiButton';
+export { UiCheckboxradio } from './ui/control/UiCheckboxradio';
+export { UiRect } from './ui/control/UiRect'; // for test
+export { UiList } from './ui/control/UiList'; // for test
 export { UiStyle } from './ui/UiStyle';
 export { UiContainer } from './ui/UiContainer';
 export { UiFixedContainer } from './ui/container/UiFixedContainer';

@@ -8,6 +8,7 @@ function UiAccordion(options) {
     UiControl.call(this, options);
     options = options || {};
     this.width = options.width || null;
+    this.cls = options.cls || null;
     this.children = options.children || [];
 }
 
@@ -16,6 +17,7 @@ UiAccordion.prototype.constructor = UiAccordion;
 
 UiAccordion.prototype.render = function() {
     this.el.div = document.createElement('div');
+    this.el.div.className = this.cls;
     this.el.div.style.width = this.width;
     this.parent.appendChild(this.el.div);
     var _this = this;

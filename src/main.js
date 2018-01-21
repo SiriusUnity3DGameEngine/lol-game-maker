@@ -43,7 +43,7 @@ export { UiDroppable } from './ui/interaction/UiDroppable';
 export { UiResizable } from './ui/interaction/UiResizable';
 export { UiSelectable } from './ui/interaction/UiSelectable';
 export { UiSortable } from './ui/interaction/UiSortable';
-export { UiHelper } from './ui/UiHelper.js';
+export { UiHelper } from './ui/UiHelper';
 
 // svg
 export { SvgDom } from './svg/SvgDom';
@@ -56,3 +56,12 @@ export { SvgPolyline } from './svg/element/SvgPolyline';
 export { SvgPolygon } from './svg/element/SvgPolygon';
 export { SvgPath } from './svg/element/SvgPath';
 export { SvgGroup } from './svg/SvgGroup';
+
+// editor
+export { EditorApp } from './editor/EditorApp';
+export { EditorUI } from './editor/EditorUI';
+export { EditorNav } from './editor/EditorNav';
+export { EditorNavMenu } from './editor/EditorNavMenu';
+export { EditorBox } from './editor/EditorBox';
+export { EditorMainPanel } from './editor/EditorMainPanel';
+export { EditorPropertyPanel } from './editor/EditorPropertyPanel';

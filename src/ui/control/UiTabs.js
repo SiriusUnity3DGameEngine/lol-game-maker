@@ -9,6 +9,7 @@ function UiTabs(options) {
     options = options || {};
     this.children = options.children || [];
     this.width = options.width || null;
+    this.cls = options.cls || null;
 }
 
 UiTabs.prototype = Object.create(UiControl.prototype);
@@ -16,6 +17,7 @@ UiTabs.prototype.constructor = UiTabs;
 
 UiTabs.prototype.render = function() {
     this.el.div = document.createElement('div');
+    this.el.div.className = this.cls;
     this.el.div.style.width = this.width;
     this.parent.appendChild(this.el.div);
     this.el.ul = document.createElement('ul');

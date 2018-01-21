@@ -1,19 +1,10 @@
-var initUI = function() {
-    $('#menu').menu({
-        position: {
-            my: "left bottom",
-            at: "left top"
-        },
-        icons: {
-            submenu: "ui-icon-triangle-1-s",
-        }
-    });
-    $('#leftPanel').tabs();
-    $('#accordion').accordion({
-        heightStyle: "fill"
-    });
+var app;
+
+var start = function() {
+    app = new AI.EditorApp();
+    app.start();
 };
 
-$(function() {
-    initUI();
-});
+window.onload = function() {
+    start();
+};

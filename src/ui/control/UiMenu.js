@@ -8,6 +8,7 @@ function UiMenu(options) {
     UiControl.call(this, options);
     options = options || {};
     this.width = options.width || null;
+    this.cls = options.cls || null;
     this.children = options.children || [];
 }
 
@@ -16,6 +17,7 @@ UiMenu.prototype.constructor = UiMenu;
 
 UiMenu.prototype.render = function() {
     this.el.ul = document.createElement('ul');
+    this.el.ul.className = this.cls;
     this.el.ul.style.width = this.width;
     this.parent.appendChild(this.el.ul);
     var _this = this;

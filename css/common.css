@@ -19,12 +19,12 @@ body {
     z-index: 100;
 }
 
-#menu {
+.main-menu {
     width: 100%;
     font-size: 1.0em;
 }
 
-#menu>.ui-menu-item {
+.main-menu>.ui-menu-item {
     display: inline-block;
     float: left;
     margin: 0;

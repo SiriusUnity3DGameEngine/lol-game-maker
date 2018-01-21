@@ -23,6 +23,14 @@ export { UiDatepicker } from './ui/control/UiDatepicker';
 export { UiDialog } from './ui/control/UiDialog';
 export { UiMenu } from './ui/control/UiMenu';
 export { UiMenuItem } from './ui/control/UiMenuItem';
+export { UiProgressbar } from './ui/control/UiProgressbar';
+export { UiSelectmenu } from './ui/control/UiSelectmenu';
+export { UiSelectmenuItem } from './ui/control/UiSelectmenuItem';
+export { UiSlider } from './ui/control/UiSlider';
+export { UiSpinner } from './ui/control/UiSpinner';
+export { UiTabs } from './ui/control/UiTabs';
+export { UiTabsItem } from './ui/control/UiTabsItem';
+export { UiTooltip } from './ui/control/UiTooltip';
 export { UiRect } from './ui/control/UiRect'; // for test
 export { UiList } from './ui/control/UiList'; // for test
 export { UiStyle } from './ui/UiStyle';

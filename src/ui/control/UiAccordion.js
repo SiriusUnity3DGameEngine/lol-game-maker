@@ -7,6 +7,7 @@ import { UiControl } from '../UiControl';
 function UiAccordion(options) {
     UiControl.call(this, options);
     options = options || {};
+    this.width = options.width || null;
     this.children = options.children || [];
 }
 
@@ -14,14 +15,15 @@ UiAccordion.prototype = Object.create(UiControl.prototype);
 UiAccordion.prototype.constructor = UiAccordion;
 
 UiAccordion.prototype.render = function() {
-    this.el.body = document.createElement('div');
-    this.parent.appendChild(this.el.body);
+    this.el.div = document.createElement('div');
+    this.el.div.style.width = this.width;
+    this.parent.appendChild(this.el.div);
     var _this = this;
     this.children.forEach(function(n) {
-        n.parent = _this.el.body;
+        n.parent = _this.el.div;
         n.render.call(n);
     });
-    $(this.el.body).accordion();
+    $(this.el.div).accordion();
 };
 
 export { UiAccordion };

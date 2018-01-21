@@ -13,6 +13,7 @@
     <script>
     var start = function() {
         var accordion = new AI.UiAccordion({
+            width: '280px',
             children: [
                 new AI.UiAccordionItem({ title: 'Tab 1', html: 'This is tab 1 content' }),
                 new AI.UiAccordionItem({ title: 'Tab 2', html: 'This is tab 2 content' }),
@@ -73,6 +74,42 @@
             ]
         });
         menu.render();
+
+        var bar = new AI.UiProgressbar({
+            width: '200px',
+            value: 37
+        });
+        bar.render();
+
+        var menu = new AI.UiSelectmenu({
+            children: [
+                new AI.UiSelectmenuItem({ text: 'Menu Item 1' }),
+                new AI.UiSelectmenuItem({ text: 'Menu Item 2' }),
+                new AI.UiSelectmenuItem({ text: 'Menu Item 3' }),
+                new AI.UiSelectmenuItem({ text: 'Menu Item 4' }),
+                new AI.UiSelectmenuItem({ text: 'Menu Item 5' }),
+            ]
+        });
+        menu.render();
+
+        var slider = new AI.UiSlider();
+        slider.render();
+
+        var spinner = new AI.UiSpinner();
+        spinner.render();
+
+        var tabs = new AI.UiTabs({
+            width: '300px',
+            children: [
+                new AI.UiTabsItem({ title: 'Tab 1', html: 'content 1' }),
+                new AI.UiTabsItem({ title: 'Tab 2', html: 'content 2' }),
+                new AI.UiTabsItem({ title: 'Tab 3', html: 'content 3' }),
+            ]
+        });
+        tabs.render();
+
+        var tooltip = new AI.UiTooltip();
+        tooltip.render();
     }
 
     window.onload = start;
@@ -80,6 +117,7 @@
 </head>
 
 <body>
+    <input type="text" title="This is a tooltip." />
 </body>
 
 </html>

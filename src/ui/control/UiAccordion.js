@@ -27,7 +27,7 @@ UiAccordion.prototype.render = function() {
         n.render.call(n);
     });
     $(this.el.div).accordion({
-        heightStyle: this.fit ? 'fit' : null
+        heightStyle: this.fit ? 'fill' : null
     });
 };
 

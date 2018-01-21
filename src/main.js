@@ -19,6 +19,10 @@ export { UiAutocomplete } from './ui/control/UiAutocomplete';
 export { UiButton } from './ui/control/UiButton';
 export { UiCheckboxradio } from './ui/control/UiCheckboxradio';
 export { UiControlgroup } from './ui/control/UiControlgroup';
+export { UiDatepicker } from './ui/control/UiDatepicker';
+export { UiDialog } from './ui/control/UiDialog';
+export { UiMenu } from './ui/control/UiMenu';
+export { UiMenuItem } from './ui/control/UiMenuItem';
 export { UiRect } from './ui/control/UiRect'; // for test
 export { UiList } from './ui/control/UiList'; // for test
 export { UiStyle } from './ui/UiStyle';

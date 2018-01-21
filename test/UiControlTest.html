@@ -48,6 +48,31 @@
             ]
         });
         group.render();
+
+        var datepicker = new AI.UiDatepicker();
+        datepicker.render();
+
+        var dialog = new AI.UiDialog({
+            title: 'Dialog Title',
+            html: 'This is dialog content.'
+        });
+        dialog.render();
+
+        var menu = new AI.UiMenu({
+            width: '180px',
+            children: [
+                new AI.UiMenuItem({
+                    children: [
+                        new AI.UiMenuItem(),
+                        new AI.UiMenuItem(),
+                        new AI.UiMenuItem(),
+                    ]
+                }),
+                new AI.UiMenuItem(),
+                new AI.UiMenuItem(),
+            ]
+        });
+        menu.render();
     }
 
     window.onload = start;

@@ -9,6 +9,7 @@ function UiAccordion(options) {
     options = options || {};
     this.width = options.width || null;
     this.cls = options.cls || null;
+    this.fit = options.fit || null;
     this.children = options.children || [];
 }
 
@@ -25,7 +26,9 @@ UiAccordion.prototype.render = function() {
         n.parent = _this.el.div;
         n.render.call(n);
     });
-    $(this.el.div).accordion();
+    $(this.el.div).accordion({
+        heightStyle: this.fit ? 'fit' : null
+    });
 };
 
 export { UiAccordion };

@@ -9,10 +9,11 @@ function EditorPropertyPanel(options) {
     UiAccordion.call(this, options);
     options = options || {};
     this.cls = 'right-panel ui-widget-content';
+    this.fit = true;
     this.children = options.children || [
-        new UiAccordionItem({ text: 'Property', html: 'content 1' }),
-        new UiAccordionItem({ text: 'Action', html: 'content 2' }),
-        new UiAccordionItem({ text: 'Script', html: 'content 3' }),
+        new UiAccordionItem({ title: 'Property', html: 'content 1' }),
+        new UiAccordionItem({ title: 'Action', html: 'content 2' }),
+        new UiAccordionItem({ title: 'Script', html: 'content 3' }),
     ];
 }
 

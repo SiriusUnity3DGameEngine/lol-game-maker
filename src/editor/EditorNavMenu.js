@@ -9,10 +9,10 @@ function EditorNavMenu(options) {
     UiMenu.call(this, options);
     options = options || {};
     this.cls = 'main-menu';
+    this.direction = 'horizontal'
     this.children = options.children || [
         new UiMenuItem({
             text: 'Add',
-            subCls: 'ui-icon-carat-1-s',
             children: [
                 new UiMenuItem({
                     text: 'Box'

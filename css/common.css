@@ -19,19 +19,19 @@ body {
     z-index: 100;
 }
 
-.main-menu {
+.ui-menu-horizontal {
     width: 100%;
     font-size: 1.0em;
 }
 
-.main-menu>.ui-menu-item {
+.ui-menu-horizontal>.ui-menu-item {
     display: inline-block;
     float: left;
     margin: 0;
     padding: 0 2px 0 2px;
 }
 
-.ui-menu:after {
+.ui-menu-horizontal:after {
     content: ".";
     display: block;
     clear: both;

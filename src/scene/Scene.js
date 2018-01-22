@@ -1,14 +1,17 @@
+import { UiControl } from '../ui/UiControl';
+
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function Scene(options) {
-
+    UiControl.call(this, options);
     options = options || {};
-    this.container = options.container;
     this.name = options.name || 'Scene';
-
 }
+
+Scene.prototype = Object.create(UiControl.prototype);
+Scene.prototype.constructor = Scene;
 
 Scene.prototype.getName = function() {
     return this.name;

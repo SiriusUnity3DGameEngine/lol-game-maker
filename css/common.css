@@ -47,9 +47,10 @@ body {
 
 .left-panel {
     position: absolute;
-    width: 100%;
+    left: 0;
+    top: 0;
+    width: calc(100% - 250px);
     height: 100%;
-    margin-right: 250px;
     box-sizing: border-box;
 }
 
@@ -57,11 +58,16 @@ body {
     padding: 0;
 }
 
+.ui-tabs .ui-tabs-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
 .right-panel {
-    position: absolute;
-    right: 0;
     width: 250px;
     height: 100%;
+    float: right;
+    box-sizing: border-box;
 }
 
 .ui-widget-content {

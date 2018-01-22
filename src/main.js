@@ -5,12 +5,6 @@ export { Point } from './geometry/Point';
 export { Line } from './geometry/Line';
 export { Polygon } from './geometry/Polygon';
 
-// scene
-export { Scene } from './scene/Scene';
-export { Scene2D } from './scene/Scene2D';
-export { Scene3D } from './scene/Scene3D';
-export { SvgScene } from './scene/SvgScene';
-
 // control
 export { UiControl } from './ui/UiControl';
 export { UiAccordion } from './ui/control/UiAccordion';
@@ -65,3 +59,7 @@ export { EditorNavMenu } from './editor/EditorNavMenu';
 export { EditorBox } from './editor/EditorBox';
 export { EditorMainPanel } from './editor/EditorMainPanel';
 export { EditorPropertyPanel } from './editor/EditorPropertyPanel';
+
+// scene
+export { Scene } from './scene/Scene';
+export { WebGLScene } from './scene/webgl/WebGLScene';

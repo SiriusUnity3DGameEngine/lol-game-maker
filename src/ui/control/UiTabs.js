@@ -10,6 +10,7 @@ function UiTabs(options) {
     this.children = options.children || [];
     this.width = options.width || null;
     this.cls = options.cls || null;
+    this.fit = options.fit || false;
 }
 
 UiTabs.prototype = Object.create(UiControl.prototype);
@@ -27,7 +28,13 @@ UiTabs.prototype.render = function() {
         n.parent = _this.el.div;
         n.render.call(n);
     });
-    $(this.el.div).tabs();
+    if (this.fit) {
+        $(this.el.div).tabs({
+            heightStyle: "fill"
+        });
+    } else {
+        $(this.el.div).tabs();
+    }
 };
 
 export { UiTabs };

@@ -59,8 +59,13 @@ body {
 }
 
 .ui-tabs .ui-tabs-panel {
+    height: calc(100% - 35.33px) !important;
     padding: 0;
     overflow: hidden;
+}
+
+.ui-widget-header .ui-icon {
+    margin-top: 5px;
 }
 
 .right-panel {

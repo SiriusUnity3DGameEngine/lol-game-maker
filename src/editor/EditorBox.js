@@ -9,9 +9,12 @@ import { EditorPropertyPanel } from './EditorPropertyPanel.js';
 function EditorBox(options) {
     UiControl.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.cls = options.cls || 'box';
-    this.leftPanel = options.leftPanel || new EditorMainPanel();
-    this.rightPanel = options.rightPanel || new EditorPropertyPanel();
+    this.mainPanel = options.mainPanel || new EditorMainPanel();
+    this.propertyPanel = options.propertyPanel || new EditorPropertyPanel();
+    this.app.mainPanel = this.mainPanel;
+    this.app.propertyPanel = this.propertyPanel;
 }
 
 EditorBox.prototype = Object.create(UiControl.prototype);
@@ -21,10 +24,10 @@ EditorBox.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.el.div.className = this.cls;
     this.parent.appendChild(this.el.div);
-    this.leftPanel.parent = this.el.div;
-    this.leftPanel.render();
-    this.rightPanel.parent = this.el.div;
-    this.rightPanel.render();
+    this.mainPanel.parent = this.el.div;
+    this.mainPanel.render();
+    this.propertyPanel.parent = this.el.div;
+    this.propertyPanel.render();
 };
 
 export { EditorBox };

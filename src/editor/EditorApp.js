@@ -6,7 +6,9 @@ import { EditorUI } from './EditorUI';
 
 function EditorApp(options) {
     options = options || {};
-    this.ui = options.ui || new EditorUI();
+    this.ui = options.ui || new EditorUI({
+        app: this
+    });
 }
 
 EditorApp.prototype.start = function() {

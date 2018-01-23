@@ -9,8 +9,15 @@ import { EditorBox } from './EditorBox';
 function EditorUI(options) {
     UiControl.call(this, options);
     options = options || {};
-    this.nav = options.nav || new EditorNav();
-    this.box = options.box || new EditorBox();
+    this.app = options.app || null;
+    this.nav = options.nav || new EditorNav({
+        app: this.app
+    });
+    this.box = options.box || new EditorBox({
+        app: this.app
+    });
+    this.app.nav = this.nav;
+    this.app.box = this.box;
 }
 
 EditorUI.prototype = Object.create(UiControl.prototype);

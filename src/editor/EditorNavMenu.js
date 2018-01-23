@@ -8,19 +8,72 @@ import { UiMenuItem } from '../ui/control/UiMenuItem'
 function EditorNavMenu(options) {
     UiMenu.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.cls = 'main-menu';
     this.direction = 'horizontal'
     this.children = options.children || [
         new UiMenuItem({
-            text: 'Add',
+            text: 'Scene',
             children: [
                 new UiMenuItem({
-                    text: 'Box'
+                    text: 'WebGL Scene'
                 })
             ]
         }),
         new UiMenuItem({
-            text: 'Play'
+            text: 'Edit',
+            children: [
+                new UiMenuItem({
+                    text: 'Undo',
+                }),
+                new UiMenuItem({
+                    text: 'Redo'
+                })
+            ]
+        }),
+        new UiMenuItem({
+            text: 'View',
+            children: [
+                new UiMenuItem({
+                    text: 'Property Panel'
+                }),
+                new UiMenuItem({
+                    text: 'Log Panel'
+                }),
+            ]
+        }),
+        new UiMenuItem({
+            text: 'Component',
+            children: [
+                new UiMenuItem({
+                    text: 'Box'
+                }),
+                new UiMenuItem({
+                    text: 'Person'
+                }),
+                new UiMenuItem({
+                    text: 'Fire'
+                }),
+            ]
+        }),
+        new UiMenuItem({
+            text: 'Control',
+            children: [
+                new UiMenuItem({
+                    text: 'Play'
+                })
+            ]
+        }),
+        new UiMenuItem({
+            text: 'Help',
+            children: [
+                new UiMenuItem({
+                    text: 'Document'
+                }),
+                new UiMenuItem({
+                    text: 'About'
+                }),
+            ]
         })
     ];
 }

@@ -9,15 +9,21 @@ import { WebGLScene } from '../scene/webgl/WebGLScene';
 function EditorMainPanel(options) {
     UiTabs.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.children = options.children || [
         new UiTabsItem({
             title: 'Scene',
+            closable: true,
             children: [
-                new WebGLScene()
+                new WebGLScene({
+                    app: this.app
+                })
             ]
         }),
         new UiTabsItem({
-            title: 'Logs'
+            title: 'Logs',
+            html: 'These are logs.',
+            closable: true,
         }),
     ];
     this.cls = 'left-panel';

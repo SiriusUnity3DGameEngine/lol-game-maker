@@ -8,6 +8,7 @@ import { UiAccordionItem } from '../ui/control/UiAccordionItem';
 function EditorPropertyPanel(options) {
     UiAccordion.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.cls = 'right-panel ui-widget-content';
     this.fit = true;
     this.children = options.children || [

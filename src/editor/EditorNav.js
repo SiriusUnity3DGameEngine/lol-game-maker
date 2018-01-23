@@ -8,8 +8,12 @@ import { EditorNavMenu } from './EditorNavMenu';
 function EditorNav(options) {
     UiControl.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.cls = options.cls || 'nav';
-    this.menu = new EditorNavMenu();
+    this.menu = new EditorNavMenu({
+        app: this.app
+    });
+    this.app.menu = this.menu;
 }
 
 EditorNav.prototype = Object.create(UiControl.prototype);

@@ -60,6 +60,10 @@ export { EditorBox } from './editor/EditorBox';
 export { EditorMainPanel } from './editor/EditorMainPanel';
 export { EditorPropertyPanel } from './editor/EditorPropertyPanel';
 
+// command
+export { BaseCommand } from './command/BaseCommand';
+export { NewSceneCommand } from './command/NewSceneCommand';
+
 // scene
 export { Scene } from './scene/Scene';
 export { WebGLScene } from './scene/webgl/WebGLScene';

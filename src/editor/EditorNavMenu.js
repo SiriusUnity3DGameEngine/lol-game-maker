@@ -1,5 +1,6 @@
 import { UiMenu } from '../ui/control/UiMenu'
 import { UiMenuItem } from '../ui/control/UiMenuItem'
+import { NewSceneCommand } from '../command/NewSceneCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -16,7 +17,7 @@ function EditorNavMenu(options) {
             text: 'Scene',
             children: [
                 new UiMenuItem({
-                    text: 'WebGL Scene'
+                    text: 'New Scene'
                 })
             ]
         }),

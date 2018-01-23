@@ -11,6 +11,7 @@ function UiTabs(options) {
     this.width = options.width || null;
     this.cls = options.cls || null;
     this.fit = options.fit || false;
+    this.sortable = options.sortable || true;
 }
 
 UiTabs.prototype = Object.create(UiControl.prototype);
@@ -68,6 +69,15 @@ UiTabs.prototype.render = function() {
         });
     } else {
         $(this.el.div).tabs();
+    }
+    if (this.sortable) {
+        var _this = this;
+        $(this.el.div).find('.ui-tabs-nav').sortable({
+            axis: 'x',
+            stop: function() {
+                $(_this.el.div).tabs('refresh');
+            }
+        });
     }
 };
 

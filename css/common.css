@@ -28,7 +28,7 @@ body {
     display: inline-block;
     float: left;
     margin: 0;
-    padding: 0 2px 0 2px;
+    padding: 0 4px 0 4px;
 }
 
 .ui-menu-horizontal:after {
@@ -62,6 +62,12 @@ body {
     height: calc(100% - 35.33px) !important;
     padding: 0;
     overflow: hidden;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+    cursor: default;
 }
 
 .ui-widget-header .ui-icon {

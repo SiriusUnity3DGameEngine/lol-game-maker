@@ -23,6 +23,7 @@ UiTabsItem.prototype.close = function() {
 };
 
 UiTabsItem.prototype.render = function() {
+    var _this = this;
     var index = UiTabsItem.index++;
     this.el.li = document.createElement('li');
     this.el.a = document.createElement('a');
@@ -36,6 +37,10 @@ UiTabsItem.prototype.render = function() {
         this.el.span.innerHTML = 'Remove Tab';
         this.el.span.style.cursor = 'pointer';
         this.el.li.appendChild(this.el.span);
+        $(this.parent).on('click', 'span.ui-icon-close', function() {
+            _this.close();
+            $(_this.parent).tabs('refresh');
+        });
     }
     $('ul', this.parent).append(this.el.li);
 
@@ -43,7 +48,6 @@ UiTabsItem.prototype.render = function() {
     this.el.div.id = this.id;
     this.parent.appendChild(this.el.div);
     this.el.div.innerHTML = this.html;
-    var _this = this;
     this.children.forEach(function(n) {
         n.parent = _this.el.div;
         n.render.call(n);

@@ -13,6 +13,7 @@ function UiTabsItem(options) {
     this.title = options.title || 'Tab';
     this.html = options.html || null;
     this.children = options.children || [];
+    this.overflow = options.overflow || 'auto';
     this.closable = options.closable || false;
 }
 
@@ -48,6 +49,7 @@ UiTabsItem.prototype.render = function() {
 
     this.el.div = document.createElement('div');
     this.el.div.id = this.id;
+    this.el.div.style.overflow = this.overflow;
     this.parent.appendChild(this.el.div);
     this.el.div.innerHTML = this.html;
     this.children.forEach(function(n) {

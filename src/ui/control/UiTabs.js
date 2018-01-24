@@ -12,6 +12,7 @@ function UiTabs(options) {
     this.cls = options.cls || null;
     this.fit = options.fit || false;
     this.sortable = options.sortable || true;
+    this.dispatch = d3.dispatch('activate', 'beforeActivate', 'beforeLoad', 'create', 'load');
 }
 
 UiTabs.prototype = Object.create(UiControl.prototype);
@@ -35,8 +36,8 @@ UiTabs.prototype.insert = function(index, control) {
     control.parent = this.el.div;
     control.render.call(control);
     this.refresh();
-    //$(this.el.div).tabs('option', 'active', index);
-    //this.refresh();
+    $(this.el.div).tabs('option', 'active', index);
+    this.refresh();
 };
 
 UiTabs.prototype.remove = function(control) {
@@ -67,13 +68,24 @@ UiTabs.prototype.render = function() {
         n.parent = _this.el.div;
         n.render.call(n);
     });
-    if (this.fit) {
-        $(this.el.div).tabs({
-            heightStyle: "fill"
-        });
-    } else {
-        $(this.el.div).tabs();
-    }
+    $(this.el.div).tabs({
+        heightStyle: this.fit ? "fill" : null,
+        activate: function(event, ui) {
+            _this.dispatch.call('activate', _this, event, ui);
+        },
+        beforeActivate: function(event, ui) {
+            _this.dispatch.call('beforeActivate', _this, event, ui);
+        },
+        beforeLoad: function(event, ui) {
+            _this.dispatch.call('beforeLoad', _this, event, ui);
+        },
+        create: function(event, ui) {
+            _this.dispatch.call('create', _this, event, ui);
+        },
+        load: function(event, ui) {
+            _this.dispatch.call('load', _this, event, ui);
+        },
+    });
     if (this.sortable) {
         var _this = this;
         $(this.el.div).find('.ui-tabs-nav').sortable({
@@ -83,6 +95,10 @@ UiTabs.prototype.render = function() {
             }
         });
     }
+};
+
+UiTabs.prototype.on = function(eventName, callback) {
+    this.dispatch.on(eventName, callback);
 };
 
 export { UiTabs };

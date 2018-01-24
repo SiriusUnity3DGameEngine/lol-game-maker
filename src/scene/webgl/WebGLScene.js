@@ -7,6 +7,7 @@ import { Scene } from '../Scene';
 function WebGLScene(options) {
     Scene.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.name = options.name || 'WebGLScene';
 }
 
@@ -18,6 +19,14 @@ WebGLScene.prototype.render = function() {
     this.el.canvas.style.width = '100%';
     this.el.canvas.style.height = '100%';
     this.parent.appendChild(this.el.canvas);
+    var _this = this;
+    this.app.mainPanel.on('activate.WebGLScene', function(event, ui) {
+        _this.create.call(_this);
+    });
+};
+
+WebGLScene.prototype.create = function() {
+    this.app.mainPanel.on('activate.WebGLScene', null);
     this.el.canvas.width = this.el.canvas.clientWidth;
     this.el.canvas.height = this.el.canvas.clientHeight;
 

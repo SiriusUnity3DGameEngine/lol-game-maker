@@ -18,8 +18,9 @@ UiTabsItem.prototype = Object.create(UiControl.prototype);
 UiTabsItem.prototype.constructor = UiTabsItem;
 
 UiTabsItem.prototype.close = function() {
-    $('li[href=#' + this.id + ']', this.parent).remove();
-    $('#' + this.id).remove();
+    $(this.el.li).remove();
+    $(this.el.div).remove();
+    $(this.parent).tabs('refresh');
 };
 
 UiTabsItem.prototype.render = function() {
@@ -37,9 +38,8 @@ UiTabsItem.prototype.render = function() {
         this.el.span.innerHTML = 'Remove Tab';
         this.el.span.style.cursor = 'pointer';
         this.el.li.appendChild(this.el.span);
-        $(this.parent).on('click', 'span.ui-icon-close', function() {
-            _this.close();
-            $(_this.parent).tabs('refresh');
+        $(this.el.span).on('click', function() {
+            _this.close.call(_this);
         });
     }
     $('ul', this.parent).append(this.el.li);

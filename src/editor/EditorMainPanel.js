@@ -22,8 +22,7 @@ function EditorMainPanel(options) {
         }),
         new UiTabsItem({
             title: 'Logs',
-            html: 'These are logs.',
-            closable: true,
+            html: 'These are logs.'
         }),
     ];
     this.cls = 'left-panel';

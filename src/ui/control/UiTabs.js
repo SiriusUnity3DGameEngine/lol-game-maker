@@ -26,6 +26,8 @@ UiTabs.prototype.add = function(control) {
     control.parent = this.el.div;
     control.render.call(control);
     this.refresh();
+    $(this.el.div).tabs('option', 'active', this.children.length - 1);
+    this.refresh();
 };
 
 UiTabs.prototype.insert = function(index, control) {
@@ -33,6 +35,8 @@ UiTabs.prototype.insert = function(index, control) {
     control.parent = this.el.div;
     control.render.call(control);
     this.refresh();
+    //$(this.el.div).tabs('option', 'active', index);
+    //this.refresh();
 };
 
 UiTabs.prototype.remove = function(control) {

@@ -7,6 +7,7 @@ import { UiControl } from '../UiControl';
 function UiMenuItem(options) {
     UiControl.call(this, options);
     options = options || {};
+    this.id = options.id || 'menuitem' + UiMenuItem.index--;
     this.text = options.text || 'Menu Item';
     this.cls = options.cls || null;
     this.subCls = options.subCls || null;
@@ -18,6 +19,7 @@ UiMenuItem.prototype.constructor = UiMenuItem;
 
 UiMenuItem.prototype.render = function() {
     this.el.li = document.createElement('li');
+    this.el.li.setAttribute('id', this.id);
     this.el.li.className = this.cls;
     this.el.div = document.createElement('div');
     this.el.div.innerHTML = this.text;
@@ -37,5 +39,7 @@ UiMenuItem.prototype.render = function() {
         n.render.call(n);
     });
 };
+
+UiMenuItem.index = -1;
 
 export { UiMenuItem };

@@ -6,6 +6,8 @@ import { WebGLScene } from '../scene/webgl/WebGLScene';
  * @author tengge / https://github.com/tengge1
  */
 
+var ID = -1;
+
 function NewSceneCommand(options) {
     BaseCommand.call(this, options);
     options = options || {};
@@ -20,14 +22,13 @@ NewSceneCommand.prototype.run = function() {
         app: this.app,
     });
     var tab = new UiTabsItem({
-        title: 'Scene' + NewSceneCommand.index--,
+        title: 'Scene' + ID--,
+        closable: true,
         children: [
             scene
         ]
     });
     this.app.mainPanel.add(tab);
 };
-
-NewSceneCommand.index = 1;
 
 export { NewSceneCommand };

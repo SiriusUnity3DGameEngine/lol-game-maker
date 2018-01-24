@@ -12,17 +12,8 @@ function EditorMainPanel(options) {
     this.app = options.app || null;
     this.children = options.children || [
         new UiTabsItem({
-            title: 'Scene',
-            closable: true,
-            children: [
-                new WebGLScene({
-                    app: this.app
-                })
-            ]
-        }),
-        new UiTabsItem({
-            title: 'Logs',
-            html: 'These are logs.'
+            title: 'Home Page',
+            html: 'Welcome to use Open Sea AI.<br />Github: https://github.com/tengge1/OpenSeaAI'
         }),
     ];
     this.cls = 'left-panel';

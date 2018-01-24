@@ -17,6 +17,7 @@ function EditorNavMenu(options) {
             text: 'Scene',
             children: [
                 new UiMenuItem({
+                    id: 'newScene',
                     text: 'New Scene'
                 })
             ]
@@ -84,6 +85,21 @@ EditorNavMenu.prototype.constructor = EditorNavMenu;
 
 EditorNavMenu.prototype.render = function() {
     UiMenu.prototype.render.apply(this, arguments);
+    var _this = this;
+    this.on('select', function(event, ui) {
+        var id = ui.item[0].id;
+        var cmd;
+        switch (id) {
+            case 'newScene':
+                cmd = new NewSceneCommand({
+                    app: _this.app
+                });
+                cmd.run();
+                break;
+            default:
+                break;
+        }
+    });
 };
 
 export { EditorNavMenu };

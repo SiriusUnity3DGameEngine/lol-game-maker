@@ -4,10 +4,12 @@ import { UiControl } from '../UiControl';
  * @author tengge / https://github.com/tengge1
  */
 
+var ID = -1;
+
 function UiTabsItem(options) {
     UiControl.call(this, options);
     options = options || {};
-    this.id = options.id || 'tabitem' + UiTabsItem.index--;
+    this.id = options.id || 'tabitem' + ID--;
     this.title = options.title || 'Tab';
     this.html = options.html || null;
     this.children = options.children || [];
@@ -53,7 +55,5 @@ UiTabsItem.prototype.render = function() {
         n.render.call(n);
     });
 };
-
-UiTabsItem.index = -1;
 
 export { UiTabsItem };

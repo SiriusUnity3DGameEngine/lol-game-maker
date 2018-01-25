@@ -1,6 +1,6 @@
 import { BaseCommand } from './BaseCommand';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { WebGLScene } from '../scene/WebGLScene';
+import { StandardScene } from '../scene/standard/StandardScene';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -8,17 +8,17 @@ import { WebGLScene } from '../scene/WebGLScene';
 
 var ID = -1;
 
-function NewSceneCommand(options) {
+function NewStandardSceneCommand(options) {
     BaseCommand.call(this, options);
     options = options || {};
     this.app = options.app || null;
 }
 
-NewSceneCommand.prototype = Object.create(BaseCommand.prototype);
-NewSceneCommand.prototype.constructor = NewSceneCommand;
+NewStandardSceneCommand.prototype = Object.create(BaseCommand.prototype);
+NewStandardSceneCommand.prototype.constructor = NewStandardSceneCommand;
 
-NewSceneCommand.prototype.run = function() {
-    var scene = new WebGLScene({
+NewStandardSceneCommand.prototype.run = function() {
+    var scene = new StandardScene({
         app: this.app,
     });
     var tab = new UiTabsItem({
@@ -31,4 +31,4 @@ NewSceneCommand.prototype.run = function() {
     this.app.mainPanel.add(tab);
 };
 
-export { NewSceneCommand };
+export { NewStandardSceneCommand };

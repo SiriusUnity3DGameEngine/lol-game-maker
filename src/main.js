@@ -62,8 +62,10 @@ export { EditorPropertyPanel } from './editor/EditorPropertyPanel';
 
 // command
 export { BaseCommand } from './command/BaseCommand';
+export { CommandDispatcher } from './command/CommandDispatcher';
 export { NewSceneCommand } from './command/NewSceneCommand';
 
 // scene
 export { Scene } from './scene/Scene';
 export { WebGLScene } from './scene/WebGLScene';
+export { StandardScene } from './scene/standard/StandardScene';

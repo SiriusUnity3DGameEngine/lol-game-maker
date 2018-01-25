@@ -1,6 +1,6 @@
 import { UiMenu } from '../ui/control/UiMenu'
 import { UiMenuItem } from '../ui/control/UiMenuItem'
-import { NewSceneCommand } from '../command/NewSceneCommand';
+import { CommandDispatcher } from '../command/CommandDispatcher';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -12,6 +12,10 @@ function EditorNavMenu(options) {
     this.app = options.app || null;
     this.cls = 'main-menu';
     this.direction = 'horizontal'
+    this.dispatcher = new CommandDispatcher({
+        app: this.app
+    });
+    this.app.dispatcher = this.dispatcher;
     this.children = options.children || [
         new UiMenuItem({
             text: 'Scene',
@@ -19,6 +23,10 @@ function EditorNavMenu(options) {
                 new UiMenuItem({
                     id: 'newScene',
                     text: 'New Scene'
+                }),
+                new UiMenuItem({
+                    id: 'newStandardScene',
+                    text: 'New Standard Scene'
                 })
             ]
         }),
@@ -88,17 +96,7 @@ EditorNavMenu.prototype.render = function() {
     var _this = this;
     this.on('select', function(event, ui) {
         var id = ui.item[0].id;
-        var cmd;
-        switch (id) {
-            case 'newScene':
-                cmd = new NewSceneCommand({
-                    app: _this.app
-                });
-                cmd.run();
-                break;
-            default:
-                break;
-        }
+        this.dispatcher.dispatch(id);
     });
 };
 

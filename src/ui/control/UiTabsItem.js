@@ -15,15 +15,20 @@ function UiTabsItem(options) {
     this.children = options.children || [];
     this.overflow = options.overflow || 'auto';
     this.closable = options.closable || false;
+    this.tabs = options.tabs || null;
 }
 
 UiTabsItem.prototype = Object.create(UiControl.prototype);
 UiTabsItem.prototype.constructor = UiTabsItem;
 
 UiTabsItem.prototype.close = function() {
+    var index = $(this.el.li).index();
     $(this.el.li).remove();
     $(this.el.div).remove();
     $(this.parent).tabs('refresh');
+    if (this.tabs) {
+        this.tabs.children.splice(index, 1);
+    }
 };
 
 UiTabsItem.prototype.render = function() {

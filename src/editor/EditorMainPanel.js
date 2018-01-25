@@ -1,6 +1,5 @@
 import { UiTabs } from '../ui/control/UiTabs';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { WebGLScene } from '../scene/webgl/WebGLScene';
 
 /**
  * @author tengge / https://github.com/tengge1

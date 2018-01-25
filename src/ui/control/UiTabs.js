@@ -25,6 +25,7 @@ UiTabs.prototype.refresh = function() {
 UiTabs.prototype.add = function(control) {
     this.children.push(control);
     control.parent = this.el.div;
+    control.tabs = this;
     control.render.call(control);
     this.refresh();
     $(this.el.div).tabs('option', 'active', this.children.length - 1);
@@ -34,6 +35,7 @@ UiTabs.prototype.add = function(control) {
 UiTabs.prototype.insert = function(index, control) {
     this.children.splice(index, 0, control);
     control.parent = this.el.div;
+    control.tabs = this;
     control.render.call(control);
     this.refresh();
     $(this.el.div).tabs('option', 'active', index);
@@ -66,6 +68,7 @@ UiTabs.prototype.render = function() {
     var _this = this;
     this.children.forEach(function(n) {
         n.parent = _this.el.div;
+        n.tabs = _this;
         n.render.call(n);
     });
     $(this.el.div).tabs({

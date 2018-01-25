@@ -17,16 +17,13 @@ body {
 
 
 
-
-
-
 /* nav menu */
 
 .nav {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 20000;
 }
 
 .ui-menu-horizontal {
@@ -52,8 +49,6 @@ body {
 
 
 
-
-
 /* box */
 
 .box {
@@ -61,8 +56,6 @@ body {
     width: 100%;
     height: 100%;
 }
-
-
 
 
 
@@ -83,6 +76,7 @@ body {
 }
 
 .ui-tabs .ui-tabs-panel {
+    position: relative;
     height: calc(100% - 35.33px) !important;
     padding: 0;
     overflow: hidden !important;
@@ -98,9 +92,6 @@ body {
 .ui-widget-header .ui-icon {
     margin-top: 5px;
 }
-
-
-
 
 
 

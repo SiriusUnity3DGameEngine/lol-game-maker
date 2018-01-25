@@ -7,41 +7,53 @@ import { Scene } from './Scene';
 function WebGLScene(options) {
     Scene.call(this, options);
     options = options || {};
-    this.app = options.app || null;
     this.name = options.name || 'WebGLScene';
+    this.scene = options.scene || new THREE.Scene();
+    this.camera = options.camera || new THREE.PerspectiveCamera(
+        75,
+        this.width / this.height,
+        0.1,
+        1000);
+    this.renderer = options.renderer || new THREE.WebGLRenderer();
+    this.renderer.setSize(this.width, this.height);
+    this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+    this.controls.maxPolarAngle = Math.PI * 0.5;
+    this.gridHelper = new THREE.GridHelper(500, 50);
 }
 
 WebGLScene.prototype = Object.create(Scene.prototype);
 WebGLScene.prototype.constructor = WebGLScene;
 
 WebGLScene.prototype.render = function() {
-    this.el.canvas = document.createElement('canvas');
-    this.el.canvas.style.width = '100%';
-    this.el.canvas.style.height = '100%';
-    this.parent.appendChild(this.el.canvas);
+    this.parent.appendChild(this.renderer.domElement);
     var _this = this;
     this.app.mainPanel.on('activate.WebGLScene', function(event, ui) {
-        _this.create.call(_this);
+        _this.runProgram.call(_this);
     });
 };
 
-WebGLScene.prototype.create = function() {
+WebGLScene.prototype.runProgram = function() {
     this.app.mainPanel.on('activate.WebGLScene', null);
-    this.el.canvas.width = this.el.canvas.clientWidth;
-    this.el.canvas.height = this.el.canvas.clientHeight;
+    this.scene.add(this.gridHelper);
+    this.createScene.call(this);
+    this.renderProc.call(this);
+};
 
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, this.el.canvas.width / this.el.canvas.height, 0.1, 1000);
-    this.renderer = new THREE.WebGLRenderer({ canvas: this.el.canvas });
-    this.renderer.setSize(this.el.canvas.width, this.el.canvas.height);
-
-    var geometry = new THREE.BoxGeometry(1, 1, 1);
+WebGLScene.prototype.createScene = function() {
+    var geometry = new THREE.BoxGeometry(5, 5, 5);
     var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
     var cube = new THREE.Mesh(geometry, material);
     this.scene.add(cube);
-    this.camera.position.z = 5;
-
-    this.renderer.render(this.scene, this.camera);
+    this.camera.position.set(10, 10, 10);
+    this.camera.lookAt(0, 0, 0);
 };
+
+WebGLScene.prototype.renderProc = function() {
+    this.renderer.render(this.scene, this.camera);
+    var _this = this;
+    requestAnimationFrame(function() {
+        _this.renderProc.call(_this);
+    });
+}
 
 export { WebGLScene };

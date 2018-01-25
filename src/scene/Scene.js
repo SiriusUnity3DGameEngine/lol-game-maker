@@ -7,7 +7,10 @@ import { UiControl } from '../ui/UiControl';
 function Scene(options) {
     UiControl.call(this, options);
     options = options || {};
+    this.app = options.app || null;
     this.name = options.name || 'Scene';
+    this.width = this.app.mainPanel.children[0].el.div.clientWidth;
+    this.height = this.app.mainPanel.children[0].el.div.clientHeight;
 }
 
 Scene.prototype = Object.create(UiControl.prototype);

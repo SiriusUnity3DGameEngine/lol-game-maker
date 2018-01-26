@@ -12,7 +12,7 @@ function UiTabs(options) {
     this.cls = options.cls || null;
     this.fit = options.fit || false;
     this.sortable = options.sortable || true;
-    this.dispatch = d3.dispatch('activate', 'beforeActivate', 'beforeLoad', 'create', 'load');
+    this.dispatch = d3.dispatch('activate', 'beforeActivate', 'beforeLoad', 'create', 'load', 'close');
 }
 
 UiTabs.prototype = Object.create(UiControl.prototype);

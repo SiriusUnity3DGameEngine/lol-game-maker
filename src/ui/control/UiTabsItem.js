@@ -28,6 +28,7 @@ UiTabsItem.prototype.close = function() {
     $(this.parent).tabs('refresh');
     if (this.tabs) {
         this.tabs.children.splice(index, 1);
+        this.tabs.dispatch.call('close', this.tabs, this);
     }
 };
 

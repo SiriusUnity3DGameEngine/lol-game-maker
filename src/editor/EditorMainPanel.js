@@ -24,6 +24,22 @@ EditorMainPanel.prototype.constructor = EditorMainPanel;
 
 EditorMainPanel.prototype.render = function() {
     UiTabs.prototype.render.apply(this, arguments);
+    var _this = this;
+    this.on('activate', function(event, ui) {
+        _this.onActivateTab.call(_this, event, ui);
+    });
+    this.on('close', function(tabitem) {
+        _this.onCloseTab.call(_this, tabitem);
+    });
+};
+
+EditorMainPanel.prototype.onActivateTab = function(event, ui) {
+    var id = ui.newPanel[0].id;
+    this.app.currentScene = this.app.scenes[id];
+};
+
+EditorMainPanel.prototype.onCloseTab = function(tabitem) {
+    delete this.app.scenes[tabitem.id];
 };
 
 export { EditorMainPanel };

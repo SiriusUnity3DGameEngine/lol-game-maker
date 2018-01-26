@@ -11,8 +11,12 @@ function EditorBox(options) {
     options = options || {};
     this.app = options.app || null;
     this.cls = options.cls || 'box';
-    this.mainPanel = options.mainPanel || new EditorMainPanel();
-    this.propertyPanel = options.propertyPanel || new EditorPropertyPanel();
+    this.mainPanel = options.mainPanel || new EditorMainPanel({
+        app: this.app
+    });
+    this.propertyPanel = options.propertyPanel || new EditorPropertyPanel({
+        app: this.app
+    });
     this.app.mainPanel = this.mainPanel;
     this.app.propertyPanel = this.propertyPanel;
 }

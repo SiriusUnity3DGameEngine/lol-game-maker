@@ -53,16 +53,93 @@ function EditorNavMenu(options) {
             ]
         }),
         new UiMenuItem({
-            text: 'Component',
+            text: 'Object',
             children: [
                 new UiMenuItem({
+                    id: 'addBox',
                     text: 'Box'
                 }),
                 new UiMenuItem({
-                    text: 'Person'
+                    id: 'addCircle',
+                    text: 'Circle'
                 }),
                 new UiMenuItem({
-                    text: 'Fire'
+                    id: 'addCone',
+                    text: 'Cone'
+                }),
+                new UiMenuItem({
+                    id: 'addCylinder',
+                    text: 'Cylinder'
+                }),
+                new UiMenuItem({
+                    id: 'addDodecahedron',
+                    text: 'Dodecahedron'
+                }),
+                new UiMenuItem({
+                    id: 'addExtrude',
+                    text: 'Extrude'
+                }),
+                new UiMenuItem({
+                    id: 'addIcosahedron',
+                    text: 'Icosahedron'
+                }),
+                new UiMenuItem({
+                    id: 'addLathe',
+                    text: 'Lathe'
+                }),
+                new UiMenuItem({
+                    id: 'addOctahedron',
+                    text: 'Octahedron'
+                }),
+                new UiMenuItem({
+                    id: 'addParametric',
+                    text: 'Parametric'
+                }),
+                new UiMenuItem({
+                    id: 'addPlane',
+                    text: 'Plane'
+                }),
+                new UiMenuItem({
+                    id: 'addRing',
+                    text: 'Ring'
+                }),
+                new UiMenuItem({
+                    id: 'addSphere',
+                    text: 'Sphere'
+                }),
+                new UiMenuItem({
+                    id: 'addTetrahedron',
+                    text: 'Tetrahedron'
+                }),
+                new UiMenuItem({
+                    id: 'addText',
+                    text: 'Text'
+                }),
+                new UiMenuItem({
+                    id: 'addTorus',
+                    text: 'Torus'
+                }),
+                new UiMenuItem({
+                    id: 'addTorusKnot',
+                    text: 'Torus Knot'
+                }),
+                new UiMenuItem({
+                    id: 'addTube',
+                    text: 'Tube'
+                })
+            ]
+        }),
+        new UiMenuItem({
+            text: 'Component',
+            children: [
+                new UiMenuItem({
+                    text: 'Transform'
+                }),
+                new UiMenuItem({
+                    text: 'Rigid Body'
+                }),
+                new UiMenuItem({
+                    text: 'Material'
                 }),
             ]
         }),

@@ -25,6 +25,13 @@ CommandDispatcher.prototype.dispatch = function(commandName) {
             });
             cmd.run();
             break;
+        case 'addBox':
+            cmd = new AddBasicObjectCommand({
+                app: this.app,
+                geometry: 'BoxGeometry'
+            });
+            cmd.run();
+            break;
         default:
             console.log('CommandDispatcher:' + commandName + 'is not found.');
             break;

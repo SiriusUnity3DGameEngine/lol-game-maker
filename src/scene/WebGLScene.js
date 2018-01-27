@@ -1,4 +1,5 @@
 import { Scene } from './Scene';
+import { WebGLControl } from './webgl/WebGLControl';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -27,7 +28,10 @@ function WebGLScene(options) {
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this.transformControls = new THREE.TransformControls(this.camera, this.renderer.domElement);
-    this.gui = new dat.GUI();
+    this.control = new WebGLControl({
+        app: this.app,
+        parent: this.parent
+    });
 }
 
 WebGLScene.prototype = Object.create(Scene.prototype);
@@ -51,6 +55,7 @@ WebGLScene.prototype.render = function() {
 
 WebGLScene.prototype.runProgram = function() {
     this.app.mainPanel.on('activate.WebGLScene', null);
+    this.control.render();
     this.scene.add(this.gridHelper);
     this.scene.add(this.transformControls);
     this.createScene.call(this);

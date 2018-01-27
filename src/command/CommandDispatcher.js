@@ -1,5 +1,4 @@
 import { NewSceneCommand } from '../command/NewSceneCommand';
-import { NewStandardSceneCommand } from '../command/NewStandardSceneCommand';
 import { AddObjectCommand } from '../command/AddObjectCommand';
 
 /**
@@ -16,12 +15,6 @@ CommandDispatcher.prototype.dispatch = function(commandName) {
     switch (commandName) {
         case 'newScene':
             cmd = new NewSceneCommand({
-                app: this.app
-            });
-            cmd.run();
-            break;
-        case 'newStandardScene':
-            cmd = new NewStandardSceneCommand({
                 app: this.app
             });
             cmd.run();

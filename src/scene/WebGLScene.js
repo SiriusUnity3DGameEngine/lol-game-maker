@@ -27,6 +27,7 @@ function WebGLScene(options) {
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this.transformControls = new THREE.TransformControls(this.camera, this.renderer.domElement);
+    this.gui = new dat.GUI();
 }
 
 WebGLScene.prototype = Object.create(Scene.prototype);

@@ -20,7 +20,8 @@ On January 14, 2018， we add 10 `SvgElement`s. [Here](https://github.com/tengge
 
 ## Thanks To
 
-* Jquery-ui: https://github.com/jquery/jquery-ui
+* jQuery: https://jquery.com/
+* jQuery-ui: https://github.com/jquery/jquery-ui
 * Three.js: https://github.com/mrdoob/three.js
 * Tensorflow: https://github.com/tensorflow/tensorflow
 * Flask: https://github.com/pallets/flask
@@ -28,3 +29,5 @@ On January 14, 2018， we add 10 `SvgElement`s. [Here](https://github.com/tengge
 * Physijs: https://github.com/chandlerprall/Physijs
 * d3: https://github.com/d3/d3
 * rollup.js: https://rollupjs.org/
+* stats.js: https://github.com/mrdoob/stats.js
+* dat.gui: https://github.com/dataarts/dat.gui

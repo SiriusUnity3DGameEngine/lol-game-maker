@@ -9,6 +9,7 @@ import { AddLatheCommand } from './object/AddLatheCommand';
 import { AddOctahedronCommand } from './object/AddOctahedronCommand';
 import { AddParametricCommand } from './object/AddParametricCommand';
 import { AddPlaneCommand } from './object/AddPlaneCommand';
+import { AddRingCommand } from './object/AddRingCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -29,6 +30,7 @@ function CommandDispatcher(options) {
         new AddOctahedronCommand({ app: this.app }),
         new AddParametricCommand({ app: this.app }),
         new AddPlaneCommand({ app: this.app }),
+        new AddRingCommand({ app: this.app }),
     ];
 }
 

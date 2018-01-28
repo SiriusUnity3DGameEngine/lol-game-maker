@@ -2,6 +2,7 @@ import { AddBoxCommand } from './object/AddBoxCommand';
 import { AddCircleCommand } from './object/AddCircleCommand';
 import { AddConeCommand } from './object/AddConeCommand';
 import { AddCylinderCommand } from './object/AddCylinderCommand';
+import { AddDodecahedronCommand } from './object/AddDodecahedronCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -15,6 +16,7 @@ function CommandDispatcher(options) {
         new AddCircleCommand({ app: this.app }),
         new AddConeCommand({ app: this.app }),
         new AddCylinderCommand({ app: this.app }),
+        new AddDodecahedronCommand({ app: this.app }),
     ];
 }
 

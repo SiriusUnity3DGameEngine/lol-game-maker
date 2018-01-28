@@ -20,7 +20,7 @@ AddCircleCommand.prototype.init = function() {
 };
 
 AddCircleCommand.prototype.run = function() {
-    var geometry = new THREE.CircleBufferGeometry(5, 60);
+    var geometry = new THREE.CircleBufferGeometry(5);
     var material = new THREE.MeshPhongMaterial({
         side: THREE.DoubleSide
     });

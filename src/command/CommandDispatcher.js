@@ -1,5 +1,6 @@
 import { AddBoxCommand } from './object/AddBoxCommand';
 import { AddCircleCommand } from './object/AddCircleCommand';
+import { AddConeCommand } from './object/AddConeCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -11,6 +12,7 @@ function CommandDispatcher(options) {
     this.commands = [
         new AddBoxCommand({ app: this.app }),
         new AddCircleCommand({ app: this.app }),
+        new AddConeCommand({ app: this.app }),
     ];
 }
 

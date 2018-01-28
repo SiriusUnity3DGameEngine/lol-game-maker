@@ -9,8 +9,8 @@ function Scene(options) {
     options = options || {};
     this.app = options.app || null;
     this.name = options.name || 'Scene';
-    this.width = this.app.mainPanel.children[0].el.div.clientWidth;
-    this.height = this.app.mainPanel.children[0].el.div.clientHeight;
+    this.width = options.width || '900px';
+    this.height = options.height || '500px';
 }
 
 Scene.prototype = Object.create(UiControl.prototype);
@@ -22,6 +22,26 @@ Scene.prototype.getName = function() {
 
 Scene.prototype.setName = function(name) {
     this.name = name;
+};
+
+Scene.prototype.start = function() {
+
+};
+
+Scene.prototype.pause = function() {
+
+};
+
+Scene.prototype.stop = function() {
+
+};
+
+Scene.prototype.save = function() {
+
+};
+
+Scene.prototype.load = function() {
+
 };
 
 export { Scene };

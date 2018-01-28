@@ -13,7 +13,7 @@ function EditorNav(options) {
     this.menu = new EditorNavMenu({
         app: this.app
     });
-    this.app.menu = this.menu;
+    this.app.navMenu = this.menu;
 }
 
 EditorNav.prototype = Object.create(UiControl.prototype);

@@ -23,10 +23,6 @@ function EditorNavMenu(options) {
                 new UiMenuItem({
                     id: 'newScene',
                     text: 'New Scene'
-                }),
-                new UiMenuItem({
-                    id: 'newStandardScene',
-                    text: 'New Standard Scene'
                 })
             ]
         }),

@@ -1,5 +1,5 @@
-import { Scene } from './Scene';
-import { WebGLControl } from './webgl/WebGLControl';
+import { Scene } from '../Scene';
+import { WebGLControl } from './WebGLControl';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -37,14 +37,12 @@ function WebGLScene(options) {
 WebGLScene.prototype = Object.create(Scene.prototype);
 WebGLScene.prototype.constructor = WebGLScene;
 
-WebGLScene.prototype.render = function() {
+WebGLScene.prototype.start = function() {
     this.parent.appendChild(this.renderer.domElement);
     this.stats.dom.style.position = 'absolute';
     this.parent.appendChild(this.stats.dom);
     var _this = this;
-    this.app.mainPanel.on('activate.WebGLScene', function(event, ui) {
-        _this.runProgram.call(_this);
-    });
+    _this.runProgram.call(_this);
     this.dispatcher.on('mousemove.selectObject', function() {
         _this.onMouseMove.call(_this, d3.event);
     });

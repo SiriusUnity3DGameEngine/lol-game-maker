@@ -21,6 +21,12 @@ function UiTabsItem(options) {
 UiTabsItem.prototype = Object.create(UiControl.prototype);
 UiTabsItem.prototype.constructor = UiTabsItem;
 
+UiTabsItem.prototype.add = function(control) {
+    this.children.push(control);
+    control.parent = this.el.div;
+    control.render.call(control);
+};
+
 UiTabsItem.prototype.close = function() {
     var index = $(this.el.li).index();
     $(this.el.li).remove();

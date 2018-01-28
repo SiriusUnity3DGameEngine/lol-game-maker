@@ -39,6 +39,11 @@ var CustomEvents = [
     'play',
     'document',
     'about',
+
+    // ./scene/webgl/control/GlGUI.js
+    'translateObject',
+    'rotateObject',
+    'scaleObject',
 ];
 
 var NavMenus = [{

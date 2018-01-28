@@ -1,12 +1,13 @@
 import { Scene } from '../Scene';
 
 import { GlControl } from './control/GlControl';
-import { GlGridHelper } from './control/GlGridHelper';
 import { GlGUI } from './control/GlGUI';
 import { GlOrbitControls } from './control/GlOrbitControls';
 import { GlStats } from './control/GlStats';
 import { GlTransformControls } from './control/GlTransformControls';
-import { GlLight } from './control/GlLight';
+
+import { GlGridHelper } from './object/GlGridHelper';
+import { GlLight } from './object/GlLight';
 
 import { GlHoverObject } from './event/GlHoverObject';
 import { GlSelectObject } from './event/GlSelectObject';

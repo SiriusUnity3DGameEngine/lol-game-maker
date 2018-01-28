@@ -1,4 +1,4 @@
-import { GlControl } from './GlControl';
+import { GlControl } from '../control/GlControl';
 
 /**
  * @author tengge / https://github.com/tengge1

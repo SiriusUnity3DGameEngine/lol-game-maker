@@ -18,9 +18,11 @@ function GlLight(options) {
         new THREE.Color(0xffffff),
         0.8
     );
-    this.directionalLight.position.set(50, 50, 100);
-    this.directionalLight.lookAt(0, 0, 0);
+    this.directionalLight.position.set(30, 40, 50);
+    this.directionalLight.lookAt(new THREE.Vector3());
     this.app.directionalLight = this.directionalLight;
+
+    this.directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight, 5);
 }
 
 GlLight.prototype = Object.create(GlControl.prototype);
@@ -29,6 +31,7 @@ GlLight.prototype.constructor = GlLight;
 GlLight.prototype.start = function() {
     this.app.scene.add(this.ambientLight);
     this.app.scene.add(this.directionalLight);
+    this.app.scene.add(this.directionalLightHelper);
 };
 
 export { GlLight };

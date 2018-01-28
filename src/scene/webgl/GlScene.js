@@ -8,6 +8,7 @@ import { GlStats } from './control/GlStats';
 import { GlTransformControls } from './control/GlTransformControls';
 import { GlLight } from './control/GlLight';
 
+import { GlHoverObject } from './event/GlHoverObject';
 import { GlSelectObject } from './event/GlSelectObject';
 
 /**
@@ -31,7 +32,10 @@ function GlScene(options) {
     this.camera.lookAt(0, 0, 0);
     this.app.camera = this.camera;
 
-    this.renderer = options.renderer || new THREE.WebGLRenderer();
+    this.renderer = options.renderer || new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+    });
     this.renderer.setSize(this.width, this.height);
     this.app.renderer = this.renderer;
 
@@ -46,6 +50,7 @@ function GlScene(options) {
         new GlTransformControls({ app: this.app, parent: this.parent }),
         new GlSelectObject({ app: this.app, parent: this.parent }),
         new GlLight({ app: this.app, parent: this.parent }),
+        new GlHoverObject({ app: this.app, parent: this.parent })
     ];
 }
 

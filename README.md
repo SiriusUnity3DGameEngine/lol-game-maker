@@ -4,6 +4,10 @@ We will create a greate artificial intelligence (AI) with the theory of life evo
 
 ## Development Progress
 
+On January 28, 2018, we create the basic framework of OpenSeaAI Editor.
+
+![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAIEditor.png)
+
 On January 21, 2018, we add 5 `UiInteraction`s and 14 `UiControl`s based on jquery-ui. You can see [UI Interaction Test](https://github.com/tengge1/OpenSeaAI/blob/master/test/UiInteractionTest.html) and [UI Control Test](https://github.com/tengge1/OpenSeaAI/blob/master/test/UiControlTest.html) for more information.
 
 ![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/UiInteraction.png)

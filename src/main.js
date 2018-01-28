@@ -73,4 +73,4 @@ export { NewSceneCommand } from './command/NewSceneCommand';
 
 // scene
 export { Scene } from './scene/Scene';
-export { WebGLScene } from './scene/webgl/WebGLScene';
+export { GlScene } from './scene/webgl/GlScene';

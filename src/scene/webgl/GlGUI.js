@@ -4,7 +4,7 @@ import { UiControl } from '../../ui/UiControl';
  * @author tengge / https://github.com/tengge1
  */
 
-function WebGLUI(options) {
+function GlGUI(options) {
     UiControl.call(this, options);
     options = options || {};
     this.app = options.app || null;
@@ -21,10 +21,10 @@ function WebGLUI(options) {
     this.dispatch = d3.dispatch('change');
 }
 
-WebGLUI.prototype = Object.create(UiControl.prototype);
-WebGLUI.prototype.constructor = WebGLUI;
+GlGUI.prototype = Object.create(UiControl.prototype);
+GlGUI.prototype.constructor = GlGUI;
 
-WebGLUI.prototype.render = function() {
+GlGUI.prototype.render = function() {
     var _this = this;
     this.gui.add(this.controls, 'transform', ['translate', 'rotate', 'scale'])
         .onChange(function() {
@@ -32,8 +32,8 @@ WebGLUI.prototype.render = function() {
         });
 };
 
-WebGLUI.prototype.on = function(eventName, callback) {
+GlGUI.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { WebGLUI };
+export { GlGUI };

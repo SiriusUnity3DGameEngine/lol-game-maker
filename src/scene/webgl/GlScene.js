@@ -1,11 +1,11 @@
 import { Scene } from '../Scene';
-import { WebGLUI } from './WebGLUI';
+import { GlGUI } from './GlGUI';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function WebGLScene(options) {
+function GlScene(options) {
     Scene.call(this, options);
     options = options || {};
     this.name = options.name || 'WebGLScene';
@@ -28,16 +28,16 @@ function WebGLScene(options) {
     this.raycaster = new THREE.Raycaster();
     this.mouse = new THREE.Vector2();
     this.transformControls = new THREE.TransformControls(this.camera, this.renderer.domElement);
-    this.ui = new WebGLUI({
+    this.ui = new GlGUI({
         app: this.app,
         parent: this.parent
     });
 }
 
-WebGLScene.prototype = Object.create(Scene.prototype);
-WebGLScene.prototype.constructor = WebGLScene;
+GlScene.prototype = Object.create(Scene.prototype);
+GlScene.prototype.constructor = GlScene;
 
-WebGLScene.prototype.start = function() {
+GlScene.prototype.start = function() {
     this.parent.appendChild(this.renderer.domElement);
     this.stats.dom.style.position = 'absolute';
     this.parent.appendChild(this.stats.dom);
@@ -51,7 +51,7 @@ WebGLScene.prototype.start = function() {
     });
 };
 
-WebGLScene.prototype.runProgram = function() {
+GlScene.prototype.runProgram = function() {
     this.app.mainPanel.on('activate.WebGLScene', null);
     this.ui.render();
     this.scene.add(this.gridHelper);
@@ -60,11 +60,11 @@ WebGLScene.prototype.runProgram = function() {
     this.renderProc.call(this);
 };
 
-WebGLScene.prototype.createScene = function() {
+GlScene.prototype.createScene = function() {
     // You can add anything to the scene here.
 };
 
-WebGLScene.prototype.renderProc = function() {
+GlScene.prototype.renderProc = function() {
     this.stats.begin();
     this.animate();
     this.renderer.render(this.scene, this.camera);
@@ -75,16 +75,16 @@ WebGLScene.prototype.renderProc = function() {
     });
 }
 
-WebGLScene.prototype.animate = function() {
+GlScene.prototype.animate = function() {
     // You can do some animation here.
 };
 
-WebGLScene.prototype.onMouseMove = function(event) {
+GlScene.prototype.onMouseMove = function(event) {
     this.mouse.x = (event.clientX / this.width) * 2 - 1;
     this.mouse.y = -(event.clientY / this.height) * 2 + 1;
 };
 
-WebGLScene.prototype.onSelectObject = function() {
+GlScene.prototype.onSelectObject = function() {
     this.raycaster.setFromCamera(this.mouse, this.camera);
     var _this = this;
     var intersect = this.raycaster.intersectObjects(this.scene.children)
@@ -96,4 +96,4 @@ WebGLScene.prototype.onSelectObject = function() {
     }
 };
 
-export { WebGLScene };
+export { GlScene };

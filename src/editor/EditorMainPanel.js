@@ -1,6 +1,6 @@
 import { UiTabs } from '../ui/control/UiTabs';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { WebGLScene } from '../scene/webgl/WebGLScene';
+import { GlScene } from '../scene/webgl/GlScene';
 import { LogScene } from '../scene/log/LogScene';
 
 /**
@@ -56,15 +56,15 @@ EditorMainPanel.prototype.render = function() {
 };
 
 EditorMainPanel.prototype.onCreateTabs = function(event, ui) {
-    this.webglScene = new WebGLScene({
+    this.glScene = new GlScene({
         app: this.app,
         parent: this.sceneTab.el.div,
         width: ui.panel[0].clientWidth,
         height: ui.panel[0].clientHeight,
     });
-    this.app.webglScene = this.webglScene;
-    this.sceneTab.add(this.webglScene);
-    this.webglScene.start();
+    this.app.glScene = this.glScene;
+    this.sceneTab.add(this.glScene);
+    this.glScene.start();
 
     this.logScene = new LogScene({
         app: this.app,

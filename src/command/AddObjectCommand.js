@@ -1,6 +1,6 @@
 import { BaseCommand } from './BaseCommand';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { WebGLScene } from '../scene/webgl/WebGLScene';
+import { GlScene } from '../scene/webgl/GlScene';
 
 /**
  * @author tengge / https://github.com/tengge1

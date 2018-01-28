@@ -11,6 +11,8 @@ function Scene(options) {
     this.name = options.name || 'Scene';
     this.width = options.width || '900px';
     this.height = options.height || '500px';
+    this.app.sceneWidth = this.width;
+    this.app.sceneHeight = this.height;
 }
 
 Scene.prototype = Object.create(UiControl.prototype);

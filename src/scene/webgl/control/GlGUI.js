@@ -1,11 +1,11 @@
-import { UiControl } from '../../ui/UiControl';
+import { GlControl } from './GlControl';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function GlGUI(options) {
-    UiControl.call(this, options);
+    GlControl.call(this, options);
     options = options || {};
     this.app = options.app || null;
     this.gui = options.gui || new dat.GUI({
@@ -21,10 +21,10 @@ function GlGUI(options) {
     this.dispatch = d3.dispatch('change');
 }
 
-GlGUI.prototype = Object.create(UiControl.prototype);
+GlGUI.prototype = Object.create(GlControl.prototype);
 GlGUI.prototype.constructor = GlGUI;
 
-GlGUI.prototype.render = function() {
+GlGUI.prototype.start = function() {
     var _this = this;
     this.gui.add(this.controls, 'transform', ['translate', 'rotate', 'scale'])
         .onChange(function() {

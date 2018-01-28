@@ -58,6 +58,7 @@ EditorMainPanel.prototype.render = function() {
 EditorMainPanel.prototype.onCreateTabs = function(event, ui) {
     this.webglScene = new WebGLScene({
         app: this.app,
+        parent: this.sceneTab.el.div,
         width: ui.panel[0].clientWidth,
         height: ui.panel[0].clientHeight,
     });
@@ -67,6 +68,7 @@ EditorMainPanel.prototype.onCreateTabs = function(event, ui) {
 
     this.logScene = new LogScene({
         app: this.app,
+        parent: this.logTab.el.div,
         width: ui.panel[0].clientWidth,
         height: ui.panel[0].clientHeight,
     });

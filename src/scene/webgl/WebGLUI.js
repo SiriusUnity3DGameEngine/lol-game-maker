@@ -4,7 +4,7 @@ import { UiControl } from '../../ui/UiControl';
  * @author tengge / https://github.com/tengge1
  */
 
-function WebGLControl(options) {
+function WebGLUI(options) {
     UiControl.call(this, options);
     options = options || {};
     this.app = options.app || null;
@@ -13,18 +13,18 @@ function WebGLControl(options) {
     });
     this.parent.appendChild(this.gui.domElement);
     this.gui.domElement.style.position = 'absolute';
-    this.gui.domElement.style.top = '64px';
-    this.gui.domElement.style.right = '240px';
+    this.gui.domElement.style.top = '0';
+    this.gui.domElement.style.right = '0';
     this.controls = options.controls || new function() {
         this.transform = 'translate';
     };
     this.dispatch = d3.dispatch('change');
 }
 
-WebGLControl.prototype = Object.create(UiControl.prototype);
-WebGLControl.prototype.constructor = WebGLControl;
+WebGLUI.prototype = Object.create(UiControl.prototype);
+WebGLUI.prototype.constructor = WebGLUI;
 
-WebGLControl.prototype.render = function() {
+WebGLUI.prototype.render = function() {
     var _this = this;
     this.gui.add(this.controls, 'transform', ['translate', 'rotate', 'scale'])
         .onChange(function() {
@@ -32,8 +32,8 @@ WebGLControl.prototype.render = function() {
         });
 };
 
-WebGLControl.prototype.on = function(eventName, callback) {
+WebGLUI.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { WebGLControl };
+export { WebGLUI };

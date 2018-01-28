@@ -1,3 +1,6 @@
+// constant
+export * from './constant';
+
 // geometry
 export { Coordinate } from './geometry/Coordinate';
 export { Geometry } from './geometry/Geometry';
@@ -38,6 +41,9 @@ export { UiResizable } from './ui/interaction/UiResizable';
 export { UiSelectable } from './ui/interaction/UiSelectable';
 export { UiSortable } from './ui/interaction/UiSortable';
 export { UiHelper } from './ui/UiHelper';
+
+// event
+export { EventManager } from './event/EventManager';
 
 // svg
 export { SvgDom } from './svg/SvgDom';

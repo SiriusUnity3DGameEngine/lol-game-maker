@@ -4,9 +4,26 @@
 
 function BaseCommand(options) {
     options = options || {};
+    this.enabled = options.enabled || true;
 }
 
+BaseCommand.prototype.enable = function() {
+    this.enabled = true;
+};
+
+BaseCommand.prototype.disable = function() {
+    this.enabled = false;
+};
+
 BaseCommand.prototype.run = function() {
+
+};
+
+BaseCommand.prototype.undo = function() {
+
+};
+
+BaseCommand.prototype.redo = function() {
 
 };
 

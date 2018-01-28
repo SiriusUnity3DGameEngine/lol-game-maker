@@ -14,13 +14,13 @@ AddBoxCommand.prototype.constructor = AddBoxCommand;
 
 AddBoxCommand.prototype.init = function() {
     var _this = this;
-    this.app.event.on('addBox', function() {
+    this.app.event.on('addBox.command', function() {
         _this.run.call(_this);
     });
 };
 
 AddBoxCommand.prototype.run = function() {
-    var geometry = new THREE.BoxGeometry(5, 5, 5);
+    var geometry = new THREE.BoxBufferGeometry(5, 5, 5);
     var material = new THREE.MeshPhongMaterial();
     var mesh = new THREE.Mesh(geometry, material);
     this.app.scene.add(mesh);

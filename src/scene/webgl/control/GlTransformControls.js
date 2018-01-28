@@ -24,7 +24,10 @@ GlTransformControls.prototype.start = function() {
     var _this = this;
     this.app.scene.add(this.controls);
     this.app.glEvent.on('click.transformControl', function() {
-        _this.onClick.call(_this, d3.event);
+        _this.onMouseClick.call(_this, d3.event);
+    });
+    this.app.glEvent.on('dblclick.transformControl', function() {
+        _this.controls.detach();
     });
     this.app.event.on('translateObject', function() {
         _this.controls.setMode('translate');
@@ -37,7 +40,7 @@ GlTransformControls.prototype.start = function() {
     });
 };
 
-GlTransformControls.prototype.onClick = function(event) {
+GlTransformControls.prototype.onMouseClick = function(event) {
     this.mouse.x = (event.offsetX / this.app.sceneWidth) * 2 - 1;
     this.mouse.y = -(event.offsetY / this.app.sceneHeight) * 2 + 1;
     this.raycaster.setFromCamera(this.mouse, this.app.camera);
@@ -48,8 +51,6 @@ GlTransformControls.prototype.onClick = function(event) {
         })[0];
     if (intersect) {
         this.controls.attach(intersect.object);
-    } else {
-        this.controls.detach();
     }
 };
 

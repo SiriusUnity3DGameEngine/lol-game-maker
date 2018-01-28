@@ -6,6 +6,7 @@ import { AddDodecahedronCommand } from './object/AddDodecahedronCommand';
 import { AddExtrudeCommand } from './object/AddExtrudeCommand';
 import { AddIcosahedronCommand } from './object/AddIcosahedronCommand';
 import { AddLatheCommand } from './object/AddLatheCommand';
+import { AddOctahedronCommand } from './object/AddOctahedronCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -23,6 +24,7 @@ function CommandDispatcher(options) {
         new AddExtrudeCommand({ app: this.app }),
         new AddIcosahedronCommand({ app: this.app }),
         new AddLatheCommand({ app: this.app }),
+        new AddOctahedronCommand({ app: this.app })
     ];
 }
 

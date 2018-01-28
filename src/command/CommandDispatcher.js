@@ -10,6 +10,7 @@ import { AddOctahedronCommand } from './object/AddOctahedronCommand';
 import { AddParametricCommand } from './object/AddParametricCommand';
 import { AddPlaneCommand } from './object/AddPlaneCommand';
 import { AddRingCommand } from './object/AddRingCommand';
+import { AddSphereCommand } from './object/AddSphereCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -31,6 +32,7 @@ function CommandDispatcher(options) {
         new AddParametricCommand({ app: this.app }),
         new AddPlaneCommand({ app: this.app }),
         new AddRingCommand({ app: this.app }),
+        new AddSphereCommand({ app: this.app }),
     ];
 }
 

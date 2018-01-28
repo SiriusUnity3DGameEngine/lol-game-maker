@@ -16,6 +16,13 @@ BaseCommand.prototype.disable = function() {
     this.enabled = false;
 };
 
+/**
+ * Run the command when hear the specific custom event.
+ */
+BaseCommand.prototype.init = function() {
+
+};
+
 BaseCommand.prototype.run = function() {
 
 };

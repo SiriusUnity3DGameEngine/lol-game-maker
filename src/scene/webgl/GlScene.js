@@ -6,6 +6,7 @@ import { GlGUI } from './control/GlGUI';
 import { GlOrbitControls } from './control/GlOrbitControls';
 import { GlStats } from './control/GlStats';
 import { GlTransformControls } from './control/GlTransformControls';
+import { GlLight } from './control/GlLight';
 
 import { GlSelectObject } from './event/GlSelectObject';
 
@@ -44,6 +45,7 @@ function GlScene(options) {
         new GlStats({ app: this.app, parent: this.parent }),
         new GlTransformControls({ app: this.app, parent: this.parent }),
         new GlSelectObject({ app: this.app, parent: this.parent }),
+        new GlLight({ app: this.app, parent: this.parent }),
     ];
 }
 

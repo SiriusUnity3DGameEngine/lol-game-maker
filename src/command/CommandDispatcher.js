@@ -12,6 +12,8 @@ import { AddPlaneCommand } from './object/AddPlaneCommand';
 import { AddRingCommand } from './object/AddRingCommand';
 import { AddSphereCommand } from './object/AddSphereCommand';
 import { AddTetrahedronCommand } from './object/AddTetrahedronCommand';
+import { AddTorusCommand } from './object/AddTorusCommand';
+import { AddTorusKnotCommand } from './object/AddTorusKnotCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -35,6 +37,8 @@ function CommandDispatcher(options) {
         new AddRingCommand({ app: this.app }),
         new AddSphereCommand({ app: this.app }),
         new AddTetrahedronCommand({ app: this.app }),
+        new AddTorusCommand({ app: this.app }),
+        new AddTorusKnotCommand({ app: this.app }),
     ];
 }
 

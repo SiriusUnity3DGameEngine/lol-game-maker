@@ -128,9 +128,6 @@ var NavMenus = [{
         id: 'addTetrahedron',
         text: 'Tetrahedron'
     }, {
-        id: 'addText',
-        text: 'Text'
-    }, {
         id: 'addTorus',
         text: 'Torus'
     }, {

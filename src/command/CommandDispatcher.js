@@ -3,6 +3,7 @@ import { AddCircleCommand } from './object/AddCircleCommand';
 import { AddConeCommand } from './object/AddConeCommand';
 import { AddCylinderCommand } from './object/AddCylinderCommand';
 import { AddDodecahedronCommand } from './object/AddDodecahedronCommand';
+import { AddExtrudeCommand } from './object/AddExtrudeCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -17,6 +18,7 @@ function CommandDispatcher(options) {
         new AddConeCommand({ app: this.app }),
         new AddCylinderCommand({ app: this.app }),
         new AddDodecahedronCommand({ app: this.app }),
+        new AddExtrudeCommand({ app: this.app }),
     ];
 }
 

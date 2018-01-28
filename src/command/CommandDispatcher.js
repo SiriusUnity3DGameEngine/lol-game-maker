@@ -8,6 +8,7 @@ import { AddIcosahedronCommand } from './object/AddIcosahedronCommand';
 import { AddLatheCommand } from './object/AddLatheCommand';
 import { AddOctahedronCommand } from './object/AddOctahedronCommand';
 import { AddParametricCommand } from './object/AddParametricCommand';
+import { AddPlaneCommand } from './object/AddPlaneCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -27,6 +28,7 @@ function CommandDispatcher(options) {
         new AddLatheCommand({ app: this.app }),
         new AddOctahedronCommand({ app: this.app }),
         new AddParametricCommand({ app: this.app }),
+        new AddPlaneCommand({ app: this.app }),
     ];
 }
 

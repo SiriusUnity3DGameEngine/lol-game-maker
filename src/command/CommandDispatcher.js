@@ -1,5 +1,5 @@
-import { NewSceneCommand } from '../command/NewSceneCommand';
-import { AddObjectCommand } from '../command/AddObjectCommand';
+import { NewSceneCommand } from './scene/NewSceneCommand';
+import { AddObjectCommand } from './object/AddObjectCommand';
 
 /**
  * @author tengge / https://github.com/tengge1

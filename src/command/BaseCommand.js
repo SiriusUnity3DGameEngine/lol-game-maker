@@ -4,6 +4,7 @@
 
 function BaseCommand(options) {
     options = options || {};
+    this.app = options.app || null;
     this.enabled = options.enabled || true;
 }
 

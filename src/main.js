@@ -69,7 +69,7 @@ export { EditorPropertyPanel } from './editor/EditorPropertyPanel';
 // command
 export { BaseCommand } from './command/BaseCommand';
 export { CommandDispatcher } from './command/CommandDispatcher';
-export { NewSceneCommand } from './command/NewSceneCommand';
+export { NewSceneCommand } from './command/scene/NewSceneCommand';
 
 // scene
 export { Scene } from './scene/Scene';

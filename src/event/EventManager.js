@@ -11,6 +11,8 @@ import { CustomEvents } from '../constant';
  * `../constant.js` file.
  */
 function EventManager(options) {
+    options = options || {};
+    this.app = options.app || null;
     this.dispatch = d3.dispatch.apply(d3, CustomEvents);
 }
 
@@ -19,6 +21,9 @@ function EventManager(options) {
  * @params eventName, scope, arg1, arg2, arg3, ...
  */
 EventManager.prototype.call = function(eventName) {
+    if (this.app && this.app.debug) {
+        this.app.debug('Event `' + eventName + '` is called.');
+    }
     this.dispatch.call.apply(this.dispatch, arguments);
 };
 

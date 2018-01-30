@@ -8,4 +8,16 @@ function BaseProperty(options) {
     this.items = options.item || []; // PropertyItem Array
 }
 
+BaseProperty.prototype.filter = function() {
+    return false;
+};
+
+BaseProperty.prototype.getValue = function(name) {
+
+};
+
+BaseProperty.prototype.setValue = function(name, value) {
+
+};
+
 export { BaseProperty };

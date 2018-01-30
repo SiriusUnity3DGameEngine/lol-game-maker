@@ -17,6 +17,8 @@ body {
 
 
 
+
+
 /* nav menu */
 
 .nav {
@@ -49,6 +51,8 @@ body {
 
 
 
+
+
 /* box */
 
 .box {
@@ -56,6 +60,8 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
 
 
 
@@ -95,6 +101,8 @@ body {
 
 
 
+
+
 /* accordion */
 
 .right-panel {
@@ -106,4 +114,12 @@ body {
 
 .ui-widget-content {
     border: none;
+}
+
+
+
+/* zTree */
+
+.ztree li span {
+    color: white;
 }

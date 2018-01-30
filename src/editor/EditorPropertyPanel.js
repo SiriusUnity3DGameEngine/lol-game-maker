@@ -1,8 +1,7 @@
 import { UiControl } from '../ui/UiControl';
 import { UiTabs } from '../ui/control/UiTabs';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { UiAccordion } from '../ui/control/UiAccordion';
-import { UiAccordionItem } from '../ui/control/UiAccordionItem';
+import { UiTree } from '../ui/control/UiTree';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -14,10 +13,19 @@ function EditorPropertyPanel(options) {
     this.app = options.app || null;
     this.cls = 'right-panel ui-widget-content';
 
+    this.hierarchy = new UiTree({
+        data: [{
+            name: 'Camera'
+        }, {
+            name: 'Light'
+        }]
+    });
+    this.app.hierarchy = this.hierarchy;
+
     this.topPanel = new UiTabs({
         fit: true,
         children: [
-            new UiTabsItem({ title: 'Hierarchy', html: 'content 1' }),
+            new UiTabsItem({ title: 'Hierarchy', children: [this.hierarchy] }),
             new UiTabsItem({ title: 'Settings', html: 'content 2' }),
         ]
     });
@@ -28,6 +36,8 @@ function EditorPropertyPanel(options) {
             new UiTabsItem({ title: 'Animation', html: 'content 2' }),
         ]
     });
+    this.app.topPanel = this.topPanel;
+    this.app.bottomPanel = this.bottomPanel;
 }
 
 EditorPropertyPanel.prototype = Object.create(UiControl.prototype);

@@ -42,9 +42,11 @@ GlHoverObject.prototype.onMouseMove = function(event) {
             return o.object instanceof THREE.Mesh &&
                 o.object != _this.app.gridHelper;
         }).forEach(function(n) {
-            n.object.material.oldColor = n.object.material.color.clone();
-            n.object.material.color = new THREE.Color(0xffff00);
-            n.object.material.needsUpdate = true;
+            if (n.object.material.oldColor == null || n.object.material.color.getHex() == n.object.material.oldColor.getHex()) {
+                n.object.material.oldColor = n.object.material.color;
+                n.object.material.color = new THREE.Color(0xffff00);
+                n.object.material.needsUpdate = true;
+            }
         });
 };
 

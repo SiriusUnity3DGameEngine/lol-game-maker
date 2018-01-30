@@ -22,7 +22,7 @@ function GlLight(options) {
     this.directionalLight.lookAt(new THREE.Vector3());
     this.app.directionalLight = this.directionalLight;
 
-    this.directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight, 5);
+    this.directionalLightHelper = new THREE.DirectionalLightHelper(this.directionalLight);
 }
 
 GlLight.prototype = Object.create(GlControl.prototype);

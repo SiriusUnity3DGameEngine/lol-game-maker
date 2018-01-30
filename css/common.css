@@ -77,7 +77,6 @@ body {
 
 .ui-tabs .ui-tabs-panel {
     position: relative;
-    height: calc(100% - 35.33px) !important;
     padding: 0;
     overflow: hidden !important;
     font-size: 1.0em;

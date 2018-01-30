@@ -21,22 +21,6 @@ AddTubeCommand.prototype.init = function() {
 
 AddTubeCommand.prototype.run = function() {
 
-    function CustomSinCurve(scale) {
-        this.scale = (scale === undefined) ? 1 : scale;
-    }
-
-    CustomSinCurve.prototype = Object.create(THREE.Curve.prototype);
-    CustomSinCurve.prototype.constructor = CustomSinCurve;
-
-    CustomSinCurve.prototype.getPoint = function(t) {
-        var tx = t * 3 - 1.5;
-        var ty = Math.sin(2 * Math.PI * t);
-        var tz = 0;
-        return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
-    };
-
-    var path = new CustomSinCurve(100);
-
     var curve = new THREE.CatmullRomCurve3([
         new THREE.Vector3(-10, 0, 10),
         new THREE.Vector3(-5, 5, 5),

@@ -39,9 +39,10 @@ GlHoverObject.prototype.onMouseMove = function(event) {
     });
     this.raycaster.intersectObjects(this.app.scene.children)
         .filter(function(o) {
-            return o.object != _this.app.gridHelper;
+            return o.object instanceof THREE.Mesh &&
+                o.object != _this.app.gridHelper;
         }).forEach(function(n) {
-            n.object.material.oldColor = n.object.material.color;
+            n.object.material.oldColor = n.object.material.color.clone();
             n.object.material.color = new THREE.Color(0xffff00);
             n.object.material.needsUpdate = true;
         });

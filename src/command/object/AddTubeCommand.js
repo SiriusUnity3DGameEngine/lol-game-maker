@@ -35,10 +35,20 @@ AddTubeCommand.prototype.run = function() {
         return new THREE.Vector3(tx, ty, tz).multiplyScalar(this.scale);
     };
 
-    var path = new CustomSinCurve(10);
+    var path = new CustomSinCurve(100);
 
-    var geometry = new THREE.TubeBufferGeometry(path, 20, 2, 8, false);
-    var material = new THREE.MeshPhongMaterial();
+    var curve = new THREE.CatmullRomCurve3([
+        new THREE.Vector3(-10, 0, 10),
+        new THREE.Vector3(-5, 5, 5),
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(5, -5, 5),
+        new THREE.Vector3(10, 0, 10)
+    ]);
+
+    var geometry = new THREE.TubeBufferGeometry(curve, 20, 2, 8, false);
+    var material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide
+    });
     var mesh = new THREE.Mesh(geometry, material);
     this.app.scene.add(mesh);
 };

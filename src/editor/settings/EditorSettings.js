@@ -1,5 +1,6 @@
 import { UiControl } from '../../ui/UiControl';
 import { UiFieldset } from '../../ui/control/UiFieldset';
+import { UiColorPicker } from '../../ui/control/UiColorPicker';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -7,9 +8,15 @@ import { UiFieldset } from '../../ui/control/UiFieldset';
 
 function EditorSettings(options) {
     UiControl.call(this, options);
+    this.fogColor = new UiColorPicker({
+        parent: this.parent
+    });
     this.children = [
         new UiFieldset({
-            title: 'Fog'
+            title: 'Fog',
+            children: [
+                this.fogColor
+            ]
         })
     ];
 }

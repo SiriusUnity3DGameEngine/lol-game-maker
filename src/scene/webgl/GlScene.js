@@ -8,6 +8,7 @@ import { GlTransformControls } from './control/GlTransformControls';
 
 import { GlGridHelper } from './object/GlGridHelper';
 import { GlLight } from './object/GlLight';
+import { GlAxisHelper } from './object/GlAxisHelper';
 
 import { GlHoverObject } from './event/GlHoverObject';
 import { GlSelectObject } from './event/GlSelectObject';
@@ -45,13 +46,14 @@ function GlScene(options) {
 
     this.children = [
         new GlGridHelper({ app: this.app, parent: this.parent }),
+        new GlAxisHelper({ app: this.app, parent: this.parent }),
         new GlGUI({ app: this.app, parent: this.parent }),
         new GlOrbitControls({ app: this.app, parent: this.parent }),
         new GlStats({ app: this.app, parent: this.parent }),
         new GlTransformControls({ app: this.app, parent: this.parent }),
         new GlSelectObject({ app: this.app, parent: this.parent }),
         new GlLight({ app: this.app, parent: this.parent }),
-        new GlHoverObject({ app: this.app, parent: this.parent })
+        new GlHoverObject({ app: this.app, parent: this.parent }),
     ];
 }
 

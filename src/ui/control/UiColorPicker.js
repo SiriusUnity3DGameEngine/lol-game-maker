@@ -10,6 +10,7 @@ function UiColorPicker(options) {
     UiControl.call(this, options);
     options = options || {};
     this.id = options.id || 'colorpicker' + ID--;
+    this.label = options.label || null;
     this.color = options.color || null; // #ffffff
     this.defaultPalette = options.defaultPalette || 'web';
     this.displayIndicator = options.displayIndicator || false;
@@ -25,10 +26,18 @@ UiColorPicker.prototype = Object.create(UiControl.prototype);
 UiColorPicker.prototype.constructor = UiColorPicker;
 
 UiColorPicker.prototype.render = function() {
+    this.el.div = document.createElement('div');
+    this.parent.appendChild(this.el.div);
+    if (this.label) {
+        this.el.label = document.createElement('label');
+        this.el.label.innerHTML = this.label;
+        this.el.div.appendChild(this.el.label);
+    }
     this.el.input = document.createElement('input');
     this.el.input.setAttribute('id', this.id);
-    this.parent.appendChild(this.el.input);
+    this.el.div.appendChild(this.el.input);
     $(this.el.input).colorpicker();
+    $(this.el.div).controlgroup();
     var _this = this;
     $(this.el.input).on('change.color', function(event, color) {
         _this.dispatch.call('changeColor', _this, color);

@@ -19,6 +19,7 @@ body {
 
 
 
+
 /* nav menu */
 
 .nav {
@@ -53,6 +54,7 @@ body {
 
 
 
+
 /* box */
 
 .box {
@@ -60,6 +62,7 @@ body {
     width: 100%;
     height: 100%;
 }
+
 
 
 
@@ -103,6 +106,7 @@ body {
 
 
 
+
 /* accordion */
 
 .right-panel {
@@ -118,8 +122,16 @@ body {
 
 
 
+
 /* zTree */
 
 .ztree li span {
     color: white;
+}
+
+
+/* colorpicker */
+
+.evo-cp-wrap {
+    display: inline-block;
 }

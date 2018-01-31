@@ -1,4 +1,4 @@
-# Open Sea AI
+﻿# Open Sea AI
 
 We will create a greate artificial intelligence (AI) with the theory of life evolution and the neural network evolution. Genetic information carried by DNA molecules is a neural network model. The AI who win the game will have a greater influence on its children.
 
@@ -25,3 +25,4 @@ On January 14, 2018， we add 10 `SvgElement`s. Click [here](https://github.com/
 * rollup.js: https://rollupjs.org/
 * stats.js: https://github.com/mrdoob/stats.js
 * dat.gui: https://github.com/dataarts/dat.gui
+* colorpicker: https://github.com/evoluteur/colorpicker

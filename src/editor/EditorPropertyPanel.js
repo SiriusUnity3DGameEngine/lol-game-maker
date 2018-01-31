@@ -2,6 +2,7 @@ import { UiControl } from '../ui/UiControl';
 import { UiTabs } from '../ui/control/UiTabs';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
 import { UiTree } from '../ui/control/UiTree';
+import { EditorSettings } from './settings/EditorSettings';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -22,11 +23,23 @@ function EditorPropertyPanel(options) {
     });
     this.app.hierarchy = this.hierarchy;
 
+    this.editorSettings = new EditorSettings({ app: this.app });
+    this.app.editorSettings = this.editorSettings;
     this.topPanel = new UiTabs({
         fit: true,
         children: [
-            new UiTabsItem({ title: 'Hierarchy', children: [this.hierarchy] }),
-            new UiTabsItem({ title: 'Settings', html: 'content 2' }),
+            new UiTabsItem({
+                title: 'Hierarchy',
+                children: [
+                    this.hierarchy
+                ]
+            }),
+            new UiTabsItem({
+                title: 'Settings',
+                children: [
+                    this.editorSettings
+                ]
+            }),
         ]
     });
     this.bottomPanel = new UiTabs({

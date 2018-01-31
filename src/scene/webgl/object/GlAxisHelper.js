@@ -7,7 +7,7 @@ import { GlControl } from '../control/GlControl';
 function GlAxisHelper(options) {
     GlControl.call(this, options);
     options = options || {};
-    this.axisHelper = new THREE.AxisHelper();
+    this.axisHelper = new THREE.AxesHelper();
     this.axisHelper.position.set(0, 1, 0);
     this.app.axisHelper = this.axisHelper;
 }

@@ -1,20 +1,20 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiCheckBox(options) {
-    UiControl.call(this, options);
+function CheckBox(options) {
+    Control.call(this, options);
     options = options || {};
     this.label = options.label || null;
     this.value = options.value || null;
 }
 
-UiCheckBox.prototype = Object.create(UiControl.prototype);
-UiCheckBox.prototype.constructor = UiCheckBox;
+CheckBox.prototype = Object.create(Control.prototype);
+CheckBox.prototype.constructor = CheckBox;
 
-UiCheckBox.prototype.render = function() {
+CheckBox.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.parent.appendChild(this.el.div);
     if (this.label) {
@@ -29,4 +29,4 @@ UiCheckBox.prototype.render = function() {
     $(this.el.div).controlgroup();
 };
 
-export { UiCheckBox };
+export { CheckBox };

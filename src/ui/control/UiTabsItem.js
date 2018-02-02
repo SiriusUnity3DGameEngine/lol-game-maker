@@ -1,4 +1,4 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -7,7 +7,7 @@ import { UiControl } from '../UiControl';
 var ID = -1;
 
 function UiTabsItem(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.id = options.id || 'tabitem' + ID--;
     this.title = options.title || 'Tab';
@@ -18,7 +18,7 @@ function UiTabsItem(options) {
     this.tabs = options.tabs || null;
 }
 
-UiTabsItem.prototype = Object.create(UiControl.prototype);
+UiTabsItem.prototype = Object.create(Control.prototype);
 UiTabsItem.prototype.constructor = UiTabsItem;
 
 UiTabsItem.prototype.add = function(control) {

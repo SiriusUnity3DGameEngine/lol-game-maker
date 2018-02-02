@@ -13,20 +13,20 @@
     <script>
     var start = function() {
         // interaction
-        var draggable = new AI.UiDraggable();
-        var droppable = new AI.UiDroppable();
+        var draggable = new AI.Draggable();
+        var droppable = new AI.Droppable();
         droppable.on('drop', function(event, ui) {
             this.target.style.backgroundColor = 'yellow';
         });
-        var resizable = new AI.UiResizable();
-        var selectable = new AI.UiSelectable();
-        var sortable = new AI.UiSortable();
+        var resizable = new AI.Resizable();
+        var selectable = new AI.Selectable();
+        var sortable = new AI.Sortable();
 
         // draggable
         var control = new AI.UiRect({
             text: 'Draggable'
         });
-        var container = new AI.UiFixedContainer({
+        var container = new AI.FixedContainer({
             children: [control],
             float: 'left'
         });
@@ -34,7 +34,7 @@
         draggable.apply(control);
 
         // droppable
-        container = new AI.UiFixedContainer({
+        container = new AI.FixedContainer({
             children: [],
             html: 'Drop something here.',
             float: 'left'
@@ -43,7 +43,7 @@
         droppable.apply(container);
 
         // resizable
-        container = new AI.UiFixedContainer({
+        container = new AI.FixedContainer({
             children: [],
             html: 'This is resizable.',
             float: 'left'
@@ -60,7 +60,7 @@
                 'List Item 4'
             ]
         });
-        container = new AI.UiFixedContainer({
+        container = new AI.FixedContainer({
             children: [
                 list
             ],

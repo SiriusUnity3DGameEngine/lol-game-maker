@@ -1,11 +1,11 @@
-import { UiControl } from '../ui/UiControl';
+import { Control } from '../ui/Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function Scene(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.app = options.app || null;
     this.name = options.name || 'Scene';
@@ -15,7 +15,7 @@ function Scene(options) {
     this.app.sceneHeight = this.height;
 }
 
-Scene.prototype = Object.create(UiControl.prototype);
+Scene.prototype = Object.create(Control.prototype);
 Scene.prototype.constructor = Scene;
 
 Scene.prototype.getName = function() {

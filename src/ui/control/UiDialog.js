@@ -1,18 +1,18 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiDialog(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.title = options.title || 'Dialog';
     this.html = options.html || null;
     this.children = options.children || [];
 }
 
-UiDialog.prototype = Object.create(UiControl.prototype);
+UiDialog.prototype = Object.create(Control.prototype);
 UiDialog.prototype.constructor = UiDialog;
 
 UiDialog.prototype.render = function() {

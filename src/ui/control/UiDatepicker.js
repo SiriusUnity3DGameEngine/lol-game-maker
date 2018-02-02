@@ -1,21 +1,21 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiDatepicker(options) {
-    UiControl.call(this, options);
+function Datepicker(options) {
+    Control.call(this, options);
     options = options || {};
 }
 
-UiDatepicker.prototype = Object.create(UiControl.prototype);
-UiDatepicker.prototype.constructor = UiDatepicker;
+Datepicker.prototype = Object.create(Control.prototype);
+Datepicker.prototype.constructor = Datepicker;
 
-UiDatepicker.prototype.render = function() {
+Datepicker.prototype.render = function() {
     this.el.input = document.createElement('input');
     this.parent.appendChild(this.el.input);
     $(this.el.input).datepicker();
 };
 
-export { UiDatepicker };
+export { Datepicker };

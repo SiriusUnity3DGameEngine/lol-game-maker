@@ -1,19 +1,19 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiAutocomplete(options) {
-    UiControl.call(this, options);
+function Autocomplete(options) {
+    Control.call(this, options);
     options = options || {};
     this.source = options.source || [];
 }
 
-UiAutocomplete.prototype = Object.create(UiControl.prototype);
-UiAutocomplete.prototype.constructor = UiAutocomplete;
+Autocomplete.prototype = Object.create(Control.prototype);
+Autocomplete.prototype.constructor = Autocomplete;
 
-UiAutocomplete.prototype.render = function() {
+Autocomplete.prototype.render = function() {
     this.el.input = document.createElement('input');
     this.parent.appendChild(this.el.input);
     $(this.el.input).autocomplete({
@@ -21,4 +21,4 @@ UiAutocomplete.prototype.render = function() {
     });
 };
 
-export { UiAutocomplete };
+export { Autocomplete };

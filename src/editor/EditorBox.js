@@ -1,4 +1,4 @@
-import { UiControl } from '../ui/UiControl';
+import { Control } from '../ui/Control';
 import { EditorMainPanel } from './EditorMainPanel';
 import { EditorPropertyPanel } from './EditorPropertyPanel.js';
 
@@ -7,7 +7,7 @@ import { EditorPropertyPanel } from './EditorPropertyPanel.js';
  */
 
 function EditorBox(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.app = options.app || null;
     this.cls = options.cls || 'box';
@@ -21,7 +21,7 @@ function EditorBox(options) {
     this.app.propertyPanel = this.propertyPanel;
 }
 
-EditorBox.prototype = Object.create(UiControl.prototype);
+EditorBox.prototype = Object.create(Control.prototype);
 EditorBox.prototype.constructor = EditorBox;
 
 EditorBox.prototype.render = function() {

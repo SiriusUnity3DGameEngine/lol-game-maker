@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiAccordion(options) {
-    UiControl.call(this, options);
+function Accordion(options) {
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || null;
     this.cls = options.cls || null;
@@ -13,10 +13,10 @@ function UiAccordion(options) {
     this.children = options.children || [];
 }
 
-UiAccordion.prototype = Object.create(UiControl.prototype);
-UiAccordion.prototype.constructor = UiAccordion;
+Accordion.prototype = Object.create(Control.prototype);
+Accordion.prototype.constructor = Accordion;
 
-UiAccordion.prototype.render = function() {
+Accordion.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.el.div.className = this.cls;
     this.el.div.style.width = this.width;
@@ -31,4 +31,4 @@ UiAccordion.prototype.render = function() {
     });
 };
 
-export { UiAccordion };
+export { Accordion };

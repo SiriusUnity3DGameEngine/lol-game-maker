@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiRect(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || '100px';
     this.height = options.height || '80px';
@@ -14,7 +14,7 @@ function UiRect(options) {
     this.text = options.text || 'UiRect';
 }
 
-UiRect.prototype = Object.create(UiControl.prototype);
+UiRect.prototype = Object.create(Control.prototype);
 UiRect.prototype.constructor = UiRect;
 
 UiRect.prototype.render = function() {

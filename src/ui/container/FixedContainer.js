@@ -1,7 +1,7 @@
-import { UiContainer } from '../UiContainer';
+import { Container } from '../Container';
 
-function UiFixedContainer(options) {
-    UiContainer.call(this, options);
+function FixedContainer(options) {
+    Container.call(this, options);
     this.children = options.children || [];
     this.width = options.width || '220px'
     this.height = options.height || '120px';
@@ -16,10 +16,10 @@ function UiFixedContainer(options) {
     this.cls = options.cls || null;
 }
 
-UiFixedContainer.prototype = Object.create(UiContainer.prototype);
-UiFixedContainer.prototype.constructor = UiFixedContainer;
+FixedContainer.prototype = Object.create(Container.prototype);
+FixedContainer.prototype.constructor = FixedContainer;
 
-UiFixedContainer.prototype.render = function() {
+FixedContainer.prototype.render = function() {
     this.el = document.createElement('div');
     this.el.style.width = this.width;
     this.el.style.height = this.height;
@@ -40,4 +40,4 @@ UiFixedContainer.prototype.render = function() {
     });
 };
 
-export { UiFixedContainer };
+export { FixedContainer };

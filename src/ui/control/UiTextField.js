@@ -1,17 +1,17 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiTextField(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.label = options.label || null;
     this.value = options.value || null;
 }
 
-UiTextField.prototype = Object.create(UiControl.prototype);
+UiTextField.prototype = Object.create(Control.prototype);
 UiTextField.prototype.constructor = UiTextField;
 
 UiTextField.prototype.render = function() {

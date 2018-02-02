@@ -1,23 +1,23 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiButton(options) {
-    UiControl.call(this, options);
+function Button(options) {
+    Control.call(this, options);
     options = options || {};
     this.text = options.text || 'Button';
 }
 
-UiButton.prototype = Object.create(UiControl.prototype);
-UiButton.prototype.constructor = UiButton;
+Button.prototype = Object.create(Control.prototype);
+Button.prototype.constructor = Button;
 
-UiButton.prototype.render = function() {
+Button.prototype.render = function() {
     this.el.button = document.createElement('button');
     this.el.button.innerHTML = this.text;
     this.parent.appendChild(this.el.button);
     $(this.el.button).button();
 };
 
-export { UiButton };
+export { Button };

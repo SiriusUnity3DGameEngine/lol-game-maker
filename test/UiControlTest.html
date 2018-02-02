@@ -12,45 +12,45 @@
     <script src="../dist/OpenSeaAI.js"></script>
     <script>
     var start = function() {
-        var accordion = new AI.UiAccordion({
+        var accordion = new AI.Accordion({
             width: '280px',
             children: [
-                new AI.UiAccordionItem({ title: 'Tab 1', html: 'This is tab 1 content' }),
-                new AI.UiAccordionItem({ title: 'Tab 2', html: 'This is tab 2 content' }),
-                new AI.UiAccordionItem({ title: 'Tab 3', html: 'This is tab 3 content' }),
+                new AI.AccordionItem({ title: 'Tab 1', html: 'This is tab 1 content' }),
+                new AI.AccordionItem({ title: 'Tab 2', html: 'This is tab 2 content' }),
+                new AI.AccordionItem({ title: 'Tab 3', html: 'This is tab 3 content' }),
             ]
         });
         accordion.render();
 
-        var autocomplete = new AI.UiAutocomplete({
+        var autocomplete = new AI.Autocomplete({
             source: ['Dog', 'Cat', 'Car', 'Apple']
         });
         autocomplete.render();
 
-        var button = new AI.UiButton();
+        var button = new AI.Button();
         button.render();
 
-        var radio = new AI.UiCheckboxradio({
+        var radio = new AI.CheckBoxradio({
             type: 'radio',
             text: 'Radio'
         });
         radio.render();
 
-        var checkbox = new AI.UiCheckboxradio({
+        var checkbox = new AI.CheckBoxradio({
             type: 'checkbox',
             text: 'Checkbox'
         });
         checkbox.render();
 
-        var group = new AI.UiControlgroup({
+        var group = new AI.Controlgroup({
             children: [
-                new AI.UiButton({ text: 'Button 1' }),
-                new AI.UiButton({ text: 'Button 2' })
+                new AI.Button({ text: 'Button 1' }),
+                new AI.Button({ text: 'Button 2' })
             ]
         });
         group.render();
 
-        var datepicker = new AI.UiDatepicker();
+        var datepicker = new AI.Datepicker();
         datepicker.render();
 
         var dialog = new AI.UiDialog({

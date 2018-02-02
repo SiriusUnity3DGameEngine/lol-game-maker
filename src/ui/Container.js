@@ -1,39 +1,39 @@
-import { UiControl } from './UiControl';
+import { Control } from './Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiContainer(options) {
-    UiControl.call(this, options);
+function Container(options) {
+    Control.call(this, options);
 
     options = options || {};
     this.children = options.children || [];
 }
 
-UiContainer.prototype = Object.create(UiControl.prototype);
-UiContainer.prototype.constructor = UiContainer;
+Container.prototype = Object.create(Control.prototype);
+Container.prototype.constructor = Container;
 
-UiContainer.prototype.add = function(control) {
+Container.prototype.add = function(control) {
     this.children.push(control);
 };
 
-UiContainer.prototype.insert = function(index, control) {
+Container.prototype.insert = function(index, control) {
     this.children.splice(index, 0, control);
 };
 
-UiContainer.prototype.remove = function(control) {
+Container.prototype.remove = function(control) {
     var index = this.children.indexOf(control);
     if (index > -1) {
         this.removeAt(index);
     }
 };
 
-UiContainer.prototype.removeAt = function(index) {
+Container.prototype.removeAt = function(index) {
     this.children.splice(index, 1);
 };
 
-UiContainer.prototype.render = function() {
+Container.prototype.render = function() {
     this.el = document.createElement('div');
     var _this = this;
     this.children.forEach(function(n, i) {
@@ -42,4 +42,4 @@ UiContainer.prototype.render = function() {
     });
 };
 
-export { UiContainer };
+export { Container };

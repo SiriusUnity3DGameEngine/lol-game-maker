@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiList(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || '100px';
     this.height = options.height || 'auto';
@@ -14,7 +14,7 @@ function UiList(options) {
     this.itemStyle = options.itemStyle || 'border: 1px solid #ccc; margin: 1px;';
 }
 
-UiList.prototype = Object.create(UiControl.prototype);
+UiList.prototype = Object.create(Control.prototype);
 UiList.prototype.constructor = UiList;
 
 UiList.prototype.render = function() {

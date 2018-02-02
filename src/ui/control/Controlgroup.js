@@ -1,20 +1,20 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiControlgroup(options) {
-    UiControl.call(this, options);
+function Controlgroup(options) {
+    Control.call(this, options);
     options = options || {};
     this.children = options.children || [];
     this.direction = options.direction || 'vertical'; // horizontal, vertical
 }
 
-UiControlgroup.prototype = Object.create(UiControl.prototype);
-UiControlgroup.prototype.constructor = UiControlgroup;
+Controlgroup.prototype = Object.create(Control.prototype);
+Controlgroup.prototype.constructor = Controlgroup;
 
-UiControlgroup.prototype.render = function() {
+Controlgroup.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.parent.appendChild(this.el.div);
     var _this = this;
@@ -27,4 +27,4 @@ UiControlgroup.prototype.render = function() {
     });
 };
 
-export { UiControlgroup };
+export { Controlgroup };

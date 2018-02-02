@@ -1,17 +1,17 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiProgressbar(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || null;
     this.value = options.value || 0;
 }
 
-UiProgressbar.prototype = Object.create(UiControl.prototype);
+UiProgressbar.prototype = Object.create(Control.prototype);
 UiProgressbar.prototype.constructor = UiProgressbar;
 
 UiProgressbar.prototype.render = function() {

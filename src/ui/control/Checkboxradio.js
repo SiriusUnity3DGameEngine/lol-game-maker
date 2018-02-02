@@ -1,21 +1,21 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiCheckboxradio(options) {
-    UiControl.call(this, options);
+function CheckBoxradio(options) {
+    Control.call(this, options);
     options = options || {};
     this.text = options.text || 'Label';
     this.type = options.type || 'radio'; // radio, checkbox
 }
 
-UiCheckboxradio.prototype = Object.create(UiControl.prototype);
-UiCheckboxradio.prototype.constructor = UiCheckboxradio;
+CheckBoxradio.prototype = Object.create(Control.prototype);
+CheckBoxradio.prototype.constructor = CheckBoxradio;
 
-UiCheckboxradio.prototype.render = function() {
-    var index = UiCheckboxradio.index++;
+CheckBoxradio.prototype.render = function() {
+    var index = CheckBoxradio.index++;
     this.el.label = document.createElement('label');
     this.el.label.setAttribute('for', this.type + index);
     this.el.label.innerHTML = this.text;
@@ -30,6 +30,6 @@ UiCheckboxradio.prototype.render = function() {
     $(this.el.input).checkboxradio();
 };
 
-UiCheckboxradio.index = 1;
+CheckBoxradio.index = 1;
 
-export { UiCheckboxradio };
+export { CheckBoxradio };

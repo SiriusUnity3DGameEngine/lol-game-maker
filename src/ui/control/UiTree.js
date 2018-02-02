@@ -1,4 +1,4 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -7,7 +7,7 @@ import { UiControl } from '../UiControl';
 var ID = -1;
 
 function UiTree(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.id = options.id || 'tree' + ID--;
     this.setting = options.setting || {
@@ -16,7 +16,7 @@ function UiTree(options) {
     this.data = options.data || [];
 }
 
-UiTree.prototype = Object.create(UiControl.prototype);
+UiTree.prototype = Object.create(Control.prototype);
 UiTree.prototype.constructor = UiTree;
 
 UiTree.prototype.render = function() {

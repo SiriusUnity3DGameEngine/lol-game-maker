@@ -2,14 +2,14 @@
  * @author tengge / https://github.com/tengge1
  */
 
-function UiControl(options) {
+function Control(options) {
     options = options || {};
     this.parent = options.parent || document.body;
     this.el = {};
 }
 
-UiControl.prototype.render = function() {
+Control.prototype.render = function() {
 
 };
 
-export { UiControl };
+export { Control };

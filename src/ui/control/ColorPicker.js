@@ -1,4 +1,4 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -6,8 +6,8 @@ import { UiControl } from '../UiControl';
 
 var ID = -1;
 
-function UiColorPicker(options) {
-    UiControl.call(this, options);
+function ColorPicker(options) {
+    Control.call(this, options);
     options = options || {};
     this.id = options.id || 'colorpicker' + ID--;
     this.label = options.label || null;
@@ -22,10 +22,10 @@ function UiColorPicker(options) {
     this.dispatch = d3.dispatch('changeColor', 'mouseoverColor');
 }
 
-UiColorPicker.prototype = Object.create(UiControl.prototype);
-UiColorPicker.prototype.constructor = UiColorPicker;
+ColorPicker.prototype = Object.create(Control.prototype);
+ColorPicker.prototype.constructor = ColorPicker;
 
-UiColorPicker.prototype.render = function() {
+ColorPicker.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.parent.appendChild(this.el.div);
     if (this.label) {
@@ -47,40 +47,40 @@ UiColorPicker.prototype.render = function() {
     });
 };
 
-UiColorPicker.prototype.clear = function() {
+ColorPicker.prototype.clear = function() {
     $(this.el.input).colorpicker('clear');
 };
 
-UiColorPicker.prototype.enable = function() {
+ColorPicker.prototype.enable = function() {
     $(this.el.input).colorpicker('enable');
 };
 
-UiColorPicker.prototype.disable = function() {
+ColorPicker.prototype.disable = function() {
     $(this.el.input).colorpicker('disable');
 };
 
-UiColorPicker.prototype.isDisabled = function() {
+ColorPicker.prototype.isDisabled = function() {
     $(this.el.input).colorpicker('isDisabled');
 };
 
-UiColorPicker.prototype.val = function(color) { // #d0d0d0
+ColorPicker.prototype.val = function(color) { // #d0d0d0
     $(this.el.input).colorpicker('val', color);
 };
 
-UiColorPicker.prototype.showPalette = function() {
+ColorPicker.prototype.showPalette = function() {
     $(this.el.input).colorpicker('showPalette');
 };
 
-UiColorPicker.prototype.hidePalette = function() {
+ColorPicker.prototype.hidePalette = function() {
     $(this.el.input).colorpicker('hidePalette');
 };
 
-UiColorPicker.prototype.hidePalette = function() {
+ColorPicker.prototype.hidePalette = function() {
     $(this.el.input).colorpicker('hidePalette');
 };
 
-UiColorPicker.prototype.on = function(eventName, callback) {
+ColorPicker.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { UiColorPicker };
+export { ColorPicker };

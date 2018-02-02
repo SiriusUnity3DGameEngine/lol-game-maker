@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiMenu(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || null;
     this.cls = options.cls || '';
@@ -14,7 +14,7 @@ function UiMenu(options) {
     this.dispatch = d3.dispatch('blur', 'create', 'focus', 'select');
 }
 
-UiMenu.prototype = Object.create(UiControl.prototype);
+UiMenu.prototype = Object.create(Control.prototype);
 UiMenu.prototype.constructor = UiMenu;
 
 UiMenu.prototype.blur = function() {

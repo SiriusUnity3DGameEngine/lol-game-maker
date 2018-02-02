@@ -1,12 +1,12 @@
-import { UiInteraction } from '../UiInteraction';
-import { UiControl } from '../UiControl';
+import { Interaction } from '../Interaction';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiDraggable(options) {
-    UiInteraction.call(this, options);
+function Draggable(options) {
+    Interaction.call(this, options);
     options = options || {};
 
     this.dispatch = d3.dispatch('start', 'drag', 'stop');
@@ -20,11 +20,11 @@ function UiDraggable(options) {
     this.cursorAt = options.cursorAt || null; // { left: -5, top: -5 } or { bottom: 0 }
 }
 
-UiDraggable.prototype = Object.create(UiInteraction.prototype);
-UiDraggable.prototype.constructor = UiDraggable;
+Draggable.prototype = Object.create(Interaction.prototype);
+Draggable.prototype.constructor = Draggable;
 
-UiDraggable.prototype.apply = function(control) {
-    var el = control instanceof UiControl ? control.el : control;
+Draggable.prototype.apply = function(control) {
+    var el = control instanceof Control ? control.el : control;
     var _this = this;
     $(el).draggable({
         scroll: this.scroll,
@@ -46,8 +46,8 @@ UiDraggable.prototype.apply = function(control) {
     });
 };
 
-UiDraggable.prototype.on = function(eventName, callback) {
+Draggable.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { UiDraggable };
+export { Draggable };

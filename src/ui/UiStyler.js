@@ -2,7 +2,7 @@
  * @author tengge / https://github.com/tengge1
  */
 
-function UiStyle(options) {
+function UiStyler(options) {
     options = options || {};
 
     // Positioning
@@ -88,7 +88,7 @@ function UiStyle(options) {
     this.boxSizing = options.boxSizing || null;
 }
 
-UiStyle.prototype.render = function(dom, scope) {
+UiStyler.prototype.render = function(dom, scope) {
     var _this = scope || this;
     dom.style.position = _this.position;
 
@@ -175,4 +175,4 @@ UiStyle.prototype.render = function(dom, scope) {
     dom.style.boxSizing = _this.boxSizing;
 };
 
-export { UiStyle };
+export { UiStyler };

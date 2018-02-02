@@ -1,15 +1,15 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiSpinner(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
 }
 
-UiSpinner.prototype = Object.create(UiControl.prototype);
+UiSpinner.prototype = Object.create(Control.prototype);
 UiSpinner.prototype.constructor = UiSpinner;
 
 UiSpinner.prototype.render = function() {

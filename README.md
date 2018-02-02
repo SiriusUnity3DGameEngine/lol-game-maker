@@ -8,7 +8,7 @@ On January 28, 2018, we create the basic framework of OpenSeaAI Editor.
 
 ![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAIEditor.png)
 
-On January 21, 2018, we add 5 `UiInteraction`s and 14 `UiControl`s based on jquery-ui. You can click [UI Interaction Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/UiInteraction.png) and [UI Control Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/UiControl.png) to see the images.
+On January 21, 2018, we add 5 `Interaction`s and 14 `Control`s based on jquery-ui. You can click [UI Interaction Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Interaction.png) and [UI Control Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Control.png) to see the images.
 
 On January 14, 2018， we add 10 `SvgElement`s. Click [here](https://github.com/tengge1/OpenSeaAI/blob/master/img/SvgDemo.png) to see.
 

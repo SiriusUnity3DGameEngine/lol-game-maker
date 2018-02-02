@@ -1,6 +1,6 @@
-import { UiControl } from '../../ui/UiControl';
+import { Control } from '../../ui/Control';
 import { UiFieldset } from '../../ui/control/UiFieldset';
-import { UiColorPicker } from '../../ui/control/UiColorPicker';
+import { ColorPicker } from '../../ui/control/ColorPicker';
 import { UiTextField } from '../../ui/control/UiTextField';
 
 /**
@@ -8,8 +8,8 @@ import { UiTextField } from '../../ui/control/UiTextField';
  */
 
 function EditorSettings(options) {
-    UiControl.call(this, options);
-    this.fogColor = new UiColorPicker({
+    Control.call(this, options);
+    this.fogColor = new ColorPicker({
         parent: this.parent,
         label: 'color',
     });
@@ -34,7 +34,7 @@ function EditorSettings(options) {
     ];
 }
 
-EditorSettings.prototype = Object.create(UiControl.prototype);
+EditorSettings.prototype = Object.create(Control.prototype);
 EditorSettings.prototype.constructor = EditorSettings;
 
 EditorSettings.prototype.render = function() {

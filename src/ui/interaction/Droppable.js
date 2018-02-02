@@ -1,12 +1,12 @@
-import { UiInteraction } from '../UiInteraction';
-import { UiControl } from '../UiControl';
+import { Interaction } from '../Interaction';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
-function UiDroppable(options) {
-    UiInteraction.call(this, options);
+function Droppable(options) {
+    Interaction.call(this, options);
     options = options || {};
     this.dispatch = d3.dispatch('drop');
     this.accept = options.accept || '*';
@@ -16,11 +16,11 @@ function UiDroppable(options) {
     };
 }
 
-UiDroppable.prototype = Object.create(UiInteraction.prototype);
-UiDroppable.prototype.constructor = UiDroppable;
+Droppable.prototype = Object.create(Interaction.prototype);
+Droppable.prototype.constructor = Droppable;
 
-UiDroppable.prototype.apply = function(control) {
-    this.target = control instanceof UiControl ? control.el : control;
+Droppable.prototype.apply = function(control) {
+    this.target = control instanceof Control ? control.el : control;
     $(this.target).droppable();
 
     var _this = this;
@@ -33,8 +33,8 @@ UiDroppable.prototype.apply = function(control) {
     });
 };
 
-UiDroppable.prototype.on = function(eventName, callback) {
+Droppable.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { UiDroppable };
+export { Droppable };

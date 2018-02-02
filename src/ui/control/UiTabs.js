@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiTabs(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.children = options.children || [];
     this.width = options.width || null;
@@ -15,7 +15,7 @@ function UiTabs(options) {
     this.dispatch = d3.dispatch('activate', 'beforeActivate', 'beforeLoad', 'create', 'load', 'close');
 }
 
-UiTabs.prototype = Object.create(UiControl.prototype);
+UiTabs.prototype = Object.create(Control.prototype);
 UiTabs.prototype.constructor = UiTabs;
 
 UiTabs.prototype.refresh = function() {

@@ -1,16 +1,16 @@
-import { UiControl } from '../../../ui/UiControl';
+import { Control } from '../../../ui/Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function GlControl(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.app = options.app || null;
 }
 
-GlControl.prototype = Object.create(UiControl.prototype);
+GlControl.prototype = Object.create(Control.prototype);
 GlControl.prototype.constructor = GlControl;
 
 /**

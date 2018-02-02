@@ -1,16 +1,16 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiSelectmenuItem(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.text = options.text || 'Item';
 }
 
-UiSelectmenuItem.prototype = Object.create(UiControl.prototype);
+UiSelectmenuItem.prototype = Object.create(Control.prototype);
 UiSelectmenuItem.prototype.constructor = UiSelectmenuItem;
 
 UiSelectmenuItem.prototype.render = function() {

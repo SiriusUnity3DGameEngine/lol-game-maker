@@ -1,4 +1,4 @@
-import { UiControl } from '../ui/UiControl';
+import { Control } from '../ui/Control';
 import { UiTabs } from '../ui/control/UiTabs';
 import { UiTabsItem } from '../ui/control/UiTabsItem';
 import { UiTree } from '../ui/control/UiTree';
@@ -9,7 +9,7 @@ import { EditorSettings } from './settings/EditorSettings';
  */
 
 function EditorPropertyPanel(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.app = options.app || null;
     this.cls = 'right-panel ui-widget-content';
@@ -53,7 +53,7 @@ function EditorPropertyPanel(options) {
     this.app.bottomPanel = this.bottomPanel;
 }
 
-EditorPropertyPanel.prototype = Object.create(UiControl.prototype);
+EditorPropertyPanel.prototype = Object.create(Control.prototype);
 EditorPropertyPanel.prototype.constructor = EditorPropertyPanel;
 
 EditorPropertyPanel.prototype.render = function() {

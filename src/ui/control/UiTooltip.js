@@ -1,15 +1,15 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiTooltip(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
 }
 
-UiTooltip.prototype = Object.create(UiControl.prototype);
+UiTooltip.prototype = Object.create(Control.prototype);
 UiTooltip.prototype.constructor = UiTooltip;
 
 UiTooltip.prototype.render = function() {

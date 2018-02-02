@@ -1,4 +1,4 @@
-import { UiControl } from '../ui/UiControl';
+import { Control } from '../ui/Control';
 import { EditorNavMenu } from './EditorNavMenu';
 
 /**
@@ -6,7 +6,7 @@ import { EditorNavMenu } from './EditorNavMenu';
  */
 
 function EditorNav(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.app = options.app || null;
     this.cls = options.cls || 'nav';
@@ -16,7 +16,7 @@ function EditorNav(options) {
     this.app.navMenu = this.menu;
 }
 
-EditorNav.prototype = Object.create(UiControl.prototype);
+EditorNav.prototype = Object.create(Control.prototype);
 EditorNav.prototype.constructor = EditorNav;
 
 EditorNav.prototype.render = function() {

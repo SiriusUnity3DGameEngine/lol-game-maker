@@ -1,16 +1,16 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiSlider(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.width = options.width || '200px';
 }
 
-UiSlider.prototype = Object.create(UiControl.prototype);
+UiSlider.prototype = Object.create(Control.prototype);
 UiSlider.prototype.constructor = UiSlider;
 
 UiSlider.prototype.render = function() {

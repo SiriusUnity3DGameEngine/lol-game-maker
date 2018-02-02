@@ -1,11 +1,11 @@
-import { UiControl } from '../UiControl';
+import { Control } from '../Control';
 
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function UiMenuItem(options) {
-    UiControl.call(this, options);
+    Control.call(this, options);
     options = options || {};
     this.id = options.id || 'menuitem' + UiMenuItem.index--;
     this.text = options.text || 'Menu Item';
@@ -14,7 +14,7 @@ function UiMenuItem(options) {
     this.children = options.children || [];
 }
 
-UiMenuItem.prototype = Object.create(UiControl.prototype);
+UiMenuItem.prototype = Object.create(Control.prototype);
 UiMenuItem.prototype.constructor = UiMenuItem;
 
 UiMenuItem.prototype.render = function() {

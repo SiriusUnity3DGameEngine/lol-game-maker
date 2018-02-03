@@ -180,22 +180,4 @@ var NavMenus = [{
     }]
 }];
 
-var PropertyType = [
-    'number',
-    'enum',
-    'string'
-];
-
-var Properties = [{
-    cls: THREE.Material,
-    properties: [{
-        name: 'alphaTest',
-        type: 'number'
-    }, {
-        name: 'blending',
-        type: 'enum',
-        items: []
-    }]
-}];
-
-export { CustomEvents, NavMenus, PropertyType };
+export { CustomEvents, NavMenus };

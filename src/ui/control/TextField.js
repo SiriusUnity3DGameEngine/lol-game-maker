@@ -9,7 +9,7 @@ function TextField(options) {
     options = options || {};
     this.type = options.type || 'text';
     this.label = options.label || null;
-    this.labelWidth = options.labelWidth || '35px';
+    this.labelWidth = options.labelWidth || '45px';
     this.value = options.value || '';
 }
 
@@ -31,7 +31,7 @@ TextField.prototype.render = function() {
     this.el.input = document.createElement('input');
     this.el.input.setAttribute('type', this.type);
     this.el.input.setAttribute('value', this.value);
-    this.el.input.style.marginLeft = '5px';
+    this.el.input.style.marginLeft = '10px';
     this.el.div.appendChild(this.el.input);
 };
 

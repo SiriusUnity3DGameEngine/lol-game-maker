@@ -1,7 +1,8 @@
 import { Control } from '../../ui/Control';
 import { Fieldset } from '../../ui/control/Fieldset';
-import { ColorPicker } from '../../ui/control/ColorPicker';
-import { TextField } from '../../ui/control/TextField';
+import { CheckboxField } from '../../ui/control/CheckboxField';
+import { ColorField } from '../../ui/control/ColorField';
+import { NumberField } from '../../ui/control/NumberField';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -9,23 +10,30 @@ import { TextField } from '../../ui/control/TextField';
 
 function EditorSettings(options) {
     Control.call(this, options);
-    this.fogColor = new ColorPicker({
+    this.enableFog = new CheckboxField({
+        parent: this.parent,
+        label: 'enable'
+    });
+    this.fogColor = new ColorField({
         parent: this.parent,
         label: 'color',
     });
-    this.fogNear = new TextField({
+    this.fogNear = new NumberField({
         parent: this.parent,
         label: 'near',
+        value: 1
     });
-    this.fogFar = new TextField({
+    this.fogFar = new NumberField({
         parent: this.parent,
         label: 'far',
+        value: 1000
     });
     this.label = options.label || null;
     this.children = [
         new Fieldset({
             title: 'Fog',
             children: [
+                this.enableFog,
                 this.fogColor,
                 this.fogNear,
                 this.fogFar

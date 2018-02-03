@@ -4,16 +4,16 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiSelectmenu(options) {
+function SelectMenu(options) {
     Control.call(this, options);
     options = options || {};
     this.children = options.children || [];
 }
 
-UiSelectmenu.prototype = Object.create(Control.prototype);
-UiSelectmenu.prototype.constructor = UiSelectmenu;
+SelectMenu.prototype = Object.create(Control.prototype);
+SelectMenu.prototype.constructor = SelectMenu;
 
-UiSelectmenu.prototype.render = function() {
+SelectMenu.prototype.render = function() {
     this.el.select = document.createElement('select');
     this.parent.appendChild(this.el.select);
     var _this = this;
@@ -24,4 +24,4 @@ UiSelectmenu.prototype.render = function() {
     $(this.el.select).selectmenu();
 };
 
-export { UiSelectmenu };
+export { SelectMenu };

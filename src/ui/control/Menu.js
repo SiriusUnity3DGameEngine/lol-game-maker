@@ -4,7 +4,7 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiMenu(options) {
+function Menu(options) {
     Control.call(this, options);
     options = options || {};
     this.width = options.width || null;
@@ -14,38 +14,38 @@ function UiMenu(options) {
     this.dispatch = d3.dispatch('blur', 'create', 'focus', 'select');
 }
 
-UiMenu.prototype = Object.create(Control.prototype);
-UiMenu.prototype.constructor = UiMenu;
+Menu.prototype = Object.create(Control.prototype);
+Menu.prototype.constructor = Menu;
 
-UiMenu.prototype.blur = function() {
+Menu.prototype.blur = function() {
     $(this.el.ul).menu('blur');
 };
 
-UiMenu.prototype.collapse = function() {
+Menu.prototype.collapse = function() {
     $(this.el.ul).menu('collapse');
 };
 
-UiMenu.prototype.collapseAll = function() {
+Menu.prototype.collapseAll = function() {
     $(this.el.ul).menu('collapseAll');
 };
 
-UiMenu.prototype.destroy = function() {
+Menu.prototype.destroy = function() {
     $(this.el.ul).menu('destroy');
 };
 
-UiMenu.prototype.disable = function() {
+Menu.prototype.disable = function() {
     $(this.el.ul).menu('disable');
 };
 
-UiMenu.prototype.enable = function() {
+Menu.prototype.enable = function() {
     $(this.el.ul).menu('enable');
 };
 
-UiMenu.prototype.expand = function() {
+Menu.prototype.expand = function() {
     $(this.el.ul).menu('expand');
 };
 
-UiMenu.prototype.render = function() {
+Menu.prototype.render = function() {
     this.el.ul = document.createElement('ul');
     this.el.ul.className = this.cls;
     if (this.direction == 'horizontal') {
@@ -98,8 +98,8 @@ UiMenu.prototype.render = function() {
     }
 };
 
-UiMenu.prototype.on = function(eventName, callback) {
+Menu.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { UiMenu };
+export { Menu };

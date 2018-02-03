@@ -53,62 +53,62 @@
         var datepicker = new AI.Datepicker();
         datepicker.render();
 
-        var dialog = new AI.UiDialog({
+        var dialog = new AI.Dialog({
             title: 'Dialog Title',
             html: 'This is dialog content.'
         });
         dialog.render();
 
-        var menu = new AI.UiMenu({
+        var menu = new AI.Menu({
             width: '180px',
             children: [
-                new AI.UiMenuItem({
+                new AI.MenuItem({
                     children: [
-                        new AI.UiMenuItem(),
-                        new AI.UiMenuItem(),
-                        new AI.UiMenuItem(),
+                        new AI.MenuItem(),
+                        new AI.MenuItem(),
+                        new AI.MenuItem(),
                     ]
                 }),
-                new AI.UiMenuItem(),
-                new AI.UiMenuItem(),
+                new AI.MenuItem(),
+                new AI.MenuItem(),
             ]
         });
         menu.render();
 
-        var bar = new AI.UiProgressbar({
+        var bar = new AI.ProgressBar({
             width: '200px',
             value: 37
         });
         bar.render();
 
-        var menu = new AI.UiSelectmenu({
+        var menu = new AI.SelectMenu({
             children: [
-                new AI.UiSelectmenuItem({ text: 'Menu Item 1' }),
-                new AI.UiSelectmenuItem({ text: 'Menu Item 2' }),
-                new AI.UiSelectmenuItem({ text: 'Menu Item 3' }),
-                new AI.UiSelectmenuItem({ text: 'Menu Item 4' }),
-                new AI.UiSelectmenuItem({ text: 'Menu Item 5' }),
+                new AI.SelectMenuItem({ text: 'Menu Item 1' }),
+                new AI.SelectMenuItem({ text: 'Menu Item 2' }),
+                new AI.SelectMenuItem({ text: 'Menu Item 3' }),
+                new AI.SelectMenuItem({ text: 'Menu Item 4' }),
+                new AI.SelectMenuItem({ text: 'Menu Item 5' }),
             ]
         });
         menu.render();
 
-        var slider = new AI.UiSlider();
+        var slider = new AI.Slider();
         slider.render();
 
-        var spinner = new AI.UiSpinner();
+        var spinner = new AI.Spinner();
         spinner.render();
 
-        var tabs = new AI.UiTabs({
+        var tabs = new AI.TabPanel({
             width: '300px',
             children: [
-                new AI.UiTabsItem({ title: 'Tab 1', html: 'content 1' }),
-                new AI.UiTabsItem({ title: 'Tab 2', html: 'content 2' }),
-                new AI.UiTabsItem({ title: 'Tab 3', html: 'content 3' }),
+                new AI.TabItem({ title: 'Tab 1', html: 'content 1' }),
+                new AI.TabItem({ title: 'Tab 2', html: 'content 2' }),
+                new AI.TabItem({ title: 'Tab 3', html: 'content 3' }),
             ]
         });
         tabs.render();
 
-        var tooltip = new AI.UiTooltip();
+        var tooltip = new AI.Tooltip();
         tooltip.render();
     }
 

@@ -4,7 +4,7 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiTabs(options) {
+function TabPanel(options) {
     Control.call(this, options);
     options = options || {};
     this.children = options.children || [];
@@ -15,14 +15,14 @@ function UiTabs(options) {
     this.dispatch = d3.dispatch('activate', 'beforeActivate', 'beforeLoad', 'create', 'load', 'close');
 }
 
-UiTabs.prototype = Object.create(Control.prototype);
-UiTabs.prototype.constructor = UiTabs;
+TabPanel.prototype = Object.create(Control.prototype);
+TabPanel.prototype.constructor = TabPanel;
 
-UiTabs.prototype.refresh = function() {
+TabPanel.prototype.refresh = function() {
     $(this.el.div).tabs('refresh');
 };
 
-UiTabs.prototype.add = function(control) {
+TabPanel.prototype.add = function(control) {
     this.children.push(control);
     control.parent = this.el.div;
     control.tabs = this;
@@ -32,7 +32,7 @@ UiTabs.prototype.add = function(control) {
     this.refresh();
 };
 
-UiTabs.prototype.insert = function(index, control) {
+TabPanel.prototype.insert = function(index, control) {
     this.children.splice(index, 0, control);
     control.parent = this.el.div;
     control.tabs = this;
@@ -42,7 +42,7 @@ UiTabs.prototype.insert = function(index, control) {
     this.refresh();
 };
 
-UiTabs.prototype.remove = function(control) {
+TabPanel.prototype.remove = function(control) {
     var index = this.children.indexOf(control);
     if (index > -1) {
         this.children.splice(index, 1);
@@ -51,14 +51,14 @@ UiTabs.prototype.remove = function(control) {
     }
 };
 
-UiTabs.prototype.removeAt = function(index) {
+TabPanel.prototype.removeAt = function(index) {
     var control = this.children[index];
     control.close();
     this.children.splice(index, 1);
     this.refresh();
 };
 
-UiTabs.prototype.render = function() {
+TabPanel.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.el.div.className = this.cls;
     this.el.div.style.width = this.width;
@@ -100,8 +100,8 @@ UiTabs.prototype.render = function() {
     }
 };
 
-UiTabs.prototype.on = function(eventName, callback) {
+TabPanel.prototype.on = function(eventName, callback) {
     this.dispatch.on(eventName, callback);
 };
 
-export { UiTabs };
+export { TabPanel };

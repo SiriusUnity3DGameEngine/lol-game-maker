@@ -32,6 +32,7 @@ var CustomEvents = [
     'addTorus',
     'addTorusKnot',
     'addTube',
+    'addFire',
     'addTransform',
     'addRigidBody',
     'addMaterial',
@@ -39,6 +40,10 @@ var CustomEvents = [
     'play',
     'document',
     'about',
+
+    // ./scene/webgl/GlScene.js
+    'beforeAnimate',
+    'onAnimate',
 
     // ./scene/webgl/control/GlGUI.js
     'translateObject',
@@ -136,6 +141,9 @@ var NavMenus = [{
     }, {
         id: 'addTube',
         text: 'Tube'
+    }, {
+        id: 'addFire',
+        text: 'Fire'
     }]
 }, {
     id: 'component',

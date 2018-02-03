@@ -1,7 +1,7 @@
 import { Control } from '../../ui/Control';
-import { UiFieldset } from '../../ui/control/UiFieldset';
+import { Fieldset } from '../../ui/control/Fieldset';
 import { ColorPicker } from '../../ui/control/ColorPicker';
-import { UiTextField } from '../../ui/control/UiTextField';
+import { TextField } from '../../ui/control/TextField';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -13,17 +13,17 @@ function EditorSettings(options) {
         parent: this.parent,
         label: 'color',
     });
-    this.fogNear = new UiTextField({
+    this.fogNear = new TextField({
         parent: this.parent,
         label: 'near',
     });
-    this.fogFar = new UiTextField({
+    this.fogFar = new TextField({
         parent: this.parent,
         label: 'far',
     });
     this.label = options.label || null;
     this.children = [
-        new UiFieldset({
+        new Fieldset({
             title: 'Fog',
             children: [
                 this.fogColor,

@@ -4,20 +4,20 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiRect(options) {
+function Rect(options) {
     Control.call(this, options);
     options = options || {};
     this.width = options.width || '100px';
     this.height = options.height || '80px';
     this.backgroundColor = options.backgroundColor || 'red';
     this.padding = options.padding || '5px';
-    this.text = options.text || 'UiRect';
+    this.text = options.text || 'Rect';
 }
 
-UiRect.prototype = Object.create(Control.prototype);
-UiRect.prototype.constructor = UiRect;
+Rect.prototype = Object.create(Control.prototype);
+Rect.prototype.constructor = Rect;
 
-UiRect.prototype.render = function() {
+Rect.prototype.render = function() {
     this.el = document.createElement('div');
     this.el.style.width = this.width;
     this.el.style.height = this.height;
@@ -27,4 +27,4 @@ UiRect.prototype.render = function() {
     this.el.innerHTML = this.text;
 };
 
-export { UiRect };
+export { Rect };

@@ -15,6 +15,7 @@ import { AddTetrahedronCommand } from './object/AddTetrahedronCommand';
 import { AddTorusCommand } from './object/AddTorusCommand';
 import { AddTorusKnotCommand } from './object/AddTorusKnotCommand';
 import { AddTubeCommand } from './object/AddTubeCommand';
+import { AddFireCommand } from './object/AddFireCommand';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -40,7 +41,8 @@ function CommandDispatcher(options) {
         new AddTetrahedronCommand({ app: this.app }),
         new AddTorusCommand({ app: this.app }),
         new AddTorusKnotCommand({ app: this.app }),
-        new AddTubeCommand({ app: this.app })
+        new AddTubeCommand({ app: this.app }),
+        new AddFireCommand({ app: this.app })
     ];
 }
 

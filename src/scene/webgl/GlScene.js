@@ -41,6 +41,8 @@ function GlScene(options) {
     this.renderer.setSize(this.width, this.height);
     this.app.renderer = this.renderer;
 
+    this.clock = new THREE.Clock();
+
     this.dispatch = d3.select(this.renderer.domElement);
     this.app.glEvent = this.dispatch;
 
@@ -78,9 +80,11 @@ GlScene.prototype.animate = function() {
     this.children.forEach(function(n) {
         n.beforeUpdate.call(n);
     });
+    this.app.event.call('beforeAnimate', this, this.clock);
     this.children.forEach(function(n) {
         n.animate.call(n);
     });
+    this.app.event.call('onAnimate', this, this.clock);
     this.renderer.render(this.scene, this.camera);
     this.children.forEach(function(n) {
         n.update.call(n);

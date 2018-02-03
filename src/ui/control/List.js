@@ -4,7 +4,7 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiList(options) {
+function List(options) {
     Control.call(this, options);
     options = options || {};
     this.width = options.width || '100px';
@@ -14,10 +14,10 @@ function UiList(options) {
     this.itemStyle = options.itemStyle || 'border: 1px solid #ccc; margin: 1px;';
 }
 
-UiList.prototype = Object.create(Control.prototype);
-UiList.prototype.constructor = UiList;
+List.prototype = Object.create(Control.prototype);
+List.prototype.constructor = List;
 
-UiList.prototype.render = function() {
+List.prototype.render = function() {
     this.el = document.createElement('ul');
     this.el.style = this.style;
     this.parent.appendChild(this.el);
@@ -33,4 +33,4 @@ UiList.prototype.render = function() {
 
 };
 
-export { UiList };
+export { List };

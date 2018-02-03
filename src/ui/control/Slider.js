@@ -4,20 +4,20 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiSlider(options) {
+function Slider(options) {
     Control.call(this, options);
     options = options || {};
     this.width = options.width || '200px';
 }
 
-UiSlider.prototype = Object.create(Control.prototype);
-UiSlider.prototype.constructor = UiSlider;
+Slider.prototype = Object.create(Control.prototype);
+Slider.prototype.constructor = Slider;
 
-UiSlider.prototype.render = function() {
+Slider.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.el.div.style.width = this.width;
     this.parent.appendChild(this.el.div);
     $(this.el.div).slider();
 };
 
-export { UiSlider };
+export { Slider };

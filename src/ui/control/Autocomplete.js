@@ -7,7 +7,7 @@ import { Control } from '../Control';
 function Autocomplete(options) {
     Control.call(this, options);
     options = options || {};
-    this.source = options.source || [];
+    this.source = options.source || []; // [ 'text1', 'text2' ]
 }
 
 Autocomplete.prototype = Object.create(Control.prototype);

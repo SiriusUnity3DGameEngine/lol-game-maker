@@ -4,20 +4,20 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiMenuItem(options) {
+function MenuItem(options) {
     Control.call(this, options);
     options = options || {};
-    this.id = options.id || 'menuitem' + UiMenuItem.index--;
+    this.id = options.id || 'menuitem' + MenuItem.index--;
     this.text = options.text || 'Menu Item';
     this.cls = options.cls || null;
     this.subCls = options.subCls || null;
     this.children = options.children || [];
 }
 
-UiMenuItem.prototype = Object.create(Control.prototype);
-UiMenuItem.prototype.constructor = UiMenuItem;
+MenuItem.prototype = Object.create(Control.prototype);
+MenuItem.prototype.constructor = MenuItem;
 
-UiMenuItem.prototype.render = function() {
+MenuItem.prototype.render = function() {
     this.el.li = document.createElement('li');
     this.el.li.setAttribute('id', this.id);
     this.el.li.className = this.cls;
@@ -40,6 +40,6 @@ UiMenuItem.prototype.render = function() {
     });
 };
 
-UiMenuItem.index = -1;
+MenuItem.index = -1;
 
-export { UiMenuItem };
+export { MenuItem };

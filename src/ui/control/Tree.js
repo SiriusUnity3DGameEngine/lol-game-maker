@@ -6,7 +6,7 @@ import { Control } from '../Control';
 
 var ID = -1;
 
-function UiTree(options) {
+function Tree(options) {
     Control.call(this, options);
     options = options || {};
     this.id = options.id || 'tree' + ID--;
@@ -16,10 +16,10 @@ function UiTree(options) {
     this.data = options.data || [];
 }
 
-UiTree.prototype = Object.create(Control.prototype);
-UiTree.prototype.constructor = UiTree;
+Tree.prototype = Object.create(Control.prototype);
+Tree.prototype.constructor = Tree;
 
-UiTree.prototype.render = function() {
+Tree.prototype.render = function() {
     this.el.ul = document.createElement('ul');
     this.el.ul.className = 'ztree';
     //this.el.ul.setAttribute('id', this.id);
@@ -27,4 +27,4 @@ UiTree.prototype.render = function() {
     $.fn.zTree.init($(this.el.ul), this.setting, this.data);
 };
 
-export { UiTree };
+export { Tree };

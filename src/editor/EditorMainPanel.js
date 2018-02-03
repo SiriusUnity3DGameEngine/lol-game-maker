@@ -1,5 +1,5 @@
-import { UiTabs } from '../ui/control/UiTabs';
-import { UiTabsItem } from '../ui/control/UiTabsItem';
+import { TabPanel } from '../ui/control/TabPanel';
+import { TabItem } from '../ui/control/TabItem';
 import { GlScene } from '../scene/webgl/GlScene';
 import { LogScene } from '../scene/log/LogScene';
 
@@ -8,11 +8,11 @@ import { LogScene } from '../scene/log/LogScene';
  */
 
 function EditorMainPanel(options) {
-    UiTabs.call(this, options);
+    TabPanel.call(this, options);
     options = options || {};
     this.app = options.app || null;
 
-    this.sceneTab = new UiTabsItem({
+    this.sceneTab = new TabItem({
         id: 'sceneTab',
         title: 'Scene',
         children: [
@@ -21,7 +21,7 @@ function EditorMainPanel(options) {
     });
     this.app.sceneTab = this.sceneTab;
 
-    this.logTab = new UiTabsItem({
+    this.logTab = new TabItem({
         id: 'logTab',
         title: 'Logs',
         children: [
@@ -38,7 +38,7 @@ function EditorMainPanel(options) {
     this.fit = true;
 }
 
-EditorMainPanel.prototype = Object.create(UiTabs.prototype);
+EditorMainPanel.prototype = Object.create(TabPanel.prototype);
 EditorMainPanel.prototype.constructor = EditorMainPanel;
 
 EditorMainPanel.prototype.render = function() {
@@ -52,7 +52,7 @@ EditorMainPanel.prototype.render = function() {
     this.on('close', function(tabitem) {
         _this.onCloseTab.call(_this, tabitem);
     });
-    UiTabs.prototype.render.apply(this, arguments);
+    TabPanel.prototype.render.apply(this, arguments);
 };
 
 EditorMainPanel.prototype.onCreateTabs = function(event, ui) {

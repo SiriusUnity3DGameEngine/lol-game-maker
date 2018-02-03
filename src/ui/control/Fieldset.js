@@ -4,17 +4,17 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiFieldset(options) {
+function Fieldset(options) {
     Control.call(this, options);
     options = options || {};
     this.title = options.title || null;
     this.children = options.children || [];
 }
 
-UiFieldset.prototype = Object.create(Control.prototype);
-UiFieldset.prototype.constructor = UiFieldset;
+Fieldset.prototype = Object.create(Control.prototype);
+Fieldset.prototype.constructor = Fieldset;
 
-UiFieldset.prototype.render = function() {
+Fieldset.prototype.render = function() {
     this.el.fieldset = document.createElement('fieldset');
     this.parent.appendChild(this.el.fieldset);
 
@@ -31,4 +31,4 @@ UiFieldset.prototype.render = function() {
     });
 };
 
-export { UiFieldset };
+export { Fieldset };

@@ -4,17 +4,17 @@ import { Control } from '../Control';
  * @author tengge / https://github.com/tengge1
  */
 
-function UiTextField(options) {
+function TextField(options) {
     Control.call(this, options);
     options = options || {};
     this.label = options.label || null;
     this.value = options.value || null;
 }
 
-UiTextField.prototype = Object.create(Control.prototype);
-UiTextField.prototype.constructor = UiTextField;
+TextField.prototype = Object.create(Control.prototype);
+TextField.prototype.constructor = TextField;
 
-UiTextField.prototype.render = function() {
+TextField.prototype.render = function() {
     this.el.div = document.createElement('div');
     this.parent.appendChild(this.el.div);
     if (this.label) {
@@ -29,4 +29,4 @@ UiTextField.prototype.render = function() {
     $(this.el.div).controlgroup();
 };
 
-export { UiTextField };
+export { TextField };

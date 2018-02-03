@@ -17,19 +17,19 @@
 // export { CheckBoxradio } from './ui/control/CheckBoxradio';
 // export { Controlgroup } from './ui/control/Controlgroup';
 // export { Datepicker } from './ui/control/Datepicker';
-// export { UiDialog } from './ui/control/UiDialog';
-// export { UiMenu } from './ui/control/UiMenu';
-// export { UiMenuItem } from './ui/control/UiMenuItem';
-// export { UiProgressbar } from './ui/control/UiProgressbar';
-// export { UiSelectmenu } from './ui/control/UiSelectmenu';
-// export { UiSelectmenuItem } from './ui/control/UiSelectmenuItem';
-// export { UiSlider } from './ui/control/UiSlider';
-// export { UiSpinner } from './ui/control/UiSpinner';
-// export { UiTabs } from './ui/control/UiTabs';
-// export { UiTabsItem } from './ui/control/UiTabsItem';
-// export { UiTooltip } from './ui/control/UiTooltip';
-// export { UiRect } from './ui/control/UiRect'; // for test
-// export { UiList } from './ui/control/UiList'; // for test
+// export { Dialog } from './ui/control/Dialog';
+// export { Menu } from './ui/control/Menu';
+// export { MenuItem } from './ui/control/MenuItem';
+// export { ProgressBar } from './ui/control/ProgressBar';
+// export { SelectMenu } from './ui/control/SelectMenu';
+// export { SelectMenuItem } from './ui/control/SelectMenuItem';
+// export { Slider } from './ui/control/Slider';
+// export { Spinner } from './ui/control/Spinner';
+// export { TabPanel } from './ui/control/TabPanel';
+// export { TabItem } from './ui/control/TabItem';
+// export { Tooltip } from './ui/control/Tooltip';
+// export { Rect } from './ui/control/Rect'; // for test
+// export { List } from './ui/control/List'; // for test
 // export { UiStyler } from './ui/UiStyler';
 // export { Container } from './ui/Container';
 // export { FixedContainer } from './ui/container/FixedContainer';

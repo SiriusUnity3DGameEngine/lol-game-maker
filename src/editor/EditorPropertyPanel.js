@@ -1,7 +1,7 @@
 import { Control } from '../ui/Control';
-import { UiTabs } from '../ui/control/UiTabs';
-import { UiTabsItem } from '../ui/control/UiTabsItem';
-import { UiTree } from '../ui/control/UiTree';
+import { TabPanel } from '../ui/control/TabPanel';
+import { TabItem } from '../ui/control/TabItem';
+import { Tree } from '../ui/control/Tree';
 import { EditorSettings } from './settings/EditorSettings';
 
 /**
@@ -14,7 +14,7 @@ function EditorPropertyPanel(options) {
     this.app = options.app || null;
     this.cls = 'right-panel ui-widget-content';
 
-    this.hierarchy = new UiTree({
+    this.hierarchy = new Tree({
         data: [{
             name: 'Camera'
         }, {
@@ -25,16 +25,16 @@ function EditorPropertyPanel(options) {
 
     this.editorSettings = new EditorSettings({ app: this.app });
     this.app.editorSettings = this.editorSettings;
-    this.topPanel = new UiTabs({
+    this.topPanel = new TabPanel({
         fit: true,
         children: [
-            new UiTabsItem({
+            new TabItem({
                 title: 'Hierarchy',
                 children: [
                     this.hierarchy
                 ]
             }),
-            new UiTabsItem({
+            new TabItem({
                 title: 'Settings',
                 children: [
                     this.editorSettings
@@ -42,11 +42,11 @@ function EditorPropertyPanel(options) {
             }),
         ]
     });
-    this.bottomPanel = new UiTabs({
+    this.bottomPanel = new TabPanel({
         fit: true,
         children: [
-            new UiTabsItem({ title: 'Property', html: 'content 1' }),
-            new UiTabsItem({ title: 'Animation', html: 'content 2' }),
+            new TabItem({ title: 'Property', html: 'content 1' }),
+            new TabItem({ title: 'Animation', html: 'content 2' }),
         ]
     });
     this.app.topPanel = this.topPanel;

@@ -23,7 +23,7 @@
         var sortable = new AI.Sortable();
 
         // draggable
-        var control = new AI.UiRect({
+        var control = new AI.Rect({
             text: 'Draggable'
         });
         var container = new AI.FixedContainer({
@@ -52,7 +52,7 @@
         resizable.apply(container);
 
         // selectable
-        var list = new AI.UiList({
+        var list = new AI.List({
             children: [
                 'List Item 1',
                 'List Item 2',

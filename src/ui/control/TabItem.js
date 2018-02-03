@@ -6,7 +6,7 @@ import { Control } from '../Control';
 
 var ID = -1;
 
-function UiTabsItem(options) {
+function TabItem(options) {
     Control.call(this, options);
     options = options || {};
     this.id = options.id || 'tabitem' + ID--;
@@ -18,16 +18,16 @@ function UiTabsItem(options) {
     this.tabs = options.tabs || null;
 }
 
-UiTabsItem.prototype = Object.create(Control.prototype);
-UiTabsItem.prototype.constructor = UiTabsItem;
+TabItem.prototype = Object.create(Control.prototype);
+TabItem.prototype.constructor = TabItem;
 
-UiTabsItem.prototype.add = function(control) {
+TabItem.prototype.add = function(control) {
     this.children.push(control);
     control.parent = this.el.div;
     control.render.call(control);
 };
 
-UiTabsItem.prototype.close = function() {
+TabItem.prototype.close = function() {
     var index = $(this.el.li).index();
     $(this.el.li).remove();
     $(this.el.div).remove();
@@ -38,9 +38,9 @@ UiTabsItem.prototype.close = function() {
     }
 };
 
-UiTabsItem.prototype.render = function() {
+TabItem.prototype.render = function() {
     var _this = this;
-    var index = UiTabsItem.index++;
+    var index = TabItem.index++;
     this.el.li = document.createElement('li');
     this.el.a = document.createElement('a');
     this.el.a.innerHTML = this.title;
@@ -70,4 +70,4 @@ UiTabsItem.prototype.render = function() {
     });
 };
 
-export { UiTabsItem };
+export { TabItem };

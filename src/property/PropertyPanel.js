@@ -20,10 +20,10 @@ PropertyPanel.prototype.constructor = PropertyPanel;
 PropertyPanel.prototype.render = function() {
     var _this = this;
     this.app.event.on('selectObject', function(n) {
-        _this.onSelectObject.call(_this, n.object)
+        _this.onSelectObject.call(_this, n.object);
     });
     this.app.event.on('unselectObject', function(n) {
-        _this.onUnselectObject.call(_this, n.object)
+        _this.onUnselectObject.call(_this);
     });
 };
 

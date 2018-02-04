@@ -75,6 +75,7 @@ GlSelectObject.prototype.onDblClick = function() {
         }
     });
     this.app.selected = null;
+    this.app.event.call('unselectObject', this);
 };
 
 export { GlSelectObject };

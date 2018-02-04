@@ -4,9 +4,11 @@ We will create a greate artificial intelligence (AI) with the theory of life evo
 
 ## Development Progress
 
-On January 28, 2018, we create the basic framework of OpenSeaAI Editor.
+On February 4th, 2018, we add many objects to the editor, include fire. We add hover and select event. You can set fog in the settings.
 
-![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAIEditor.png)
+![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAIEditor20180204.png)
+
+On January 28, 2018, we create the basic framework of OpenSeaAI Editor.
 
 On January 21, 2018, we add 5 `Interaction`s and 14 `Control`s based on jquery-ui. You can click [UI Interaction Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Interaction.png) and [UI Control Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Control.png) to see the images.
 

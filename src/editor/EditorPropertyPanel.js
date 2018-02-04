@@ -3,6 +3,7 @@ import { TabPanel } from '../ui/control/TabPanel';
 import { TabItem } from '../ui/control/TabItem';
 import { Tree } from '../ui/control/Tree';
 import { EditorSettings } from './settings/EditorSettings';
+import { PropertyPanel } from '../property/PropertyPanel';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -14,41 +15,56 @@ function EditorPropertyPanel(options) {
     this.app = options.app || null;
     this.cls = 'right-panel ui-widget-content';
 
-    this.hierarchy = new Tree({
+    this.hierarchyPanel = new Tree({
         data: [{
             name: 'Camera'
         }, {
             name: 'Light'
         }]
     });
-    this.app.hierarchy = this.hierarchy;
+    this.app.hierarchyPanel = this.hierarchyPanel;
 
-    this.editorSettings = new EditorSettings({ app: this.app });
-    this.app.editorSettings = this.editorSettings;
+    this.editorSettingsPanel = new EditorSettings({ app: this.app });
+    this.app.editorSettingsPanel = this.editorSettingsPanel;
+
     this.topPanel = new TabPanel({
         fit: true,
         children: [
             new TabItem({
                 title: 'Hierarchy',
+                overflow: 'scroll',
                 children: [
-                    this.hierarchy
+                    this.hierarchyPanel
                 ]
             }),
             new TabItem({
                 title: 'Settings',
+                overflow: 'scroll',
                 children: [
-                    this.editorSettings
+                    this.editorSettingsPanel
                 ]
             }),
         ]
     });
+
+    this.propertyPanel = new PropertyPanel({ app: this.app });
+
     this.bottomPanel = new TabPanel({
         fit: true,
         children: [
-            new TabItem({ title: 'Property', html: 'content 1' }),
-            new TabItem({ title: 'Animation', html: 'content 2' }),
+            new TabItem({
+                title: 'Property',
+                overflow: 'scroll',
+                children: [this.propertyPanel]
+            }),
+            new TabItem({
+                title: 'Animation',
+                overflow: 'scroll',
+                html: 'content 2'
+            }),
         ]
     });
+
     this.app.topPanel = this.topPanel;
     this.app.bottomPanel = this.bottomPanel;
 }

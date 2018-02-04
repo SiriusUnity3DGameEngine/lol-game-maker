@@ -6,7 +6,7 @@ import { TextField } from './TextField';
 
 function DateField(options) {
     TextField.call(this, options);
-    this.type = 'color';
+    this.type = 'date';
 }
 
 DateField.prototype = Object.create(TextField.prototype);

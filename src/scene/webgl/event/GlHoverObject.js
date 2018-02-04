@@ -31,9 +31,10 @@ GlHoverObject.prototype.onMouseMove = function(event) {
             return true;
         }
         if (n instanceof THREE.Mesh &&
-            n.material.oldColor != null &&
-            n.material.color.getHex() != n.material.oldColor.getHex()) {
-            n.material.color = n.material.oldColor;
+            n.material.oldOpacity != null &&
+            n.material.opacity != n.material.oldOpacity) {
+            n.material.transparent = n.material.oldTransparent;
+            n.material.opacity = n.material.oldOpacity;
             n.material.needsUpdate = true;
         }
     });
@@ -42,10 +43,14 @@ GlHoverObject.prototype.onMouseMove = function(event) {
             return o.object instanceof THREE.Mesh &&
                 o.object != _this.app.gridHelper;
         }).forEach(function(n) {
-            if (n.object.material.oldColor == null || n.object.material.color.getHex() == n.object.material.oldColor.getHex()) {
-                n.object.material.oldColor = n.object.material.color;
-                n.object.material.color = new THREE.Color(0xffff00);
+            if (n.object.material.oldOpacity == null ||
+                n.object.material.opacity == n.object.material.oldOpacity) {
+                n.object.material.oldTransparent = n.object.material.transparent;
+                n.object.material.oldOpacity = n.object.material.opacity;
+                n.object.material.opacity = 0.5;
+                n.object.material.transparent = true;
                 n.object.material.needsUpdate = true;
+                _this.app.event.call('hoverObject', _this, n);
             }
         });
 };

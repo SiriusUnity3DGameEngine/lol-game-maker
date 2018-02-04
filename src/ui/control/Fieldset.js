@@ -14,6 +14,12 @@ function Fieldset(options) {
 Fieldset.prototype = Object.create(Control.prototype);
 Fieldset.prototype.constructor = Fieldset;
 
+Fieldset.prototype.add = function(control) {
+    control.parent = this.el.fieldset;
+    this.children.push(control);
+    control.render.call(control);
+};
+
 Fieldset.prototype.render = function() {
     this.el.fieldset = document.createElement('fieldset');
     this.parent.appendChild(this.el.fieldset);

@@ -21,9 +21,9 @@ function EventManager(options) {
  * @params eventName, scope, arg1, arg2, arg3, ...
  */
 EventManager.prototype.call = function(eventName) {
-    if (this.app && this.app.debug) {
-        this.app.debug('Event `' + eventName + '` is called.');
-    }
+    //if (this.app && this.app.debug) {
+    //    this.app.debug('Event `' + eventName + '` is called.');
+    //}
     this.dispatch.call.apply(this.dispatch, arguments);
 };
 

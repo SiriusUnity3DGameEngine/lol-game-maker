@@ -17,16 +17,17 @@ function EditorSettings(options) {
     this.fogColor = new ColorField({
         parent: this.parent,
         label: 'color',
+        value: '#555555'
     });
     this.fogNear = new NumberField({
         parent: this.parent,
         label: 'near',
-        value: 1
+        value: 0.1
     });
     this.fogFar = new NumberField({
         parent: this.parent,
         label: 'far',
-        value: 1000
+        value: 100
     });
     this.label = options.label || null;
     this.children = [
@@ -56,6 +57,48 @@ EditorSettings.prototype.render = function() {
         n.parent = _this.parent;
         n.render.call(n);
     });
+    this.enableFog.on('change', function(value) {
+        _this.onEnableFogChange(value);
+    });
+    this.fogColor.on('change', function(value) {
+        _this.onFogColorChange(value);
+    });
+    this.fogNear.on('change', function(value) {
+        _this.onFogNearChange(value);
+    });
+    this.fogFar.on('change', function(value) {
+        _this.onFogFarChange(value);
+    });
+};
+
+EditorSettings.prototype.onEnableFogChange = function(value) {
+    if (value == true) {
+        app.scene.fog = new THREE.Fog(
+            parseInt(this.fogColor.getValue().replace('#', ''), 16),
+            this.fogNear.getValue(),
+            this.fogFar.getValue()
+        );
+    } else {
+        app.scene.fog = null;
+    }
+};
+
+EditorSettings.prototype.onFogColorChange = function(value) {
+    if (app.scene.fog) {
+        app.scene.fog.color = new THREE.Color(parseInt(value.replace('#', ''), 16));
+    }
+};
+
+EditorSettings.prototype.onFogNearChange = function(value) {
+    if (app.scene.fog) {
+        app.scene.fog.near = value;
+    }
+};
+
+EditorSettings.prototype.onFogFarChange = function(value) {
+    if (app.scene.fog) {
+        app.scene.fog.far = value;
+    }
 };
 
 export { EditorSettings };

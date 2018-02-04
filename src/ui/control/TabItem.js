@@ -13,7 +13,7 @@ function TabItem(options) {
     this.title = options.title || 'Tab';
     this.html = options.html || null;
     this.children = options.children || [];
-    this.overflow = options.overflow || 'auto';
+    this.overflow = options.overflow || null;
     this.closable = options.closable || false;
     this.tabs = options.tabs || null;
 }
@@ -25,6 +25,34 @@ TabItem.prototype.add = function(control) {
     this.children.push(control);
     control.parent = this.el.div;
     control.render.call(control);
+};
+
+TabItem.prototype.insert = function(index, control) {
+    this.children.splice(index, 0, control);
+    control.parent = this.el.div;
+    control.render.call(control);
+};
+
+TabItem.prototype.remove = function(control) {
+    var index = this.children.indexOf(control);
+    if (index > -1) {
+        this.children.splice(index, 1);
+        $(this.el.div).children().eq(index).remove();
+    }
+};
+
+TabItem.prototype.removeAt = function(index) {
+    this.children.splice(index, 1);
+    $(this.el.div).children().eq(index).remove();
+};
+
+TabItem.prototype.removeAll = function() {
+    this.children = [];
+    $(this.el.div).empty();
+};
+
+TabItem.prototype.clear = function() {
+    this.removeAll();
 };
 
 TabItem.prototype.close = function() {
@@ -61,7 +89,9 @@ TabItem.prototype.render = function() {
 
     this.el.div = document.createElement('div');
     this.el.div.id = this.id;
-    this.el.div.style.overflow = this.overflow;
+    if (this.overflow) {
+        this.el.div.style.overflow = this.overflow;
+    }
     this.parent.appendChild(this.el.div);
     this.el.div.innerHTML = this.html;
     this.children.forEach(function(n) {

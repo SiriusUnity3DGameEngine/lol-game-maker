@@ -49,6 +49,13 @@ var CustomEvents = [
     'translateObject',
     'rotateObject',
     'scaleObject',
+
+    // ./scene/webgl/event/GlHoverObject.js
+    'hoverObject',
+
+    // ./scene/webgl/event/GlSelectObject.js
+    'selectObject',
+    'unselectObject',
 ];
 
 var NavMenus = [{

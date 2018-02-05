@@ -133,4 +133,4 @@ export { GlGridHelper } from './scene/webgl/object/GlGridHelper';
 export { GlLight } from './scene/webgl/object/GlLight';
 
 // lol
-export { LMeshLoader } from './lol/LMeshLoader';
+export { Lol } from './lol/Lol';

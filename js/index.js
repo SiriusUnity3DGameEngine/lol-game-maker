@@ -11,8 +11,6 @@ window.onload = function() {
 };
 
 var test = function() {
-    var loader = new AI.LMeshLoader();
-    loader.load('models/1_0.lmesh', function(mesh) {
-        debugger
-    });
+    var model = new AI.Lol.Model();
+    model.load('models/1_0.lmesh');
 };

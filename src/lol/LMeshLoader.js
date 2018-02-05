@@ -1,4 +1,5 @@
 import { DataView2 } from '../core/DataView2';
+import { Lol } from './Lol';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -13,11 +14,11 @@ LMeshLoader.prototype.load = function(url, onLoad, onProgress, onError) {
     var loader = new THREE.FileLoader(scope.manager);
     loader.setResponseType('arraybuffer');
     loader.load(url, function(text) {
-        onLoad(scope.parse(text));
+        scope.parse(text, onLoad);
     }, onProgress, onError);
 };
 
-LMeshLoader.prototype.parse = function(data) {
+LMeshLoader.prototype.parse = function(data, onLoad) {
     var r = new DataView2(data);
     try {
         var magic = r.getUint32();
@@ -42,9 +43,10 @@ LMeshLoader.prototype.parse = function(data) {
         //self.texture = new Lol.Texture(self, self.champion + "/" + textureFile + ".png")
     }
 
+    var meshes = null;
     var numMeshes = r.getUint32();
     if (numMeshes > 0) {
-        var meshes = new Array(numMeshes);
+        meshes = new Array(numMeshes);
         for (var i = 0; i < numMeshes; ++i) {
             var name = r.getString().toLowerCase();
             var vStart = r.getUint32();
@@ -62,20 +64,20 @@ LMeshLoader.prototype.parse = function(data) {
     }
 
     var numVerts = r.getUint32();
+    var vertices = new Array(numVerts);
+    var vbData = new Float32Array(numVerts * 8);
     if (numVerts > 0) {
-        var vertices = new Array(numVerts);
-        var vbData = new Float32Array(numVerts * 8);
         for (var i = 0; i < numVerts; ++i) {
             var idx = i * 8;
-            // self.vertices[i] = v = new Lol.Vertex(r);
-            // self.vbData[idx] = v.position[0];
-            // self.vbData[idx + 1] = v.position[1];
-            // self.vbData[idx + 2] = v.position[2];
-            // self.vbData[idx + 3] = v.normal[0];
-            // self.vbData[idx + 4] = v.normal[1];
-            // self.vbData[idx + 5] = v.normal[2];
-            // self.vbData[idx + 6] = v.u;
-            // self.vbData[idx + 7] = v.v
+            vertices[i] = v = new Lol.Vertex(r);
+            vbData[idx] = v.position[0];
+            vbData[idx + 1] = v.position[1];
+            vbData[idx + 2] = v.position[2];
+            vbData[idx + 3] = v.normal[0];
+            vbData[idx + 4] = v.normal[1];
+            vbData[idx + 5] = v.normal[2];
+            vbData[idx + 6] = v.u;
+            vbData[idx + 7] = v.v
         }
     }
 

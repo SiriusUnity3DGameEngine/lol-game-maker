@@ -7,4 +7,12 @@ var start = function() {
 
 window.onload = function() {
     start();
+    test();
+};
+
+var test = function() {
+    var loader = new AI.LMeshLoader();
+    loader.load('models/1_0.lmesh', function(mesh) {
+        debugger
+    });
 };

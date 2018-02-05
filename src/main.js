@@ -131,3 +131,6 @@ export { GlSelectObject } from './scene/webgl/event/GlSelectObject';
 export { GlAxisHelper } from './scene/webgl/object/GlAxisHelper';
 export { GlGridHelper } from './scene/webgl/object/GlGridHelper';
 export { GlLight } from './scene/webgl/object/GlLight';
+
+// lol
+export { LMeshLoader } from './lol/LMeshLoader';

@@ -335,16 +335,16 @@ Model.prototype = {
         mat4.identity(self.matrix);
         mat4.translate(self.matrix, self.matrix, self.tmpVec);
         mat4.scale(self.matrix, self.matrix, vec3.set(self.tmpVec, -1, 1, 1));
-        var models = self.renderer.models;
-        if (models.length > 1) {
-            for (i = 1; i < models.length; ++i) {
-                models[i].updatePosition()
-            }
-            if (self.modelIndex != 0) models[0].updateDistance()
-        }
-        if (self.modelIndex == 0) {
-            self.updateDistance()
-        }
+        // var models = self.renderer.models;
+        // if (models.length > 1) {
+        //     for (i = 1; i < models.length; ++i) {
+        //         models[i].updatePosition()
+        //     }
+        //     if (self.modelIndex != 0) models[0].updateDistance()
+        // }
+        // if (self.modelIndex == 0) {
+        //     self.updateDistance()
+        // }
     },
     updateDistance: function() {
         var self = this,

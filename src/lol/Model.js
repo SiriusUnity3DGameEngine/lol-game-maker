@@ -3,6 +3,8 @@ import { Vertex } from './Vertex';
 import { Texture } from './Texture';
 import { Bone } from './Bone';
 import { HiddenBones } from './HiddenBones';
+import { Animation } from './Animation';
+import { vertShader, fragShader } from './Shader';
 
 /**
  * @author tengge / https://github.com/tengge1
@@ -67,6 +69,38 @@ function Model() {
     //     }
     // }
     //self.load()
+
+    self.geometry = new THREE.BufferGeometry();
+    self.material = new THREE.RawShaderMaterial({
+        uniforms: {
+            uAmbientColor: {
+                value: new THREE.Vector4().fromArray(self.ambientColor)
+            },
+            uPrimaryColor: {
+                value: new THREE.Vector4().fromArray(self.primaryColor)
+            },
+            uSecondaryColor: {
+                value: new THREE.Vector4().fromArray(self.secondaryColor)
+            },
+            uLightDir1: {
+                value: new THREE.Vector3().fromArray(self.lightDir1)
+            },
+            uLightDir2: {
+                value: new THREE.Vector3().fromArray(self.lightDir2)
+            },
+            uLightDir3: {
+                value: new THREE.Vector3().fromArray(self.lightDir3)
+            },
+            uHasTexture: {
+                value: 0
+            },
+            uTexture: {
+                value: null
+            }
+        },
+        vertexShader: vertShader,
+        fragmentShader: fragShader,
+    });
 };
 
 Model.prototype = {
@@ -412,7 +446,7 @@ Model.prototype.loadMesh = function(buffer) {
     var animFile = r.getString();
     var textureFile = r.getString();
     if (animFile && animFile.length > 0) {
-        var url = "textures/" + animFile + ".lanim";
+        var url = "models/" + animFile + ".lanim";
         var loader = new THREE.FileLoader();
         loader.setResponseType('arraybuffer');
         loader.load(url, function(buffer) {
@@ -478,6 +512,9 @@ Model.prototype.loadMesh = function(buffer) {
         }
     }
     if (self.vbData) {
+        self.geometry.addAttribute(
+            'position',
+            new THREE.BufferAttribute(new Float32Array(self.vbData), 3));
         //self.vb = gl.createBuffer();
         //gl.bindBuffer(gl.ARRAY_BUFFER, self.vb);
         //gl.bufferData(gl.ARRAY_BUFFER, self.vbData, gl.DYNAMIC_DRAW)
@@ -497,9 +534,8 @@ Model.prototype.loadAnim = function(buffer) {
         return
     }
     var self = this,
-        r = new ZamModelViewer.DataView(buffer),
-        i,
-        Lol = ZamModelViewer.Lol;
+        r = new DataView(buffer),
+        i;
     var magic = r.getUint32();
     if (magic != 604210092) {
         console.log("Bad magic value");
@@ -515,13 +551,13 @@ Model.prototype.loadAnim = function(buffer) {
             console.log("Decompression error: " + err);
             return
         }
-        r = new ZamModelViewer.DataView(data.buffer)
+        r = new DataView(data.buffer)
     }
     var numAnims = r.getUint32();
     if (numAnims > 0) {
         self.animations = new Array(numAnims);
         for (i = 0; i < numAnims; ++i) {
-            self.animations[i] = new Lol.Animation(self, r, version)
+            self.animations[i] = new Animation(self, r, version)
         }
     }
     self.animsLoaded = true

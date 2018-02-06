@@ -1,10 +1,12 @@
+import { AnimationBone } from './AnimationBone';
+
 /**
  * @author tengge / https://github.com/tengge1
  */
 
 function Animation(model, r, version) {
     var self = this,
-        i, Lol = ZamModelViewer.Lol;
+        i;
     self.model = model;
     self.meshOverride = {};
     self.name = r.getString().toLowerCase();
@@ -13,7 +15,7 @@ function Animation(model, r, version) {
     self.bones = new Array(numBones);
     self.lookup = {};
     for (i = 0; i < numBones; ++i) {
-        self.bones[i] = new Lol.AnimationBone(model, self, r, version);
+        self.bones[i] = new AnimationBone(model, self, r, version);
         self.lookup[self.bones[i].bone] = i
     }
     if (numBones == 0 || self.fps <= 1) {

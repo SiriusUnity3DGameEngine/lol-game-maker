@@ -478,6 +478,8 @@ Model.prototype.loadMesh = function(buffer) {
     if (numVerts > 0) {
         self.vertices = new Array(numVerts);
         self.vbData = new Float32Array(numVerts * 8);
+        var position = [];
+        var normal = [];
         for (i = 0; i < numVerts; ++i) {
             idx = i * 8;
             self.vertices[i] = v = new Vertex(r);
@@ -489,7 +491,14 @@ Model.prototype.loadMesh = function(buffer) {
             self.vbData[idx + 5] = v.normal[2];
             self.vbData[idx + 6] = v.u;
             self.vbData[idx + 7] = v.v
+
+            position.push(v.position[0], v.position[1], v.position[2]);
+            normal.push(v.normal[0], v.normal[1], v.normal[2]);
         }
+        self.geometry.addAttribute('position',
+            new THREE.BufferAttribute(new Float32Array(position), 3));
+        self.geometry.addAttribute('normal',
+            new THREE.BufferAttribute(new Float32Array(normal), 3));
     }
     var numIndices = r.getUint32();
     if (numIndices > 0) {
@@ -497,6 +506,9 @@ Model.prototype.loadMesh = function(buffer) {
         for (i = 0; i < numIndices; ++i) {
             self.indices[i] = r.getUint16()
         }
+        self.geometry.setIndex(new THREE.BufferAttribute(
+            new Int16Array(self.indices, 2)
+        ));
     }
     var numBones = r.getUint32();
     if (numBones > 0) {
@@ -512,9 +524,6 @@ Model.prototype.loadMesh = function(buffer) {
         }
     }
     if (self.vbData) {
-        self.geometry.addAttribute(
-            'position',
-            new THREE.BufferAttribute(new Float32Array(self.vbData), 3));
         //self.vb = gl.createBuffer();
         //gl.bindBuffer(gl.ARRAY_BUFFER, self.vb);
         //gl.bufferData(gl.ARRAY_BUFFER, self.vbData, gl.DYNAMIC_DRAW)

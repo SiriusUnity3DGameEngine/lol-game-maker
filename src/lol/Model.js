@@ -506,9 +506,7 @@ Model.prototype.loadMesh = function(buffer) {
         for (i = 0; i < numIndices; ++i) {
             self.indices[i] = r.getUint16()
         }
-        self.geometry.setIndex(new THREE.BufferAttribute(
-            new Int16Array(self.indices, 2)
-        ));
+        self.geometry.setIndex(new THREE.BufferAttribute(new Uint16Array(self.indices), 1));
     }
     var numBones = r.getUint32();
     if (numBones > 0) {

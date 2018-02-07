@@ -3,21 +3,20 @@
  */
 
 var vertShader =
-    "attribute vec3 aPosition;" +
-    "attribute vec3 aNormal;" +
-    "attribute vec2 aTexCoord;" +
+    "attribute vec3 position;" +
+    "attribute vec3 normal;" +
+    "attribute vec2 uv;" +
 
     "varying vec3 vNormal;" +
     "varying vec2 vTexCoord;" +
 
-    "uniform mat4 uModelMatrix;" +
-    "uniform mat4 uViewMatrix;" +
-    "uniform mat4 uProjMatrix;" +
+    "uniform mat4 modelViewMatrix;" +
+    "uniform mat4 projectionMatrix;" +
 
     "void main(void) {" +
-    "	gl_Position = uProjMatrix * uViewMatrix * uModelMatrix * vec4(aPosition, 1);" +
-    "	vNormal = mat3(uViewMatrix * uModelMatrix) * normalize(aNormal);" +
-    "	vTexCoord = aTexCoord;" +
+    "	gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1);" +
+    "	vNormal = mat3(modelViewMatrix) * normalize(normal);" +
+    "	vTexCoord = uv;" +
     "}";
 
 var fragShader =

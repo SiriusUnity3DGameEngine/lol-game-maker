@@ -480,6 +480,7 @@ Model.prototype.loadMesh = function(buffer) {
         self.vbData = new Float32Array(numVerts * 8);
         var position = [];
         var normal = [];
+        var uv = [];
         for (i = 0; i < numVerts; ++i) {
             idx = i * 8;
             self.vertices[i] = v = new Vertex(r);
@@ -494,11 +495,16 @@ Model.prototype.loadMesh = function(buffer) {
 
             position.push(v.position[0], v.position[1], v.position[2]);
             normal.push(v.normal[0], v.normal[1], v.normal[2]);
+            uv.push(v.u, v.v);
         }
         self.geometry.addAttribute('position',
             new THREE.BufferAttribute(new Float32Array(position), 3));
         self.geometry.addAttribute('normal',
             new THREE.BufferAttribute(new Float32Array(normal), 3));
+        self.geometry.addAttribute('uv',
+            new THREE.BufferAttribute(new Float32Array(uv), 2));
+        //self.geometry.faceVertexUvs = uv;
+        //self.geometry.uvsNeedUpdate = true;
     }
     var numIndices = r.getUint32();
     if (numIndices > 0) {

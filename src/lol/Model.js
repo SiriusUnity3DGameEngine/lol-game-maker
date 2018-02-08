@@ -15,37 +15,35 @@ import { vertShader, fragShader } from './Shader';
 function Model(options) {
     var self = this;
     self.app = options.app || null;
-    //vec3.set(renderer.up, 0, 1, 0);
-    //self.renderer = renderer;
-    //self.viewer = viewer;
-    //self.model = model;
-    //self.modelIndex = index;
+    self.champion = options.champion || "1";
+    self.skin = options.skin || 0;
+
     self.loaded = false;
     self.animsLoaded = false;
-    //self.opts = self.viewer.options;
-    self.meta = null;
-    //self.parent = parent || null;
-    self.champion = "1";
-    self.skin = 0;
-    self.texture = null;
-    self.meshTextures = {};
-    self.animIndex = -1;
-    self.animName = null;
-    self.baseAnim = null;
+
     self.meshes = null;
     self.vertices = null;
     self.indices = null;
     self.transforms = null;
     self.bones = null;
     self.boneLookup = {};
-    self.matrix = mat4.create();
-    self.ib = null;
-    self.shaderReady = false;
-    self.vs = null;
-    self.fs = null;
-    self.program = null;
-    self.uniforms = null;
-    self.attribs = null;
+    self.animIndex = -1;
+    self.animName = null;
+    self.baseAnim = null;
+    self.newAnimation = false;
+    self.animTime = 0;
+    self.tmpMat = mat4.create();
+    self.tmpVec = vec4.create();
+    self.ANIMATED = true;
+
+    self.hiddenBones = null;
+    var hiddenBones = HiddenBones;
+    if (hiddenBones[self.champion] !== undefined) {
+        if (hiddenBones[self.champion][self.skin] !== undefined) {
+            self.hiddenBones = hiddenBones[self.champion][self.skin]
+        }
+    }
+
     self.ambientColor = [.35, .35, .35, 1];
     self.primaryColor = [1, 1, 1, 1];
     self.secondaryColor = [.35, .35, .35, 1];
@@ -55,25 +53,8 @@ function Model(options) {
     vec3.normalize(self.lightDir1, [5, 5, -5]);
     vec3.normalize(self.lightDir2, [5, 5, 5]);
     vec3.normalize(self.lightDir3, [-5, -5, -5]);
-    self.animBounds = false;
-    self.boundsCenter = [0, 0, 0];
-    self.boundsSize = [0, 0, 0];
-    self.boundsMin = [0, 0, 0];
-    self.boundsMax = [0, 0, 0];
-    self.modelOffset = 0;
-    self.defaultDistance = 0;
-    self.newAnimation = false;
-    self.animTime = 0;
-    self.tmpMat = mat4.create();
-    self.tmpVec = vec4.create();
-    self.ANIMATED = true;
-    self.hiddenBones = null;
-    var hiddenBones = HiddenBones;
-    if (hiddenBones[self.champion] !== undefined) {
-        if (hiddenBones[self.champion][self.skin] !== undefined) {
-            self.hiddenBones = hiddenBones[self.champion][self.skin]
-        }
-    }
+
+    self.texture = null;
     self.geometry = new THREE.BufferGeometry();
     self.material = new THREE.RawShaderMaterial({
         uniforms: {
@@ -107,212 +88,166 @@ function Model(options) {
     });
 };
 
-Model.prototype = {
-    external: {
-        getNumAnimations: function() {
-            return this.animations ? this.animations.length : 0
-        },
-        getAnimation: function(index) {
-            this.animations.sort(function(a, b) {
-                if (a.name < b.name) return -1;
-                if (a.name > b.name) return 1;
-                return 0
-            });
-            if (this.animations && this.animations.length > index && index > -1) {
-                return this.animations[index].name
-            } else {
-                return ""
-            }
-        },
-        setAnimation: function(name) {
-            for (i = 0; i < this.renderer.models.length; ++i) {
-                this.renderer.models[i].setAnimation(name)
-            }
-        },
-        isLoaded: function() {
-            return this.loaded && this.animsLoaded
+Model.prototype.getAnimation = function(name) {
+    var self = this,
+        i, animIndex = -1;
+    if (!self.animations) {
+        return animIndex
+    };
+    name = name.toLowerCase();
+    if (name == "idle" || name == "attack") {
+        var anims = [],
+            re = new RegExp(name + "[0-9]*");
+        for (i = 0; i < self.animations.length; ++i) {
+            if (self.animations[i].name.search(re) == 0) anims.push(i)
         }
-    },
-    getAnimation: function(name) {
-        var self = this,
-            i, animIndex = -1;
-        if (!self.animations) {
-            return animIndex
-        };
-        name = name.toLowerCase();
-        if (name == "idle" || name == "attack") {
-            var anims = [],
-                re = new RegExp(name + "[0-9]*");
-            for (i = 0; i < self.animations.length; ++i) {
-                if (self.animations[i].name.search(re) == 0) anims.push(i)
+        if (anims.length > 0) {
+            animIndex = anims[Math.floor(Math.random() * anims.length)];
+        }
+    } else {
+        for (i = 0; i < self.animations.length; ++i) {
+            if (self.animations[i].name == name) {
+                animIndex = i;
+                break
             }
-            if (anims.length > 0) {
-                animIndex = anims[Math.floor(Math.random() * anims.length)];
+        }
+    }
+    return animIndex
+};
+
+Model.prototype.setAnimation = function(name) {
+    var self = this;
+    self.animName = name;
+    self.newAnimation = true;
+};
+
+Model.prototype.update = function(time) {
+    var self = this,
+        i, j;
+
+    if (self.animTime == 0) {
+        self.animTime = time;
+    }
+
+    if (!self.loaded || !self.vertices || !self.animations || self.animations.length == 0) {
+        return;
+    }
+
+    self.animIndex = self.getAnimation(self.animName);
+    if (self.animIndex == -1) {
+        self.animIndex = 0;
+        self.animName = "idle";
+    }
+    var baseAnims = BaseAnimations;
+    if (baseAnims[self.champion] !== undefined) {
+        if (baseAnims[self.champion][self.skin] !== undefined) {
+            var baseAnim = baseAnims[self.champion][self.skin],
+                baseIndex = -1;
+
+            if (baseAnim[self.animations[self.animIndex].name]) {
+                baseIndex = self.getAnimation(baseAnim[self.animations[self.animIndex].name]);
+            } else if (baseAnim["all"]) {
+                baseIndex = self.getAnimation(baseAnim["all"]);
+            }
+
+            if (baseIndex > -1) {
+                self.baseAnim = self.animations[baseIndex];
+            } else {
+                self.baseAnim = null;
+            }
+        }
+    }
+
+    var deltaTime = time - self.animTime;
+    var anim = self.animations[self.animIndex];
+
+    if (deltaTime >= anim.duration) {
+        self.animTime = time;
+        deltaTime = 0
+    }
+
+    if (self.ANIMATED) {
+        var timePerFrame = 1e3 / anim.fps;
+        var frame = Math.floor(deltaTime / timePerFrame);
+        var r = deltaTime % timePerFrame / timePerFrame;
+        var hiddenBones = {};
+        if (self.hiddenBones) {
+            if (self.hiddenBones[anim.name]) {
+                hiddenBones = self.hiddenBones[anim.name];
+            } else if (self.hiddenBones["all"]) {
+                hiddenBones = self.hiddenBones["all"];
+            }
+        }
+        var b;
+        if (self.version >= 1) {
+            for (i = 0; i < self.bones.length; ++i) {
+                b = self.bones[i];
+                if (hiddenBones[b.name]) {
+                    mat4.identity(self.tmpMat);
+                    mat4.scale(self.tmpMat, self.tmpMat, vec3.set(self.tmpVec, 0, 0, 0));
+                    mat4.copy(self.transforms[i], self.tmpMat)
+                } else if (anim.lookup[b.name] !== undefined) {
+                    anim.bones[anim.lookup[b.name]].update(i, frame, r)
+                } else if (self.baseAnim && self.baseAnim.lookup[b.name] !== undefined) {
+                    self.baseAnim.bones[self.baseAnim.lookup[b.name]].update(i, frame, r)
+                } else {
+                    if (b.parent != -1) {
+                        AnimationBone.prototype.mulSlimDX(self.transforms[i], b.incrMatrix, self.transforms[b.parent])
+                    } else {
+                        mat4.copy(self.transforms[i], b.incrMatrix)
+                    }
+                }
             }
         } else {
-            for (i = 0; i < self.animations.length; ++i) {
-                if (self.animations[i].name == name) {
-                    animIndex = i;
-                    break
-                }
-            }
-        }
-        return animIndex
-    },
-
-    setAnimation: function(name) {
-        var self = this;
-        self.animName = name;
-        self.newAnimation = true;
-    },
-
-    update: function(time) {
-        var self = this,
-            i, j;
-
-        if (self.animTime == 0) {
-            self.animTime = time;
-        }
-
-        if (!self.loaded || !self.vertices || !self.animations || self.animations.length == 0) {
-            return;
-        }
-
-        self.animIndex = self.getAnimation(self.animName);
-        if (self.animIndex == -1) {
-            self.animIndex = 0;
-            self.animName = "idle";
-        }
-        var baseAnims = BaseAnimations;
-        if (baseAnims[self.champion] !== undefined) {
-            if (baseAnims[self.champion][self.skin] !== undefined) {
-                var baseAnim = baseAnims[self.champion][self.skin],
-                    baseIndex = -1;
-
-                if (baseAnim[self.animations[self.animIndex].name]) {
-                    baseIndex = self.getAnimation(baseAnim[self.animations[self.animIndex].name]);
-                } else if (baseAnim["all"]) {
-                    baseIndex = self.getAnimation(baseAnim["all"]);
-                }
-
-                if (baseIndex > -1) {
-                    self.baseAnim = self.animations[baseIndex];
+            for (i = 0; i < anim.bones.length; ++i) {
+                b = anim.bones[i];
+                if (self.boneLookup[b.bone] !== undefined) {
+                    b.update(self.boneLookup[b.bone], frame, r)
                 } else {
-                    self.baseAnim = null;
-                }
-            }
-        }
-
-        var deltaTime = time - self.animTime;
-        var anim = self.animations[self.animIndex];
-
-        if (deltaTime >= anim.duration) {
-            self.animTime = time;
-            deltaTime = 0
-        }
-
-        if (self.ANIMATED) {
-            var timePerFrame = 1e3 / anim.fps;
-            var frame = Math.floor(deltaTime / timePerFrame);
-            var r = deltaTime % timePerFrame / timePerFrame;
-            var hiddenBones = {};
-            if (self.hiddenBones) {
-                if (self.hiddenBones[anim.name]) {
-                    hiddenBones = self.hiddenBones[anim.name];
-                } else if (self.hiddenBones["all"]) {
-                    hiddenBones = self.hiddenBones["all"];
-                }
-            }
-            var b;
-            if (self.version >= 1) {
-                for (i = 0; i < self.bones.length; ++i) {
-                    b = self.bones[i];
-                    if (hiddenBones[b.name]) {
-                        mat4.identity(self.tmpMat);
-                        mat4.scale(self.tmpMat, self.tmpMat, vec3.set(self.tmpVec, 0, 0, 0));
-                        mat4.copy(self.transforms[i], self.tmpMat)
-                    } else if (anim.lookup[b.name] !== undefined) {
-                        anim.bones[anim.lookup[b.name]].update(i, frame, r)
-                    } else if (self.baseAnim && self.baseAnim.lookup[b.name] !== undefined) {
-                        self.baseAnim.bones[self.baseAnim.lookup[b.name]].update(i, frame, r)
-                    } else {
-                        if (b.parent != -1) {
-                            AnimationBone.prototype.mulSlimDX(self.transforms[i], b.incrMatrix, self.transforms[b.parent])
-                        } else {
-                            mat4.copy(self.transforms[i], b.incrMatrix)
-                        }
+                    var parentBone = anim.bones[i - 1];
+                    if (!parentBone) continue;
+                    if (parentBone.index + 1 < self.transforms.length) {
+                        mat4.copy(self.transforms[parentBone.index + 1], self.transforms[parentBone.index])
                     }
-                }
-            } else {
-                for (i = 0; i < anim.bones.length; ++i) {
-                    b = anim.bones[i];
-                    if (self.boneLookup[b.bone] !== undefined) {
-                        b.update(self.boneLookup[b.bone], frame, r)
-                    } else {
-                        var parentBone = anim.bones[i - 1];
-                        if (!parentBone) continue;
-                        if (parentBone.index + 1 < self.transforms.length) {
-                            mat4.copy(self.transforms[parentBone.index + 1], self.transforms[parentBone.index])
-                        }
-                        b.index = parentBone.index + 1
-                    }
+                    b.index = parentBone.index + 1
                 }
             }
-            var numBones = Math.min(self.transforms.length, self.bones.length);
-            for (i = 0; i < numBones; ++i) {
-                AnimationBone.prototype.mulSlimDX(self.transforms[i], self.bones[i].baseMatrix, self.transforms[i])
-            }
-            mat4.identity(self.tmpMat);
-            var numVerts = self.vertices.length,
-                vec = self.tmpVec,
-                position = self.geometry.attributes.position.array,
-                normal = self.geometry.attributes.normal.array,
-                v, w, m, idx;
-            for (i = 0; i < numVerts; ++i) {
-                v = self.vertices[i];
-                idx = i * 3;
-                position[idx] = position[idx + 1] = position[idx + 2] = 0;
-                normal[idx] = normal[idx + 1] = normal[idx + 2] = 0;
-                for (j = 0; j < 4; ++j) {
-                    if (v.weights[j] > 0) {
-                        w = v.weights[j];
-                        m = anim.fps == 1 ? self.tmpMat : self.transforms[v.bones[j]];
-                        vec3.transformMat4(vec, v.position, m);
-                        position[idx] += vec[0] * w;
-                        position[idx + 1] += vec[1] * w;
-                        position[idx + 2] += vec[2] * w;
-                        vec4.transformMat4(vec, v.normal, m);
-                        normal[idx] += vec[0] * w;
-                        normal[idx + 1] += vec[1] * w;
-                        normal[idx + 2] += vec[2] * w
-                    }
+        }
+        var numBones = Math.min(self.transforms.length, self.bones.length);
+        for (i = 0; i < numBones; ++i) {
+            AnimationBone.prototype.mulSlimDX(self.transforms[i], self.bones[i].baseMatrix, self.transforms[i])
+        }
+        mat4.identity(self.tmpMat);
+        var numVerts = self.vertices.length,
+            vec = self.tmpVec,
+            position = self.geometry.attributes.position.array,
+            normal = self.geometry.attributes.normal.array,
+            v, w, m, idx;
+        for (i = 0; i < numVerts; ++i) {
+            v = self.vertices[i];
+            idx = i * 3;
+            position[idx] = position[idx + 1] = position[idx + 2] = 0;
+            normal[idx] = normal[idx + 1] = normal[idx + 2] = 0;
+            for (j = 0; j < 4; ++j) {
+                if (v.weights[j] > 0) {
+                    w = v.weights[j];
+                    m = anim.fps == 1 ? self.tmpMat : self.transforms[v.bones[j]];
+                    vec3.transformMat4(vec, v.position, m);
+                    position[idx] += vec[0] * w;
+                    position[idx + 1] += vec[1] * w;
+                    position[idx + 2] += vec[2] * w;
+                    vec4.transformMat4(vec, v.normal, m);
+                    normal[idx] += vec[0] * w;
+                    normal[idx + 1] += vec[1] * w;
+                    normal[idx + 2] += vec[2] * w
                 }
             }
-            geometry.attributes.position.needsUpdate = true;
-            geometry.attributes.normal.needsUpdate = true;
         }
-        if (self.newAnimation) {
-            self.newAnimation = false
-        }
-    },
-    updatePosition: function() {
-        var self = this,
-            index = self.modelIndex,
-            offset = self.renderer.models[0].boundsSize[0] * 1.5;
-        if (index > 2) {
-            offset += Math.abs(self.renderer.models[index - 2].modelOffset)
-        }
-        if (self.modelIndex % 2 > 0) offset = -offset;
-        self.modelOffset = offset;
-        mat4.identity(self.matrix);
-        mat4.translate(self.matrix, self.matrix, vec3.negate(self.tmpVec, self.boundsCenter));
-        mat4.scale(self.matrix, self.matrix, vec3.set(self.tmpVec, -1, 1, 1));
-        vec3.normalize(self.tmpVec, vec3.set(self.tmpVec, 4, 0, -1));
-        vec3.scale(self.tmpVec, self.tmpVec, offset);
-        if (offset < 0) self.tmpVec[2] = -self.tmpVec[2];
-        self.matrix[12] += self.tmpVec[0];
-        self.matrix[13] += self.tmpVec[1];
-        self.matrix[14] += self.tmpVec[2]
+        geometry.attributes.position.needsUpdate = true;
+        geometry.attributes.normal.needsUpdate = true;
+    }
+    if (self.newAnimation) {
+        self.newAnimation = false
     }
 };
 
@@ -467,6 +402,5 @@ Model.prototype.loadAnim = function(buffer) {
     }
     self.animsLoaded = true
 };
-
 
 export { Model };

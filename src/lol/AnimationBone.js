@@ -54,6 +54,7 @@ AnimationBone.prototype.translation = function(out, vec) {
     out[14] = vec[2];
     return out
 };
+
 AnimationBone.prototype.rotationQuat = function(out, q) {
     mat4.identity(out);
     var xx = q[0] * q[0],
@@ -76,6 +77,7 @@ AnimationBone.prototype.rotationQuat = function(out, q) {
     out[10] = 1 - 2 * (yy + xx);
     return out
 };
+
 AnimationBone.prototype.mulSlimDX = function(out, l, r) {
     var left = {
         M11: l[0],

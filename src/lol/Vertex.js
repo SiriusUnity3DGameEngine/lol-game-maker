@@ -10,9 +10,13 @@ function Vertex(r) {
     self.u = r.getFloat();
     self.v = r.getFloat();
     self.bones = new Array(4);
-    for (i = 0; i < 4; ++i) self.bones[i] = r.getUint8();
+    for (i = 0; i < 4; ++i) {
+        self.bones[i] = r.getUint8();
+    }
     self.weights = new Array(4);
-    for (i = 0; i < 4; ++i) self.weights[i] = r.getFloat()
+    for (i = 0; i < 4; ++i) {
+        self.weights[i] = r.getFloat();
+    }
 };
 
 export { Vertex };

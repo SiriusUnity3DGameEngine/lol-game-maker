@@ -56,6 +56,9 @@ var CustomEvents = [
     // ./scene/webgl/event/GlSelectObject.js
     'selectObject',
     'unselectObject',
+
+    // ./lol/Model.js
+    'loadMesh',
 ];
 
 var NavMenus = [{

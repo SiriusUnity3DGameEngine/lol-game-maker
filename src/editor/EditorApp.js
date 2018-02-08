@@ -11,6 +11,12 @@ function EditorApp(options) {
     this.event = options.event || new EventManager({
         app: this
     });
+    this.call = function(eventName) {
+        this.event.call(params);
+    };
+    this.on = function(eventName, callback) {
+        this.event.on(eventName, callback);
+    };
     this.ui = options.ui || new EditorUI({
         app: this
     });

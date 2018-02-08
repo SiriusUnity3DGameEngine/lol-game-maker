@@ -15,12 +15,20 @@ var geometry = null;
 var material = null;
 var mesh = null;
 var test = function() {
-    model = new AI.Lol.Model();
+    model = new AI.Lol.Model({
+        app: app
+    });
     model.load('models/1_0.lmesh');
-    setTimeout(function() {
+    app.event.on('loadMesh', function() {
         geometry = model.geometry;
         material = model.material;
         mesh = new THREE.Mesh(geometry, material);
         app.scene.add(mesh);
-    }, 2000);
+
+        model.setAnimation('idle');
+
+        app.on('onAnimate', function(clock) {
+            model.update(clock.getElapsedTime() * 1000);
+        });
+    });
 };

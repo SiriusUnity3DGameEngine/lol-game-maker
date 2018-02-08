@@ -16,11 +16,10 @@ Texture.prototype.load = function() {
     self.texture = new THREE.TextureLoader().load(self.url, function(texture) {
         self.onLoad.call(self, texture);
     });
-    self.texture.magFilter = THREE.LinearFilter;
-    self.texture.minFilter = THREE.LinearFilter; // gl.TEXTURE_MIN_FILTER
 };
 
 Texture.prototype.onLoad = function(texture) {
+    texture.flipY = false;
     self.model.material.uniforms.uHasTexture.value = 1;
     self.model.material.uniforms.uTexture.value = texture;
     self.model.material.needsUpdate = true;

@@ -8,6 +8,8 @@ function Dialog(options) {
     Control.call(this, options);
     options = options || {};
     this.title = options.title || 'Dialog';
+    this.width = options.width || 300;
+    this.height = options.height || 'auto';
     this.html = options.html || null;
     this.children = options.children || [];
 }
@@ -25,7 +27,10 @@ Dialog.prototype.render = function() {
         n.parent = this.el.div;
         n.render.call(n);
     });
-    $(this.el.div).dialog();
+    $(this.el.div).dialog({
+        width: this.width,
+        height: this.height
+    });
 };
 
 export { Dialog };

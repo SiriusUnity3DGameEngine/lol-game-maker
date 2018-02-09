@@ -1,14 +1,21 @@
-import { Model } from './Model';
-import { vertShader, fragShader } from './Shader';
-import { Texture } from './Texture';
-import { Vertex } from './Vertex';
-import { Bone } from './Bone';
-import { Animation } from './Animation';
-import { AnimationBone } from './AnimationBone';
-import { BaseAnimations } from './BaseAnimations';
-import { HiddenBones } from './HiddenBones';
+// model
+import { Model } from './model/Model';
+import { vertShader, fragShader } from './model/Shader';
+import { Texture } from './model/Texture';
+import { Vertex } from './model/Vertex';
+import { Bone } from './model/Bone';
+import { Animation } from './model/Animation';
+import { AnimationBone } from './model/AnimationBone';
+import { BaseAnimations } from './model/BaseAnimations';
+import { HiddenBones } from './model/HiddenBones';
+import { champions, animNames } from './constant';
+
+// ui
+import { AddHeroWin } from './ui/AddHeroWin';
 
 var Lol = {
+    champions: champions,
+    animNames: animNames,
     Model: Model,
     vertShader: vertShader,
     fragShader: fragShader,
@@ -18,7 +25,8 @@ var Lol = {
     Animation: Animation,
     AnimationBone: AnimationBone,
     BaseAnimations: BaseAnimations,
-    HiddenBones: HiddenBones
+    HiddenBones: HiddenBones,
+    AddHeroWin: AddHeroWin
 };
 
 export { Lol };

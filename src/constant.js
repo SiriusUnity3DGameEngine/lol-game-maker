@@ -40,6 +40,7 @@ var CustomEvents = [
     'play',
     'document',
     'about',
+    'addHeroWin',
 
     // ./scene/webgl/GlScene.js
     'beforeAnimate',
@@ -154,6 +155,9 @@ var NavMenus = [{
     }, {
         id: 'addFire',
         text: 'Fire'
+    }, {
+        id: 'addHeroWin',
+        text: 'Hero'
     }]
 }, {
     id: 'component',

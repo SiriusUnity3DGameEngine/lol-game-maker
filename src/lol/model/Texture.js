@@ -19,6 +19,7 @@ Texture.prototype.load = function() {
 };
 
 Texture.prototype.onLoad = function(texture) {
+    var self = this;
     texture.flipY = false;
     self.model.material.uniforms.uHasTexture.value = 1;
     self.model.material.uniforms.uTexture.value = texture;

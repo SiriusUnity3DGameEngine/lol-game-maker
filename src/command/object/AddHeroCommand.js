@@ -21,7 +21,9 @@ AddHeroCommand.prototype.init = function() {
 };
 
 AddHeroCommand.prototype.run = function() {
-    var win = new Lol.AddHeroWin();
+    var win = new Lol.AddHeroWin({
+        app: this.app
+    });
     win.render();
 };
 

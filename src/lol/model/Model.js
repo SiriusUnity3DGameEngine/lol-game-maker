@@ -243,8 +243,8 @@ Model.prototype.update = function(time) {
                 }
             }
         }
-        geometry.attributes.position.needsUpdate = true;
-        geometry.attributes.normal.needsUpdate = true;
+        self.geometry.attributes.position.needsUpdate = true;
+        self.geometry.attributes.normal.needsUpdate = true;
     }
     if (self.newAnimation) {
         self.newAnimation = false

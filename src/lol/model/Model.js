@@ -14,7 +14,6 @@ import { vertShader, fragShader } from './Shader';
 
 function Model(options) {
     var self = this;
-    self.app = options.app || null;
     self.champion = options.champion || "1";
     self.skin = options.skin || 0;
 
@@ -35,6 +34,8 @@ function Model(options) {
     self.tmpMat = mat4.create();
     self.tmpVec = vec4.create();
     self.ANIMATED = true;
+
+    self.dispatch = d3.dispatch('load');
 
     self.hiddenBones = null;
     var hiddenBones = HiddenBones;
@@ -251,8 +252,9 @@ Model.prototype.update = function(time) {
     }
 };
 
-Model.prototype.load = function(url) {
+Model.prototype.load = function() {
     var self = this;
+    var url = 'models/' + self.champion + '_' + self.skin + '.lmesh';
     var loader = new THREE.FileLoader();
     loader.setResponseType('arraybuffer');
     loader.load(url, function(buffer) {
@@ -293,7 +295,7 @@ Model.prototype.loadMesh = function(buffer) {
         });
     }
     if (textureFile && textureFile.length > 0) {
-        self.texture = new Texture(self, "textures/1/" + textureFile + ".png")
+        self.texture = new Texture(self, "textures/" + self.champion + "/" + textureFile + ".png")
     }
     var numMeshes = r.getUint32();
     if (numMeshes > 0) {
@@ -365,7 +367,7 @@ Model.prototype.loadMesh = function(buffer) {
         }
     }
     self.loaded = true;
-    self.app.event.call('loadMesh');
+    self.dispatch.call('load');
 };
 
 Model.prototype.loadAnim = function(buffer) {
@@ -401,6 +403,10 @@ Model.prototype.loadAnim = function(buffer) {
         }
     }
     self.animsLoaded = true
+};
+
+Model.prototype.on = function(eventName, callback) {
+    this.dispatch.on(eventName, callback);
 };
 
 export { Model };

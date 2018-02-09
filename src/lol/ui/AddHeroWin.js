@@ -7,6 +7,8 @@ import { Model } from '../model/Model';
  * @author tengge / https://github.com/tengge1
  */
 
+var ID = -1;
+
 function AddHeroWin(options) {
     Dialog.call(this, options);
     options = options || {};
@@ -33,21 +35,22 @@ AddHeroWin.prototype.render = function() {
 };
 
 AddHeroWin.prototype.onClick = function(event, treeId, treeNode, clickFlag) {
-    var id = treeNode.id;
+    var id = 'hero' + ID--;
     var model = new Model({
-        app: app
+        champion: treeNode.id
     });
-    model.load('models/1_0.lmesh');
+    model.load();
     var _this = this;
-    app.event.on('loadMesh', function() {
+    model.on('load', function() {
         var geometry = model.geometry;
         var material = model.material;
         var mesh = new THREE.Mesh(geometry, material);
+        mesh.scale.set(0.1, 0.1, 0.1);
         _this.app.scene.add(mesh);
 
         model.setAnimation('idle');
 
-        _this.app.on('onAnimate', function(clock) {
+        _this.app.on('onAnimate.' + id, function(clock) {
             model.update(clock.getElapsedTime() * 1000);
         });
     });

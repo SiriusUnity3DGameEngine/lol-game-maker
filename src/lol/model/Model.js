@@ -89,6 +89,17 @@ function Model(options) {
     });
 };
 
+Model.prototype.getAnimations = function() {
+    if (!this.animations) {
+        return null;
+    }
+    var names = [];
+    this.animations.forEach(function(n) {
+        names.push(n.name);
+    });
+    return names;
+};
+
 Model.prototype.getAnimation = function(name) {
     var self = this,
         i, animIndex = -1;

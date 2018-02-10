@@ -25,10 +25,13 @@ GlGUI.prototype.constructor = GlGUI;
 
 GlGUI.prototype.start = function() {
     var _this = this;
-    this.gui.add(this.controls, 'transform', ['translate', 'rotate', 'scale'])
+    this.controlFolder = this.gui.addFolder('control');
+    this.controlFolder.open();
+    this.controlFolder.add(this.controls, 'transform', ['translate', 'rotate', 'scale'])
         .onChange(function(value) {
             _this.app.event.call(value + 'Object');
         });
+    this.app.gui.controlFolder = this.controlFolder;
 };
 
 export { GlGUI };

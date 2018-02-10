@@ -6,7 +6,7 @@ We will create a greate artificial intelligence (AI) with the theory of life evo
 
 On February 4th, 2018, we add many objects to the editor, include fire. We add hover and select event. You can set fog in the settings.
 
-![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/LOL_Editor.png)
+![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAI20180210.png)
 
 On February 10, 2018, we add 10 lol models with animation to it.
 

@@ -103,7 +103,7 @@ Model.prototype.getAnimation = function(name) {
             if (self.animations[i].name.search(re) == 0) anims.push(i)
         }
         if (anims.length > 0) {
-            animIndex = anims[Math.floor(Math.random() * anims.length)];
+            animIndex = anims[0];
         }
     } else {
         for (i = 0; i < self.animations.length; ++i) {

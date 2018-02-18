@@ -1,22 +1,12 @@
-﻿# Open Sea AI
+# 英雄联盟游戏制作器
 
-We will create a greate artificial intelligence (AI) with the theory of life evolution and the neural network evolution. Genetic information carried by DNA molecules is a neural network model. The AI who win the game will have a greater influence on its children.
+使用英雄联盟中的模型制作可在浏览器中运行的游戏，仅供学习研究使用。
 
-## Development Progress
-
-On February 4th, 2018, we add many objects to the editor, include fire. We add hover and select event. You can set fog in the settings.
+## 图片
 
 ![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAI20180210.png)
 
-On February 10, 2018, we add 10 lol models with animation to it.
-
-On January 28, 2018, we create the basic framework of OpenSeaAI Editor.
-
-On January 21, 2018, we add 5 `Interaction`s and 14 `Control`s based on jquery-ui. You can click [UI Interaction Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Interaction.png) and [UI Control Test](https://github.com/tengge1/OpenSeaAI/blob/master/img/Control.png) to see the images.
-
-On January 14, 2018， we add 10 `SvgElement`s. Click [here](https://github.com/tengge1/OpenSeaAI/blob/master/img/SvgDemo.png) to see.
-
-## Thanks To
+## 感谢
 
 * jQuery: https://jquery.com/
 * jQuery-ui: https://github.com/jquery/jquery-ui

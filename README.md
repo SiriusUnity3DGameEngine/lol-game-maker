@@ -8,6 +8,8 @@
 
 点击菜单Object/Hero，弹出添加英雄对话框。点击书上的节点即可添加英雄。单击选择英雄，单击右侧面板上的按钮可以播放动画。
 
+由于js插件、模型、贴图、动画文件都很大，页面打开会很慢。
+
 ## 图片
 
 ![image](https://github.com/tengge1/OpenSeaAI/blob/master/img/OpenSeaAI20180210.png)
